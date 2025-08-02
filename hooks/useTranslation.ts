@@ -1,46 +1,42 @@
 "use client"
 
-import { useParams, useRouter, usePathname } from "next/navigation"
-import { translations } from "@/lib/translations"
-
-type Locale = "pt-BR" | "en-US" | "es-ES"
+import { useState, useEffect } from "react"
+import { translations, type Locale, type TranslationKey, getTranslation } from "@/lib/translations"
 
 export function useTranslation() {
-  const params = useParams()
-  const router = useRouter()
-  const pathname = usePathname()
+  const [locale, setLocale] = useState<Locale>("pt")
 
-  const locale = (params?.locale as Locale) || "pt-BR"
+  useEffect(() => {
+    // Get locale from URL or localStorage
+    const path = window.location.pathname
+    const urlLocale = path.split("/")[1] as Locale
 
-  const t = (key: string): string => {
-    const keys = key.split(".")
-    let value: any = translations[locale]
-
-    for (const k of keys) {
-      value = value?.[k]
+    if (urlLocale && translations[urlLocale]) {
+      setLocale(urlLocale)
+      localStorage.setItem("kalender-locale", urlLocale)
+    } else {
+      const savedLocale = localStorage.getItem("kalender-locale") as Locale
+      if (savedLocale && translations[savedLocale]) {
+        setLocale(savedLocale)
+      }
     }
+  }, [])
 
-    return value || key
+  const t = (key: TranslationKey): string => {
+    return getTranslation(locale, key)
   }
 
-  const changeLanguage = (newLocale: Locale) => {
-    // Remove o locale atual do pathname e adiciona o novo
-    const pathWithoutLocale = pathname.replace(`/${locale}`, "")
+  const changeLocale = (newLocale: Locale) => {
+    setLocale(newLocale)
+    localStorage.setItem("kalender-locale", newLocale)
+
+    // Update URL
+    const currentPath = window.location.pathname
+    const pathWithoutLocale = currentPath.replace(/^\/[a-z]{2}(-[A-Z]{2})?/, "") || "/"
     const newPath = `/${newLocale}${pathWithoutLocale}`
-    router.push(newPath)
+    window.history.pushState({}, "", newPath)
+    window.location.reload()
   }
 
-  // Helper para gerar URLs com locale
-  const getLocalizedPath = (path: string) => {
-    // Remove barra inicial se existir
-    const cleanPath = path.startsWith("/") ? path.slice(1) : path
-    return `/${locale}/${cleanPath}`
-  }
-
-  return {
-    t,
-    locale,
-    changeLanguage,
-    getLocalizedPath,
-  }
+  return { t, locale, changeLocale }
 }

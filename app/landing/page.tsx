@@ -1,9 +1,6 @@
 "use client"
 import { useState } from "react"
 import type React from "react"
-import { useTranslation } from "@/contexts/translation-context"
-import { TranslationProvider } from "@/contexts/translation-context"
-import { KalenderLogo } from "@/components/kalender-logo"
 
 import {
   Calendar,
@@ -16,6 +13,7 @@ import {
   Smartphone,
   TrendingUp,
   ChevronDown,
+  Check,
   Crown,
   Building2,
   Users,
@@ -27,10 +25,13 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Input } from "@/components/ui/input"
 import { Switch } from "@/components/ui/switch"
-import { LanguageSwitcher } from "@/components/language-switcher"
+import { Logo } from "@/components/logo"
+import { useTranslation } from "@/hooks/useTranslation"
+import { useNavigation } from "@/lib/navigation"
 
-function LandingPageContent() {
+export default function LandingPage() {
   const { t } = useTranslation()
+  const { navigate, scrollToSection } = useNavigation()
   const [selectedProfessionals, setSelectedProfessionals] = useState(1)
   const [isAnnual, setIsAnnual] = useState(true)
 
@@ -45,12 +46,12 @@ function LandingPageContent() {
       popular: false,
       description: t("plans.start.description"),
       features: [
-        "1 " + t("professionals_unit"),
-        t("plan_features.smart_scheduling"),
-        t("plan_features.whatsapp_auto"),
-        t("plan_features.custom_page"),
-        t("plan_features.basic_reports"),
-        t("plan_features.email_support"),
+        "1 profissional",
+        t("features.smart_scheduling"),
+        "WhatsApp automático",
+        "Página personalizada",
+        "Relatórios básicos",
+        "Suporte por email",
       ],
     },
     {
@@ -62,13 +63,13 @@ function LandingPageContent() {
       popular: true,
       description: t("plans.essential.description"),
       features: [
-        t("up_to") + " 3 " + t("professionals_unit"),
-        t("plan_features.everything_start"),
-        t("plan_features.google_sync"),
-        t("plan_features.auto_reminders"),
-        t("plan_features.advanced_reports"),
-        t("plan_features.priority_support"),
-        t("plan_features.erp_integration"),
+        "Até 3 profissionais",
+        "Tudo do plano Start",
+        "Google Calendar sync",
+        "Lembretes automáticos",
+        "Relatórios avançados",
+        "Suporte prioritário",
+        "Integração com ERPs",
       ],
     },
     {
@@ -80,14 +81,14 @@ function LandingPageContent() {
       popular: false,
       description: t("plans.advanced.description"),
       features: [
-        t("up_to") + " 10 " + t("professionals_unit"),
-        t("plan_features.everything_essential"),
-        t("plan_features.multi_location"),
-        t("plan_features.custom_api"),
-        t("plan_features.custom_reports"),
-        t("plan_features.phone_support"),
-        t("plan_features.training_included"),
-        t("plan_features.auto_backup"),
+        "Até 10 profissionais",
+        "Tudo do plano Essencial",
+        "Multi-localização",
+        "API personalizada",
+        "Relatórios personalizados",
+        "Suporte por telefone",
+        "Treinamento incluído",
+        "Backup automático",
       ],
     },
     {
@@ -99,14 +100,14 @@ function LandingPageContent() {
       popular: false,
       description: t("plans.pro.description"),
       features: [
-        t("up_to") + " 20 " + t("professionals_unit"),
-        t("plan_features.everything_advanced"),
-        t("plan_features.dedicated_manager"),
-        t("plan_features.sla_guaranteed"),
-        t("plan_features.unlimited_integrations"),
-        t("plan_features.support_24_7"),
-        t("plan_features.monthly_consulting"),
-        t("plan_features.white_label"),
+        "Até 20 profissionais",
+        "Tudo do plano Avançado",
+        "Gerente dedicado",
+        "SLA garantido",
+        "Integrações ilimitadas",
+        "Suporte 24/7",
+        "Consultoria mensal",
+        "White label",
       ],
     },
   ]
@@ -152,18 +153,15 @@ function LandingPageContent() {
   }
 
   const handleLoginClick = () => {
-    window.location.href = "/login"
+    navigate("/login")
   }
 
   const handleSignupClick = () => {
-    window.location.href = "/signup"
+    navigate("/signup")
   }
 
   const handlePricingClick = () => {
-    const element = document.getElementById("pricing")
-    if (element) {
-      element.scrollIntoView({ behavior: "smooth" })
-    }
+    scrollToSection("pricing")
   }
 
   return (
@@ -172,12 +170,15 @@ function LandingPageContent() {
       <header className="bg-white border-b border-gray-200 sticky top-0 z-50">
         <div className="container mx-auto px-4 py-4">
           <div className="flex items-center justify-between">
-            {/* Brand - Com Logo */}
+            {/* Logo */}
             <button
-              onClick={() => (window.location.href = "/")}
+              onClick={() => navigate("/")}
               className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
             >
-              <KalenderLogo width={40} height={40} className="object-contain" />
+              <Logo />
+              <span className="text-2xl font-bold bg-brand-gradient bg-clip-text text-transparent tracking-tight">
+                Kalender
+              </span>
             </button>
 
             {/* Navigation Menu */}
@@ -185,25 +186,25 @@ function LandingPageContent() {
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("platform"))}
+                onClick={() => handleFeatureNavigation(t("header.platform"))}
               >
-                {t("platform")}
+                {t("header.platform")}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("features"))}
+                onClick={() => handleFeatureNavigation(t("header.features"))}
               >
-                {t("features")}
+                {t("header.features")}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("segments"))}
+                onClick={() => handleFeatureNavigation(t("header.segments"))}
               >
-                {t("segments")}
+                {t("header.segments")}
                 <ChevronDown className="ml-1 h-4 w-4" />
               </Button>
               <Button
@@ -211,22 +212,21 @@ function LandingPageContent() {
                 className="text-gray-700 hover:text-gray-900 font-medium"
                 onClick={handlePricingClick}
               >
-                {t("pricing")}
+                {t("header.pricing")}
               </Button>
             </nav>
 
             {/* Right Side Actions */}
             <div className="flex items-center space-x-4">
-              <LanguageSwitcher />
               <Button
                 variant="outline"
                 className="hidden md:flex border-gray-300 text-gray-700 hover:bg-gray-50"
                 onClick={handleLoginClick}
               >
-                {t("login")}
+                {t("header.login")}
               </Button>
               <Button className="bg-primary hover:bg-primary/90 text-white font-semibold" onClick={handleSignupClick}>
-                {t("free_trial")}
+                {t("header.free_trial")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
             </div>
@@ -243,29 +243,29 @@ function LandingPageContent() {
               {/* Badge */}
               <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-700 bg-gray-800/50 backdrop-blur-sm mb-8">
                 <div className="w-2 h-2 bg-accent rounded-full mr-3 animate-pulse"></div>
-                <span className="text-gray-300 text-sm font-medium">{t("hero_badge")}</span>
+                <span className="text-gray-300 text-sm font-medium">{t("hero.badge")}</span>
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
-                {t("hero_title")}
+                {t("hero.title")}
                 <span className="bg-brand-gradient bg-clip-text text-transparent block">
-                  {t("hero_title_highlight")}
+                  {t("hero.title_highlight")}
                 </span>
               </h1>
 
               {/* Description */}
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">{t("hero_description")}</p>
+              <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">{t("hero.description")}</p>
 
               {/* Stats */}
               <div className="grid grid-cols-2 gap-8 mb-8">
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">{t("hero_setup_time")}</div>
-                  <div className="text-gray-400 text-sm font-medium">{t("hero_setup_description")}</div>
+                  <div className="text-3xl font-bold text-white mb-1">{t("hero.setup_time")}</div>
+                  <div className="text-gray-400 text-sm font-medium">{t("hero.setup_description")}</div>
                 </div>
                 <div>
-                  <div className="text-3xl font-bold text-white mb-1">{t("hero_uptime")}</div>
-                  <div className="text-gray-400 text-sm font-medium">{t("hero_uptime_description")}</div>
+                  <div className="text-3xl font-bold text-white mb-1">{t("hero.uptime")}</div>
+                  <div className="text-gray-400 text-sm font-medium">{t("hero.uptime_description")}</div>
                 </div>
               </div>
 
@@ -276,7 +276,7 @@ function LandingPageContent() {
                   className="bg-gradient-to-r from-accent to-primary hover:from-accent/90 hover:to-primary/90 text-white font-bold h-14 px-8 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
                   onClick={handleSignupClick}
                 >
-                  {t("hero_start_free_trial")}
+                  {t("hero.start_free_trial")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <Button
@@ -285,10 +285,10 @@ function LandingPageContent() {
                   className="h-14 px-8 text-lg border-primary text-primary hover:bg-primary hover:text-white font-semibold"
                   onClick={handlePricingClick}
                 >
-                  {t("hero_view_pricing")}
+                  {t("hero.view_pricing")}
                 </Button>
               </div>
-              <p className="text-gray-400 text-sm font-medium">{t("hero_free_trial_note")}</p>
+              <p className="text-gray-400 text-sm font-medium">{t("hero.free_trial_note")}</p>
             </div>
 
             {/* Right Visual Elements */}
@@ -325,7 +325,7 @@ function LandingPageContent() {
                   </div>
                   <div>
                     <div className="text-xs text-gray-500 font-medium">Receita</div>
-                    <div className="text-sm font-bold text-primary">{t("revenue_increase")} em 3 meses</div>
+                    <div className="text-sm font-bold text-primary">+40% em 3 meses</div>
                   </div>
                 </div>
               </div>
@@ -333,7 +333,7 @@ function LandingPageContent() {
               {/* Mobile App Mockup */}
               <div className="absolute -bottom-8 -left-8 bg-gray-900 rounded-2xl p-3 shadow-xl z-15 transform rotate-12 hover:rotate-6 transition-transform duration-500">
                 <div className="bg-white rounded-xl p-3 w-32">
-                  <div className="text-xs font-bold text-gray-900 mb-2">{t("whatsapp_bot")}</div>
+                  <div className="text-xs font-bold text-gray-900 mb-2">WhatsApp Bot</div>
                   <div className="space-y-1">
                     <div className="bg-primary text-white text-xs p-1 rounded font-medium">
                       Oi! Gostaria de agendar?
@@ -385,8 +385,8 @@ function LandingPageContent() {
       <section className="py-20">
         <div className="container mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("features_title")}</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">{t("features_subtitle")}</p>
+            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("features.title")}</h2>
+            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">{t("features.subtitle")}</p>
           </div>
 
           <div className="grid md:grid-cols-3 gap-8 mb-16">
@@ -395,10 +395,10 @@ function LandingPageContent() {
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Calendar className="h-8 w-8 text-primary" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("smart_scheduling")}</CardTitle>
+                <CardTitle className="text-xl text-gray-900 font-bold">{t("features.smart_scheduling")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("smart_scheduling_desc")}</p>
+                <p className="text-gray-600 font-light">{t("features.smart_scheduling_desc")}</p>
               </CardContent>
             </Card>
 
@@ -407,10 +407,10 @@ function LandingPageContent() {
                 <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Smartphone className="h-8 w-8 text-accent" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("whatsapp_telegram")}</CardTitle>
+                <CardTitle className="text-xl text-gray-900 font-bold">{t("features.whatsapp_telegram")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("whatsapp_telegram_desc")}</p>
+                <p className="text-gray-600 font-light">{t("features.whatsapp_telegram_desc")}</p>
               </CardContent>
             </Card>
 
@@ -419,10 +419,10 @@ function LandingPageContent() {
                 <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="h-8 w-8 text-secondary" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("integrations")}</CardTitle>
+                <CardTitle className="text-xl text-gray-900 font-bold">{t("features.integrations")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("integrations_desc")}</p>
+                <p className="text-gray-600 font-light">{t("features.integrations_desc")}</p>
               </CardContent>
             </Card>
           </div>
@@ -434,7 +434,7 @@ function LandingPageContent() {
                 <Smartphone className="h-5 w-5 text-accent" />
               </div>
               <div>
-                <h4 className="font-bold text-gray-900">{t("whatsapp_bot")}</h4>
+                <h4 className="font-bold text-gray-900">{t("nav.whatsapp_bot")}</h4>
                 <p className="text-sm text-gray-600 font-light">Agendamento por linguagem natural</p>
               </div>
             </div>
@@ -477,34 +477,34 @@ function LandingPageContent() {
         <div className="container mx-auto px-4">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">{t("benefits_title")}</h2>
+              <h2 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">{t("benefits.title")}</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4">
                   <CheckCircle className="h-6 w-6 text-primary mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{t("revenue_increase")}</h3>
-                    <p className="text-gray-600 font-light">{t("revenue_increase_desc")}</p>
+                    <h3 className="font-bold text-gray-900 mb-1">{t("benefits.revenue_increase")}</h3>
+                    <p className="text-gray-600 font-light">{t("benefits.revenue_increase_desc")}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <CheckCircle className="h-6 w-6 text-primary mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{t("no_shows_reduction")}</h3>
-                    <p className="text-gray-600 font-light">{t("no_shows_reduction_desc")}</p>
+                    <h3 className="font-bold text-gray-900 mb-1">{t("benefits.no_shows_reduction")}</h3>
+                    <p className="text-gray-600 font-light">{t("benefits.no_shows_reduction_desc")}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <CheckCircle className="h-6 w-6 text-primary mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{t("time_savings")}</h3>
-                    <p className="text-gray-600 font-light">{t("time_savings_desc")}</p>
+                    <h3 className="font-bold text-gray-900 mb-1">{t("benefits.time_savings")}</h3>
+                    <p className="text-gray-600 font-light">{t("benefits.time_savings_desc")}</p>
                   </div>
                 </div>
                 <div className="flex items-start space-x-4">
                   <CheckCircle className="h-6 w-6 text-primary mt-1" />
                   <div>
-                    <h3 className="font-bold text-gray-900 mb-1">{t("satisfaction")}</h3>
-                    <p className="text-gray-600 font-light">{t("satisfaction_desc")}</p>
+                    <h3 className="font-bold text-gray-900 mb-1">{t("benefits.satisfaction")}</h3>
+                    <p className="text-gray-600 font-light">{t("benefits.satisfaction_desc")}</p>
                   </div>
                 </div>
               </div>
@@ -514,27 +514,27 @@ function LandingPageContent() {
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Clock className="h-8 w-8 text-primary" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">{t("setup_title")}</h3>
-                <p className="text-gray-600 font-light">{t("setup_subtitle")}</p>
+                <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">{t("benefits.setup_title")}</h3>
+                <p className="text-gray-600 font-light">{t("benefits.setup_subtitle")}</p>
               </div>
               <div className="space-y-4">
                 <div className="flex items-center space-x-3">
                   <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                     1
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step1")}</span>
+                  <span className="text-gray-700 font-medium">{t("benefits.step1")}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                     2
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step2")}</span>
+                  <span className="text-gray-700 font-medium">{t("benefits.step2")}</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
                     3
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step3")}</span>
+                  <span className="text-gray-700 font-medium">{t("benefits.step3")}</span>
                 </div>
               </div>
             </div>
@@ -548,34 +548,56 @@ function LandingPageContent() {
           {/* Hero Section */}
           <div className="text-center mb-16">
             <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
-              {t("pricing_title")}
+              {t("pricing.title")}
               <span className="bg-brand-gradient bg-clip-text text-transparent block">
-                {t("pricing_title_highlight")}
+                {t("pricing.title_highlight")}
               </span>
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
-              {t("pricing_subtitle")}
+              {t("pricing.subtitle")}
             </p>
 
             {/* Annual/Monthly Toggle */}
             <div className="flex items-center justify-center space-x-4 mt-8 mb-4">
-              <span className={`font-semibold ${!isAnnual ? "text-gray-900" : "text-gray-500"}`}>{t("monthly")}</span>
+              <span className={`font-semibold ${!isAnnual ? "text-gray-900" : "text-gray-500"}`}>
+                {t("pricing.monthly")}
+              </span>
               <Switch checked={isAnnual} onCheckedChange={setIsAnnual} className="data-[state=checked]:bg-primary" />
-              <span className={`font-semibold ${isAnnual ? "text-gray-900" : "text-gray-500"}`}>{t("annual")}</span>
-              <Badge className="bg-accent text-white font-bold animate-pulse">{t("save_30")}</Badge>
+              <span className={`font-semibold ${isAnnual ? "text-gray-900" : "text-gray-500"}`}>
+                {t("pricing.annual")}
+              </span>
+              <Badge className="bg-accent text-white font-bold animate-pulse">{t("pricing.save_30")}</Badge>
             </div>
+
+            {isAnnual && (
+              <div className="bg-gradient-to-r from-accent/10 to-primary/10 rounded-2xl p-6 max-w-2xl mx-auto border border-accent/20 mb-8">
+                <div className="flex items-center justify-center space-x-2 mb-2">
+                  <Zap className="h-5 w-5 text-accent" />
+                  <span className="font-bold text-gray-900 text-lg">{t("pricing.annual_savings")}</span>
+                </div>
+                <p className="text-gray-700 font-medium mb-4">{t("pricing.annual_description")}</p>
+                <div className="bg-white/80 rounded-lg p-4 border border-orange-200">
+                  <div className="flex items-start space-x-2">
+                    <div className="text-orange-500 mt-0.5">⚠️</div>
+                    <div className="text-sm text-gray-700">
+                      <strong>Importante:</strong> {t("pricing.important_note")}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
 
           {/* Professional Selector */}
           <div className="max-w-4xl mx-auto mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t("professionals_question")}</h3>
+            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t("pricing.professionals_question")}</h3>
 
             <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0">
               <CardContent className="p-8">
                 <div className="mb-6">
                   <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-semibold text-gray-500">1 {t("professionals_unit")}</span>
-                    <span className="text-sm font-semibold text-gray-500">20+ {t("professionals_unit")}</span>
+                    <span className="text-sm font-semibold text-gray-500">1 profissional</span>
+                    <span className="text-sm font-semibold text-gray-500">20+ profissionais</span>
                   </div>
 
                   <div className="relative mb-6">
@@ -603,7 +625,7 @@ function LandingPageContent() {
 
                   <div className="flex items-center justify-center space-x-4">
                     <label htmlFor="professionals-input" className="text-sm font-semibold text-gray-700">
-                      {t("professionals_input")}
+                      {t("pricing.professionals_input")}
                     </label>
                     <Input
                       id="professionals-input"
@@ -614,7 +636,7 @@ function LandingPageContent() {
                       onChange={handleInputChange}
                       className="w-24 text-center font-semibold border-primary/20 focus:border-primary"
                     />
-                    <span className="text-sm text-gray-500 font-medium">{t("professionals_unit")}</span>
+                    <span className="text-sm text-gray-500 font-medium">{t("pricing.professionals_unit")}</span>
                   </div>
                 </div>
 
@@ -624,7 +646,7 @@ function LandingPageContent() {
                     <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary border border-primary/20">
                       <Crown className="h-5 w-5 mr-2" />
                       <span className="font-bold text-lg">
-                        {t("recommended_plan")} {recommendedPlan.name} -{" "}
+                        {t("pricing.recommended_plan")} {recommendedPlan.name} -{" "}
                         {isAnnual
                           ? `${formatPrice(recommendedPlan.monthlyEquivalent)}/mês (anual)`
                           : `${formatPrice(recommendedPlan.monthlyPrice)}/mês`}
@@ -637,7 +659,7 @@ function LandingPageContent() {
                   <div className="text-center">
                     <div className="inline-flex items-center px-6 py-3 rounded-full bg-brand-purple/10 text-brand-purple border border-brand-purple/20">
                       <Building2 className="h-5 w-5 mr-2" />
-                      <span className="font-bold text-lg">Plano Enterprise Personalizado</span>
+                      <span className="font-bold text-lg">{t("pricing.enterprise_plan")}</span>
                     </div>
                   </div>
                 )}
@@ -651,7 +673,7 @@ function LandingPageContent() {
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
                 {pricingTiers.map((tier) => {
                   const isRecommended = recommendedPlan?.name === tier.name
-                  const showPlan = selectedProfessionals <= tier.maxProfessionals || tier.name === t("plan_pro")
+                  const showPlan = selectedProfessionals <= tier.maxProfessionals || tier.name === t("plans.pro.name")
 
                   if (!showPlan) return null
 
@@ -707,21 +729,21 @@ function LandingPageContent() {
                               <>
                                 <div className="text-4xl font-bold text-gray-900">
                                   {formatPrice(tier.monthlyEquivalent)}
-                                  <span className="text-lg text-gray-600 font-normal">{t("per_month")}</span>
+                                  <span className="text-lg text-gray-600 font-normal">{t("pricing.per_month")}</span>
                                 </div>
                                 <div className="text-sm text-gray-500">
                                   <span className="line-through">{formatPrice(tier.monthlyPrice)}/mês</span>
-                                  <span className="ml-2 text-accent font-bold">{t("save_30")}</span>
+                                  <span className="ml-2 text-accent font-bold">{t("pricing.save_30")}</span>
                                 </div>
                                 <div className="text-sm font-semibold text-primary">
-                                  {formatPrice(tier.annualPrice)} anual
+                                  {formatPrice(tier.annualPrice)} {t("pricing.billed_annually")}
                                 </div>
                               </>
                             ) : (
                               <>
                                 <div className="text-4xl font-bold text-gray-900">
                                   {formatPrice(tier.monthlyPrice)}
-                                  <span className="text-lg text-gray-600 font-normal">{t("per_month")}</span>
+                                  <span className="text-lg text-gray-600 font-normal">{t("pricing.per_month")}</span>
                                 </div>
                                 <div className="text-sm text-accent font-semibold">
                                   Economize {formatPrice(tier.monthlyPrice * 12 - tier.annualPrice)} por ano no plano
@@ -731,7 +753,7 @@ function LandingPageContent() {
                             )}
                           </div>
 
-                          <div className="text-xs text-gray-500 font-medium mt-2">{t("free_trial_note")}</div>
+                          <div className="text-xs text-gray-500 font-medium mt-2">{t("pricing.free_trial_note")}</div>
                         </CardHeader>
 
                         <CardContent className="flex flex-col flex-1 px-6 pb-6">
@@ -739,7 +761,7 @@ function LandingPageContent() {
                           <div className="space-y-3 flex-1">
                             {tier.features.map((feature, index) => (
                               <div key={index} className="flex items-start space-x-3">
-                                <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                                <Check className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
                                 <span className="text-sm text-gray-700 font-medium">{feature}</span>
                               </div>
                             ))}
@@ -751,7 +773,7 @@ function LandingPageContent() {
                               className={`w-full h-12 font-bold text-base transition-all ${cardStyle.button}`}
                               onClick={handleSignupClick}
                             >
-                              {t("start_free_trial")}
+                              {t("pricing.start_free_trial")}
                               <span className="ml-2">→</span>
                             </Button>
                           </div>
@@ -771,43 +793,41 @@ function LandingPageContent() {
                     <Badge className="bg-brand-purple text-white font-bold px-4 py-2 mb-4 text-lg">
                       🏢 {t("plans.enterprise.name")}
                     </Badge>
-                    <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">
-                      20+ {t("professionals_unit")}
-                    </h3>
+                    <h3 className="text-3xl font-bold text-gray-900 mb-3 tracking-tight">20+ Profissionais</h3>
                     <p className="text-xl text-gray-600 mb-6 font-light">{t("plans.enterprise.description")}</p>
                     <div className="bg-white rounded-lg p-6 mb-6">
                       <h4 className="font-bold text-gray-900 mb-4">Recursos Exclusivos Enterprise:</h4>
                       <div className="grid md:grid-cols-2 gap-4 text-sm text-gray-700">
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">Profissionais ilimitados</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">Multi-localização</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">API personalizada</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">Gerente dedicado</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">SLA garantido 99.9%</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">Treinamento personalizado</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">Suporte 24/7</span>
                         </div>
                         <div className="flex items-center space-x-2">
-                          <CheckCircle className="h-4 w-4 text-primary" />
+                          <Check className="h-4 w-4 text-primary" />
                           <span className="font-medium">White label disponível</span>
                         </div>
                       </div>
@@ -815,7 +835,7 @@ function LandingPageContent() {
                   </div>
                   <Button
                     className="bg-brand-purple text-white hover:bg-brand-purple/90 font-bold px-8 py-4 text-lg h-auto"
-                    onClick={() => (window.location.href = "/contact")}
+                    onClick={() => navigate("/contact")}
                   >
                     Falar com Especialista
                     <span className="ml-2">→</span>
@@ -831,68 +851,92 @@ function LandingPageContent() {
           {/* Features Comparison */}
           <div className="max-w-6xl mx-auto mb-16">
             <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 tracking-tight">
-              {t("features_comparison_title")}
+              Todos os planos incluem essas funcionalidades
             </h3>
             <div className="grid md:grid-cols-3 lg:grid-cols-6 gap-6">
               <div className="text-center">
                 <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Calendar className="h-8 w-8 text-primary" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("smart_scheduling")}</h4>
+                <h4 className="font-bold text-gray-900 mb-2">{t("features.smart_scheduling")}</h4>
                 <p className="text-sm text-gray-600 font-light">IA otimiza automaticamente</p>
               </div>
               <div className="text-center">
                 <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Smartphone className="h-8 w-8 text-secondary" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("whatsapp_bot")}</h4>
+                <h4 className="font-bold text-gray-900 mb-2">{t("nav.whatsapp_bot")}</h4>
                 <p className="text-sm text-gray-600 font-light">Agendamento automático</p>
               </div>
               <div className="text-center">
                 <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Users className="h-8 w-8 text-accent" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("client_management")}</h4>
-                <p className="text-sm text-gray-600 font-light">{t("client_management_desc")}</p>
+                <h4 className="font-bold text-gray-900 mb-2">Gestão de Clientes</h4>
+                <p className="text-sm text-gray-600 font-light">Histórico completo</p>
               </div>
               <div className="text-center">
                 <div className="bg-emerald-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <BarChart3 className="h-8 w-8 text-emerald-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("reports")}</h4>
-                <p className="text-sm text-gray-600 font-light">{t("detailed_analytics")}</p>
+                <h4 className="font-bold text-gray-900 mb-2">{t("nav.reports")}</h4>
+                <p className="text-sm text-gray-600 font-light">Análises detalhadas</p>
               </div>
               <div className="text-center">
                 <div className="bg-purple-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Shield className="h-8 w-8 text-purple-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("security")}</h4>
-                <p className="text-sm text-gray-600 font-light">{t("security_desc")}</p>
+                <h4 className="font-bold text-gray-900 mb-2">Segurança</h4>
+                <p className="text-sm text-gray-600 font-light">Dados protegidos</p>
               </div>
               <div className="text-center">
                 <div className="bg-orange-100 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
                   <Building2 className="h-8 w-8 text-orange-600" />
                 </div>
-                <h4 className="font-bold text-gray-900 mb-2">{t("custom_page")}</h4>
-                <p className="text-sm text-gray-600 font-light">{t("custom_page_desc")}</p>
+                <h4 className="font-bold text-gray-900 mb-2">Página Própria</h4>
+                <p className="text-sm text-gray-600 font-light">Link personalizado</p>
               </div>
             </div>
           </div>
 
           {/* FAQ Section */}
           <div className="max-w-4xl mx-auto mb-16">
-            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 tracking-tight">{t("faq_title")}</h3>
+            <h3 className="text-3xl font-bold text-gray-900 text-center mb-12 tracking-tight">Perguntas Frequentes</h3>
             <div className="grid md:grid-cols-2 gap-8">
               <Card className="bg-white/80 backdrop-blur-sm border-gray-200">
                 <CardContent className="p-6">
-                  <h4 className="font-bold text-gray-900 mb-2">{t("faq_trial_question")}</h4>
-                  <p className="text-gray-600 font-light">{t("faq_trial_answer")}</p>
+                  <h4 className="font-bold text-gray-900 mb-2">Como funciona o teste grátis?</h4>
+                  <p className="text-gray-600 font-light">
+                    Você tem 15 dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de
+                    crédito para começar.
+                  </p>
                 </CardContent>
               </Card>
               <Card className="bg-white/80 backdrop-blur-sm border-gray-200">
                 <CardContent className="p-6">
-                  <h4 className="font-bold text-gray-900 mb-2">{t("faq_cancel_question")}</h4>
-                  <p className="text-gray-600 font-light">{t("faq_cancel_answer")}</p>
+                  <h4 className="font-bold text-gray-900 mb-2">Posso cancelar a qualquer momento?</h4>
+                  <p className="text-gray-600 font-light">
+                    Sim! Você pode cancelar sua assinatura a qualquer momento. Para planos anuais, o serviço permanece
+                    ativo até o fim do período contratado.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/80 backdrop-blur-sm border-gray-200">
+                <CardContent className="p-6">
+                  <h4 className="font-bold text-gray-900 mb-2">Como funciona o pagamento anual?</h4>
+                  <p className="text-gray-600 font-light">
+                    Após o teste grátis, você paga o valor total à vista e economiza 30%. O sistema fica ativo por 12
+                    meses completos.
+                  </p>
+                </CardContent>
+              </Card>
+              <Card className="bg-white/80 backdrop-blur-sm border-gray-200">
+                <CardContent className="p-6">
+                  <h4 className="font-bold text-gray-900 mb-2">Posso mudar de plano depois?</h4>
+                  <p className="text-gray-600 font-light">
+                    Sim! Você pode fazer upgrade a qualquer momento com cobrança proporcional. Para downgrade, a
+                    alteração será aplicada na próxima renovação.
+                  </p>
                 </CardContent>
               </Card>
             </div>
@@ -902,14 +946,18 @@ function LandingPageContent() {
           <div className="text-center">
             <Card className="max-w-4xl mx-auto bg-gradient-to-r from-primary/5 to-accent/5 border-primary/20">
               <CardContent className="p-12">
-                <h3 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("final_title")}</h3>
-                <p className="text-xl text-gray-600 mb-8 font-light">{t("final_subtitle")}</p>
+                <h3 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">
+                  Pronto para transformar seu negócio?
+                </h3>
+                <p className="text-xl text-gray-600 mb-8 font-light">
+                  Junte-se a milhares de estabelecimentos que já aumentaram sua receita com o Kalender
+                </p>
                 <div className="flex flex-col sm:flex-row gap-4 justify-center">
                   <Button
                     className="bg-primary hover:bg-primary/90 text-white font-bold px-8 py-4 text-lg h-auto shadow-lg hover:shadow-xl transition-all"
                     onClick={handleSignupClick}
                   >
-                    {t("start_free_trial")}
+                    {t("pricing.start_free_trial")}
                     <span className="ml-2">→</span>
                   </Button>
                   <Button
@@ -917,10 +965,10 @@ function LandingPageContent() {
                     className="border-2 border-primary text-primary hover:bg-primary hover:text-white font-bold px-8 py-4 text-lg h-auto"
                     onClick={handleLoginClick}
                   >
-                    {t("have_account_button")}
+                    Já tenho conta
                   </Button>
                 </div>
-                <p className="text-sm text-gray-500 mt-4 font-medium">{t("free_trial_note")}</p>
+                <p className="text-sm text-gray-500 mt-4 font-medium">{t("pricing.free_trial_note")}</p>
               </CardContent>
             </Card>
           </div>
@@ -956,12 +1004,15 @@ function LandingPageContent() {
           <div className="grid md:grid-cols-4 gap-8">
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <KalenderLogo width={32} height={32} className="object-contain" />
+                <Logo className="h-8 w-8 filter brightness-0 invert" />
+                <span className="text-xl font-bold bg-brand-gradient bg-clip-text text-transparent">Kalender</span>
               </div>
-              <p className="text-gray-400 font-light">{t("footer_company_description")}</p>
+              <p className="text-gray-400 font-light">
+                A plataforma completa de agendamento inteligente para empresas que querem crescer.
+              </p>
             </div>
             <div>
-              <h4 className="font-bold mb-4">{t("footer_product")}</h4>
+              <h4 className="font-bold mb-4">Produto</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <button
@@ -989,13 +1040,13 @@ function LandingPageContent() {
                 </li>
                 <li>
                   <button onClick={handlePricingClick} className="hover:text-white transition-colors text-left">
-                    {t("pricing")}
+                    {t("header.pricing")}
                   </button>
                 </li>
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">{t("nav.integrations")}</h4>
+              <h4 className="font-bold mb-4">Recursos</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
                   <button
@@ -1032,56 +1083,36 @@ function LandingPageContent() {
               </ul>
             </div>
             <div>
-              <h4 className="font-bold mb-4">{t("company")}</h4>
+              <h4 className="font-bold mb-4">Empresa</h4>
               <ul className="space-y-2 text-gray-400">
                 <li>
-                  <button
-                    onClick={() => (window.location.href = "/about")}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("about")}
+                  <button onClick={() => navigate("/about")} className="hover:text-white transition-colors text-left">
+                    Sobre
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => (window.location.href = "/blog")}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("blog")}
+                  <button onClick={() => navigate("/blog")} className="hover:text-white transition-colors text-left">
+                    Blog
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => (window.location.href = "/contact")}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("contact")}
+                  <button onClick={() => navigate("/contact")} className="hover:text-white transition-colors text-left">
+                    Contato
                   </button>
                 </li>
                 <li>
-                  <button
-                    onClick={() => (window.location.href = "/support")}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("support")}
+                  <button onClick={() => navigate("/support")} className="hover:text-white transition-colors text-left">
+                    Suporte
                   </button>
                 </li>
               </ul>
             </div>
           </div>
           <div className="border-t border-gray-800 mt-8 pt-8 text-center text-gray-400">
-            <p>{t("footer_copyright")}</p>
+            <p>&copy; 2024 Kalender. Todos os direitos reservados.</p>
           </div>
         </div>
       </footer>
     </div>
-  )
-}
-
-export default function LandingPage() {
-  return (
-    <TranslationProvider>
-      <LandingPageContent />
-    </TranslationProvider>
   )
 }

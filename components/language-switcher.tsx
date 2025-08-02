@@ -1,106 +1,47 @@
 "use client"
 
-import { Globe, ChevronDown } from "lucide-react"
 import { Button } from "@/components/ui/button"
+import { Globe, ChevronDown } from "lucide-react"
+import { useTranslation } from "@/contexts/translation-context"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
-import { useTranslation } from "@/hooks/useTranslation"
 
-interface LanguageSwitcherProps {
-  variant?: "default" | "outline" | "ghost"
-  size?: "default" | "sm" | "lg"
-  showText?: boolean
-}
+export function LanguageSwitcher() {
+  const { language, setLanguage } = useTranslation()
 
-const languages = [
-  { code: "pt-BR", name: "Português", flag: "🇧🇷", short: "PT" },
-  { code: "en-US", name: "English", flag: "🇺🇸", short: "EN" },
-  { code: "es-ES", name: "Español", flag: "🇪🇸", short: "ES" },
-] as const
+  const languages = [
+    { code: "pt", name: "Português", flag: "🇧🇷" },
+    { code: "en", name: "English", flag: "🇺🇸" },
+    { code: "es", name: "Español", flag: "🇪🇸" },
+  ]
 
-export function LanguageSwitcher({ variant = "outline", size = "default", showText = true }: LanguageSwitcherProps) {
-  const { locale, changeLanguage } = useTranslation()
-
-  const currentLanguage = languages.find((lang) => lang.code === locale) || languages[0]
+  const currentLanguage = languages.find((lang) => lang.code === language)
 
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button
           variant="outline"
-          size="default"
-          className="
-            h-10 px-4 py-2
-            bg-white 
-            border border-gray-200 
-            rounded-lg
-            hover:bg-gray-50 
-            hover:border-gray-300
-            focus:bg-gray-50 
-            focus:border-blue-300 
-            focus:ring-2 
-            focus:ring-blue-100
-            active:bg-gray-100 
-            active:border-gray-400
-            transition-all 
-            duration-200 
-            ease-in-out
-            shadow-sm
-            hover:shadow-md
-            flex 
-            items-center 
-            justify-between 
-            gap-2
-            min-w-[100px]
-            font-medium
-            text-gray-700
-            hover:text-gray-900
-          "
+          size="sm"
+          className="flex items-center space-x-2 border-gray-300 text-gray-700 hover:bg-gray-50"
         >
-          <div className="flex items-center gap-2">
-            <Globe className="h-4 w-4 text-gray-500" />
-            <span className="text-lg leading-none">{currentLanguage.flag}</span>
-            {showText && <span className="text-sm font-medium">{currentLanguage.short}</span>}
-          </div>
-          <ChevronDown className="h-4 w-4 text-gray-400 transition-transform duration-200 group-data-[state=open]:rotate-180" />
+          <Globe className="h-4 w-4" />
+          <span className="font-medium">
+            {currentLanguage?.flag} {currentLanguage?.code.toUpperCase()}
+          </span>
+          <ChevronDown className="h-3 w-3" />
         </Button>
       </DropdownMenuTrigger>
-      <DropdownMenuContent
-        align="end"
-        className="
-          bg-white 
-          border 
-          border-gray-200 
-          rounded-lg 
-          shadow-lg 
-          min-w-[140px]
-          p-1
-        "
-      >
-        {languages.map((language) => (
+      <DropdownMenuContent align="end" className="w-40">
+        {languages.map((lang) => (
           <DropdownMenuItem
-            key={language.code}
-            onClick={() => changeLanguage(language.code as any)}
-            className={`
-              flex 
-              items-center 
-              gap-3 
-              px-3 
-              py-2.5
-              cursor-pointer 
-              rounded-md
-              transition-colors
-              duration-150
-              hover:bg-gray-50
-              focus:bg-gray-50
-              ${locale === language.code ? "bg-blue-50 text-blue-700 font-medium" : "text-gray-700 hover:text-gray-900"}
-            `}
+            key={lang.code}
+            onClick={() => setLanguage(lang.code as any)}
+            className={`flex items-center space-x-2 cursor-pointer ${
+              language === lang.code ? "bg-primary/10 text-primary font-medium" : ""
+            }`}
           >
-            <span className="text-lg leading-none">{language.flag}</span>
-            <div className="flex flex-col">
-              <span className="text-sm font-medium">{language.short}</span>
-              <span className="text-xs text-gray-500">{language.name}</span>
-            </div>
-            {locale === language.code && <div className="ml-auto w-2 h-2 bg-blue-500 rounded-full" />}
+            <span>{lang.flag}</span>
+            <span>{lang.name}</span>
           </DropdownMenuItem>
         ))}
       </DropdownMenuContent>

@@ -1,686 +1,623 @@
-import type { Locale } from "./i18n"
+export const translations = {
+  pt: {
+    // Header
+    platform: "Plataforma",
+    features: "Recursos",
+    segments: "Segmentos",
+    pricing: "Preços",
+    login: "Entrar",
+    free_trial: "Teste Grátis",
+    language: "Idioma",
 
-type TranslationKeys = {
-  // Header
-  header: {
-    platform: string
-    features: string
-    segments: string
-    pricing: string
-    login: string
-    free_trial: string
-  }
+    // Hero
+    hero_badge: "🚀 Clientes. Equipe. Tempo. Lucro.",
+    hero_title: "Agendamento",
+    hero_title_highlight: "Inteligente",
+    hero_description:
+      "Automatize agendamentos, reduza faltas e aumente sua receita com nossa plataforma de IA. Integração completa com WhatsApp, Google Calendar e muito mais.",
+    hero_setup_time: "5 min",
+    hero_setup_description: "Para configurar",
+    hero_uptime: "99.9%",
+    hero_uptime_description: "Uptime garantido",
+    hero_start_free_trial: "Começar Teste Grátis",
+    hero_view_pricing: "Ver Preços",
+    hero_free_trial_note: "✨ 15 dias grátis • Sem cartão de crédito",
 
-  // Navigation
-  nav: {
-    dashboard: string
-    schedule: string
-    team_management: string
-    whatsapp_bot: string
-    integrations: string
-    reports: string
-    api: string
-    beauty_salons: string
-    clinics: string
-    spas: string
-    gyms: string
-  }
+    // Features
+    features_title: "Recursos Poderosos",
+    features_subtitle: "Tudo que você precisa para automatizar e otimizar seus agendamentos",
+    smart_scheduling: "Agendamento Inteligente",
+    smart_scheduling_desc: "IA otimiza automaticamente horários, reduz conflitos e maximiza sua agenda",
+    whatsapp_telegram: "WhatsApp & Telegram",
+    whatsapp_telegram_desc: "Agendamento automático via chat com confirmações e lembretes inteligentes",
+    integrations: "Integrações Completas",
+    integrations_desc: "Google Calendar, ERPs, sistemas de pagamento e muito mais",
 
-  // Sidebar
-  sidebar: {
-    schedule: string
-    services: string
-    professionals: string
-    reports: string
-    billing: string
-    settings: string
-    notifications: string
-    help: string
-    logout: string
-    system_status: string
-    all_systems_operational: string
-  }
+    // Benefits
+    benefits_title: "Resultados Comprovados",
+    revenue_increase: "+40% de Receita",
+    revenue_increase_desc: "Otimização automática de horários e redução de tempo ocioso",
+    no_shows_reduction: "-80% de Faltas",
+    no_shows_reduction_desc: "Lembretes automáticos e confirmações via WhatsApp",
+    time_savings: "5h/dia Economizadas",
+    time_savings_desc: "Automação completa de agendamentos e reagendamentos",
+    satisfaction: "98% de Satisfação",
+    satisfaction_desc: "Experiência superior para clientes e profissionais",
+    setup_title: "Configuração em 5 Minutos",
+    setup_subtitle: "Comece a usar hoje mesmo, sem complicações",
+    step1: "Cadastre seu estabelecimento",
+    step2: "Configure serviços e profissionais",
+    step3: "Comece a receber agendamentos!",
 
-  // Dashboard
-  dashboard: {
-    welcome: string
-    overview: string
-    appointments_today: string
-    clients_this_month: string
-    revenue_this_month: string
-    occupancy_rate: string
-    next_appointments: string
-    quick_actions: string
-    new_schedule: string
-    new_service: string
-    professionals: string
-    reports: string
-    performance: string
-    above_target: string
-  }
+    // Pricing
+    pricing_title: "Preços Transparentes",
+    pricing_title_highlight: "Sem Surpresas",
+    pricing_subtitle: "Escolha o plano ideal para o seu negócio. Todos incluem teste grátis de 15 dias.",
+    pricing_annual_savings: "💰 Economia Anual Garantida",
+    pricing_annual_description:
+      "Pague anualmente e economize 30% em todos os planos. Mais tempo para focar no seu negócio!",
+    pricing_important_note:
+      "Os preços podem sofrer reajustes. Assinantes anuais mantêm o preço fixo durante todo o período contratado.",
+    monthly: "Mensal",
+    annual: "Anual",
+    save_30: "Economize 30%",
+    professionals_question: "Quantos profissionais trabalham no seu estabelecimento?",
+    professionals_input: "Número exato:",
+    professionals_unit: "profissionais",
+    recommended_plan: "Recomendado:",
+    enterprise_plan: "Plano Enterprise Personalizado",
+    per_month: "/mês",
+    billed_annually: "cobrado anualmente",
+    start_free_trial: "Começar Teste Grátis",
+    free_trial_note: "✨ 15 dias grátis • Sem cartão",
+    up_to: "Até",
 
-  // Hero Section
-  hero: {
-    badge: string
-    title: string
-    title_highlight: string
-    description: string
-    setup_time: string
-    setup_description: string
-    uptime: string
-    uptime_description: string
-    start_free_trial: string
-    view_pricing: string
-    free_trial_note: string
-  }
-
-  // Features
-  features: {
-    title: string
-    subtitle: string
-    smart_scheduling: string
-    smart_scheduling_desc: string
-    whatsapp_telegram: string
-    whatsapp_telegram_desc: string
-    integrations: string
-    integrations_desc: string
-  }
-
-  // Benefits
-  benefits: {
-    title: string
-    revenue_increase: string
-    revenue_increase_desc: string
-    no_shows_reduction: string
-    no_shows_reduction_desc: string
-    time_savings: string
-    time_savings_desc: string
-    satisfaction: string
-    satisfaction_desc: string
-    setup_title: string
-    setup_subtitle: string
-    step1: string
-    step2: string
-    step3: string
-  }
-
-  // Pricing
-  pricing: {
-    title: string
-    title_highlight: string
-    subtitle: string
-    monthly: string
-    annual: string
-    save_30: string
-    annual_savings: string
-    annual_description: string
-    important_note: string
-    professionals_question: string
-    professionals_input: string
-    professionals_unit: string
-    recommended_plan: string
-    enterprise_plan: string
-    per_month: string
-    billed_annually: string
-    start_free_trial: string
-    free_trial_note: string
-  }
-
-  // Plans
-  plans: {
-    start: {
-      name: string
-      description: string
-    }
-    essential: {
-      name: string
-      description: string
-    }
-    advanced: {
-      name: string
-      description: string
-    }
-    pro: {
-      name: string
-      description: string
-    }
-    enterprise: {
-      name: string
-      description: string
-    }
-  }
-
-  // Login
-  login: {
-    title: string
-    subtitle: string
-    email: string
-    password: string
-    remember_me: string
-    forgot_password: string
-    sign_in: string
-    signing_in: string
-    or: string
-    create_account: string
-    terms_privacy: string
-    back_to_home: string
-  }
-
-  // Common
-  common: {
-    loading: string
-    save: string
-    cancel: string
-    edit: string
-    delete: string
-    add: string
-    search: string
-    filter: string
-    all: string
-    active: string
-    inactive: string
-    confirmed: string
-    pending: string
-    cancelled: string
-  }
-}
-
-export const translations: Record<Locale, TranslationKeys> = {
-  "pt-BR": {
-    header: {
-      platform: "Plataforma",
-      features: "Recursos",
-      segments: "Segmentos",
-      pricing: "Preços",
-      login: "Entrar",
-      free_trial: "Teste Grátis",
-    },
-    nav: {
-      dashboard: "Dashboard",
-      schedule: "Agenda",
-      team_management: "Equipe",
-      whatsapp_bot: "WhatsApp Bot",
-      integrations: "Integrações",
-      reports: "Relatórios",
-      api: "API",
-      beauty_salons: "Salões de Beleza",
-      clinics: "Clínicas",
-      spas: "Spas",
-      gyms: "Academias",
-    },
-    sidebar: {
-      schedule: "Agenda",
-      services: "Serviços",
-      professionals: "Profissionais",
-      reports: "Relatórios",
-      billing: "Financeiro",
-      settings: "Configurações",
-      notifications: "Notificações",
-      help: "Ajuda",
-      logout: "Sair da Conta",
-      system_status: "Status do Sistema",
-      all_systems_operational: "Todos os sistemas operacionais",
-    },
-    dashboard: {
-      welcome: "Dashboard Principal 👋",
-      overview: "Visão geral do seu estabelecimento e performance",
-      appointments_today: "Agendamentos Hoje",
-      clients_this_month: "Clientes Este Mês",
-      revenue_this_month: "Receita Este Mês",
-      occupancy_rate: "Taxa de Ocupação",
-      next_appointments: "Próximos Agendamentos",
-      quick_actions: "Ações Rápidas",
-      new_schedule: "Nova Agenda",
-      new_service: "Novo Serviço",
-      professionals: "Profissionais",
-      reports: "Relatórios",
-      performance: "Performance do Mês",
-      above_target: "Você está 24% acima da meta!",
-    },
-    hero: {
-      badge: "IA Avançada • Disponível Agora",
-      title: "Agendamento Inteligente",
-      title_highlight: "que Aumenta sua Receita",
-      description:
-        "Plataforma completa com IA que otimiza automaticamente sua agenda, reduz cancelamentos e aumenta a satisfação dos clientes.",
-      setup_time: "5 min",
-      setup_description: "Para configurar",
-      uptime: "99.9%",
-      uptime_description: "De disponibilidade",
-      start_free_trial: "Começar Teste Grátis",
-      view_pricing: "Ver Preços",
-      free_trial_note: "15 dias grátis • Sem cartão de crédito",
-    },
-    features: {
-      title: "Recursos Poderosos",
-      subtitle: "Tudo que você precisa para gerenciar seu negócio com eficiência",
-      smart_scheduling: "Agendamento Inteligente",
-      smart_scheduling_desc: "IA otimiza automaticamente horários e reduz conflitos",
-      whatsapp_telegram: "WhatsApp & Telegram",
-      whatsapp_telegram_desc: "Agendamento automático via chat com linguagem natural",
-      integrations: "Integrações Avançadas",
-      integrations_desc: "Conecte com ERPs, Google Calendar e muito mais",
-    },
-    benefits: {
-      title: "Resultados Comprovados",
-      revenue_increase: "Aumento de 40% na Receita",
-      revenue_increase_desc: "Otimização automática da agenda maximiza ocupação",
-      no_shows_reduction: "60% Menos Cancelamentos",
-      no_shows_reduction_desc: "Lembretes inteligentes e confirmações automáticas",
-      time_savings: "3h Economizadas por Dia",
-      time_savings_desc: "Automação completa libera tempo para focar no cliente",
-      satisfaction: "98% de Satisfação",
-      satisfaction_desc: "Clientes adoram a facilidade de agendamento",
-      setup_title: "Configuração em 5 Minutos",
-      setup_subtitle: "Comece a usar hoje mesmo",
-      step1: "Cadastre sua empresa",
-      step2: "Configure serviços e horários",
-      step3: "Comece a receber agendamentos",
-    },
-    pricing: {
-      title: "Preços Simples",
-      title_highlight: "Resultados Extraordinários",
-      subtitle: "Escolha o plano ideal para o tamanho da sua equipe. Todos incluem 15 dias de teste grátis.",
-      monthly: "Mensal",
-      annual: "Anual",
-      save_30: "Economize 30%",
-      annual_savings: "🎉 Economia Máxima no Plano Anual",
-      annual_description:
-        "Pague à vista e economize 30% em qualquer plano. Ideal para estabelecimentos que querem o melhor custo-benefício.",
-      important_note:
-        "O pagamento anual é cobrado integralmente após o teste grátis e não é reembolsável. O valor mensal mostrado é apenas para comparação.",
-      professionals_question: "Quantos profissionais trabalham no seu estabelecimento?",
-      professionals_input: "Número de profissionais:",
-      professionals_unit: "profissionais",
-      recommended_plan: "Plano Recomendado:",
-      enterprise_plan: "Plano Enterprise - Fale Conosco",
-      per_month: "/mês",
-      billed_annually: "cobrado anualmente",
-      start_free_trial: "Começar Teste Grátis",
-      free_trial_note: "15 dias grátis • Cancele quando quiser",
-    },
+    // Plans
     plans: {
       start: {
         name: "Start",
-        description: "Perfeito para começar",
+        description: "Perfeito para profissionais autônomos",
       },
       essential: {
-        name: "Essencial",
-        description: "Mais popular para pequenas equipes",
+        name: "Essential",
+        description: "Ideal para pequenas equipes",
       },
       advanced: {
-        name: "Avançado",
-        description: "Para equipes em crescimento",
+        name: "Advanced",
+        description: "Para estabelecimentos em crescimento",
       },
       pro: {
         name: "Pro",
-        description: "Máximo desempenho",
+        description: "Para grandes estabelecimentos",
       },
       enterprise: {
         name: "Enterprise",
         description: "Solução personalizada para grandes empresas",
       },
     },
-    login: {
-      title: "Bem-vindo de volta",
-      subtitle: "Acesse sua conta para gerenciar seus agendamentos",
-      email: "E-mail",
-      password: "Senha",
-      remember_me: "Lembrar de mim",
-      forgot_password: "Esqueci minha senha",
-      sign_in: "Entrar",
-      signing_in: "Entrando...",
-      or: "ou",
-      create_account: "Criar nova conta",
-      terms_privacy: "Ao continuar, você concorda com nossos Termos e Política de Privacidade",
-      back_to_home: "Voltar ao início",
+
+    // Plan Features
+    plan_features: {
+      smart_scheduling: "Agendamento Inteligente",
+      whatsapp_auto: "WhatsApp automático",
+      custom_page: "Página personalizada",
+      basic_reports: "Relatórios básicos",
+      email_support: "Suporte por email",
+      everything_start: "Tudo do plano Start",
+      google_sync: "Sincronização Google Calendar",
+      auto_reminders: "Lembretes automáticos",
+      advanced_reports: "Relatórios avançados",
+      priority_support: "Suporte prioritário",
+      erp_integration: "Integração com ERPs",
+      everything_essential: "Tudo do plano Essential",
+      multi_location: "Multi-localização",
+      custom_api: "API personalizada",
+      custom_reports: "Relatórios personalizados",
+      phone_support: "Suporte por telefone",
+      training_included: "Treinamento incluído",
+      auto_backup: "Backup automático",
+      everything_advanced: "Tudo do plano Advanced",
+      dedicated_manager: "Gerente dedicado",
+      sla_guaranteed: "SLA garantido",
+      unlimited_integrations: "Integrações ilimitadas",
+      support_24_7: "Suporte 24/7",
+      monthly_consulting: "Consultoria mensal",
+      white_label: "White label",
     },
-    common: {
-      loading: "Carregando...",
-      save: "Salvar",
-      cancel: "Cancelar",
-      edit: "Editar",
-      delete: "Excluir",
-      add: "Adicionar",
-      search: "Buscar",
-      filter: "Filtrar",
-      all: "Todos",
-      active: "Ativo",
-      inactive: "Inativo",
-      confirmed: "Confirmado",
-      pending: "Pendente",
-      cancelled: "Cancelado",
-    },
-  },
-  "en-US": {
-    header: {
-      platform: "Platform",
-      features: "Features",
-      segments: "Segments",
-      pricing: "Pricing",
-      login: "Login",
-      free_trial: "Free Trial",
-    },
+
+    // Features comparison section
+    features_comparison_title: "Todos os planos incluem essas funcionalidades",
+    client_management: "Gestão de Clientes",
+    client_management_desc: "Histórico completo",
+    security: "Segurança",
+    security_desc: "Dados protegidos",
+    custom_page: "Página Própria",
+    custom_page_desc: "Link personalizado",
+    ai_optimization: "IA otimiza automaticamente",
+    auto_booking: "Agendamento automático",
+    detailed_analytics: "Análises detalhadas",
+
+    // FAQ
+    faq_title: "Perguntas Frequentes",
+    faq_trial_question: "Como funciona o teste grátis?",
+    faq_trial_answer:
+      "Você tem 15 dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de crédito para começar.",
+    faq_cancel_question: "Posso cancelar a qualquer momento?",
+    faq_cancel_answer:
+      "Sim! Você pode cancelar sua assinatura a qualquer momento. Para planos anuais, o serviço permanece ativo até o fim do período contratado.",
+
+    // Final CTA
+    final_title: "Pronto para transformar seu negócio?",
+    final_subtitle: "Junte-se a milhares de estabelecimentos que já aumentaram sua receita com o Kalender",
+    have_account_button: "Já tenho conta",
+
+    // Auth
+    login_title: "Entrar no Kalender",
+    login_subtitle: "Acesse sua conta para gerenciar seus agendamentos",
+    email: "Email",
+    password: "Senha",
+    forgot_password: "Esqueceu sua senha?",
+    no_account: "Não tem uma conta?",
+    create_account: "Criar conta grátis",
+    login_button: "Entrar",
+
+    signup_title: "Começar Teste Grátis",
+    signup_subtitle: "15 dias grátis • Sem cartão de crédito",
+    name: "Nome completo",
+    business: "Nome do estabelecimento",
+    signup_button: "Começar Teste Grátis",
+    have_account: "Já tem uma conta?",
+    login_link: "Fazer login",
+
+    // Contact
+    contact_title: "Fale com Nossos Especialistas",
+    contact_subtitle: "Nossa equipe entrará em contato em até 24h para uma proposta personalizada",
+    form_title: "Solicitar Contato",
+    professionals: "Quantos profissionais?",
+    message: "Mensagem (opcional)",
+    message_placeholder: "Conte-nos mais sobre suas necessidades...",
+    submit: "Solicitar Contato",
+
+    // Footer
+    footer_company_description: "A plataforma completa de agendamento inteligente para empresas que querem crescer.",
+    footer_product: "Produto",
+    footer_resources: "Recursos",
+    footer_company: "Empresa",
+    footer_copyright: "© 2024 Kalender. Todos os direitos reservados.",
+    product: "Produto",
+    company: "Empresa",
+    about: "Sobre",
+    blog: "Blog",
+    contact: "Contato",
+    support: "Suporte",
+    copyright: "© 2024 Kalender. Todos os direitos reservados.",
+
+    // Navigation
     nav: {
       dashboard: "Dashboard",
-      schedule: "Schedule",
-      team_management: "Team",
-      whatsapp_bot: "WhatsApp Bot",
-      integrations: "Integrations",
-      reports: "Reports",
+      schedule: "Agenda",
+      team_management: "Gestão de Equipe",
+      whatsapp_bot: "Bot WhatsApp",
+      reports: "Relatórios",
+      integrations: "Integrações",
       api: "API",
-      beauty_salons: "Beauty Salons",
-      clinics: "Clinics",
-      spas: "Spas",
-      gyms: "Gyms",
     },
-    sidebar: {
-      schedule: "Schedule",
-      services: "Services",
-      professionals: "Professionals",
-      reports: "Reports",
-      billing: "Billing",
-      settings: "Settings",
-      notifications: "Notifications",
-      help: "Help",
-      logout: "Sign Out",
-      system_status: "System Status",
-      all_systems_operational: "All systems operational",
-    },
-    dashboard: {
-      welcome: "Main Dashboard 👋",
-      overview: "Overview of your establishment and performance",
-      appointments_today: "Appointments Today",
-      clients_this_month: "Clients This Month",
-      revenue_this_month: "Revenue This Month",
-      occupancy_rate: "Occupancy Rate",
-      next_appointments: "Next Appointments",
-      quick_actions: "Quick Actions",
-      new_schedule: "New Schedule",
-      new_service: "New Service",
-      professionals: "Professionals",
-      reports: "Reports",
-      performance: "Month Performance",
-      above_target: "You are 24% above target!",
-    },
-    hero: {
-      badge: "Advanced AI • Available Now",
-      title: "Smart Scheduling",
-      title_highlight: "that Increases Revenue",
-      description:
-        "Complete AI-powered platform that automatically optimizes your schedule, reduces cancellations and increases customer satisfaction.",
-      setup_time: "5 min",
-      setup_description: "To setup",
-      uptime: "99.9%",
-      uptime_description: "Uptime",
-      start_free_trial: "Start Free Trial",
-      view_pricing: "View Pricing",
-      free_trial_note: "15 days free • No credit card required",
-    },
-    features: {
-      title: "Powerful Features",
-      subtitle: "Everything you need to manage your business efficiently",
-      smart_scheduling: "Smart Scheduling",
-      smart_scheduling_desc: "AI automatically optimizes schedules and reduces conflicts",
-      whatsapp_telegram: "WhatsApp & Telegram",
-      whatsapp_telegram_desc: "Automatic scheduling via chat with natural language",
-      integrations: "Advanced Integrations",
-      integrations_desc: "Connect with ERPs, Google Calendar and much more",
-    },
-    benefits: {
-      title: "Proven Results",
-      revenue_increase: "40% Revenue Increase",
-      revenue_increase_desc: "Automatic schedule optimization maximizes occupancy",
-      no_shows_reduction: "60% Fewer Cancellations",
-      no_shows_reduction_desc: "Smart reminders and automatic confirmations",
-      time_savings: "3h Saved per Day",
-      time_savings_desc: "Complete automation frees time to focus on customers",
-      satisfaction: "98% Satisfaction",
-      satisfaction_desc: "Customers love the ease of scheduling",
-      setup_title: "5-Minute Setup",
-      setup_subtitle: "Start using today",
-      step1: "Register your business",
-      step2: "Configure services and hours",
-      step3: "Start receiving appointments",
-    },
-    pricing: {
-      title: "Simple Pricing",
-      title_highlight: "Extraordinary Results",
-      subtitle: "Choose the ideal plan for your team size. All include 15 days free trial.",
-      monthly: "Monthly",
-      annual: "Annual",
-      save_30: "Save 30%",
-      annual_savings: "🎉 Maximum Savings on Annual Plan",
-      annual_description: "Pay upfront and save 30% on any plan. Ideal for establishments that want the best value.",
-      important_note:
-        "Annual payment is charged in full after the free trial and is non-refundable. The monthly amount shown is for comparison only.",
-      professionals_question: "How many professionals work at your establishment?",
-      professionals_input: "Number of professionals:",
-      professionals_unit: "professionals",
-      recommended_plan: "Recommended Plan:",
-      enterprise_plan: "Enterprise Plan - Contact Us",
-      per_month: "/month",
-      billed_annually: "billed annually",
-      start_free_trial: "Start Free Trial",
-      free_trial_note: "15 days free • Cancel anytime",
-    },
+  },
+
+  en: {
+    // Header
+    platform: "Platform",
+    features: "Features",
+    segments: "Segments",
+    pricing: "Pricing",
+    login: "Sign In",
+    free_trial: "Free Trial",
+    language: "Language",
+
+    // Hero
+    hero_badge: "🚀 Clients. Team. Time. Profit.",
+    hero_title: "Smart",
+    hero_title_highlight: "Scheduling",
+    hero_description:
+      "Automate appointments, reduce no-shows, and increase your revenue with our AI platform. Complete integration with WhatsApp, Google Calendar, and much more.",
+    hero_setup_time: "5 min",
+    hero_setup_description: "to set up",
+    hero_uptime: "99.9%",
+    hero_uptime_description: "guaranteed uptime",
+    hero_start_free_trial: "Start Free Trial",
+    hero_view_pricing: "View Pricing",
+    hero_free_trial_note: "✨ 15 days free • No credit card required",
+
+    // Features
+    features_title: "Powerful Features",
+    features_subtitle: "Everything you need to automate and optimize your appointments",
+    smart_scheduling: "Smart Scheduling",
+    smart_scheduling_desc: "AI automatically optimizes schedules, reduces conflicts, and maximizes your calendar",
+    whatsapp_telegram: "WhatsApp & Telegram",
+    whatsapp_telegram_desc: "Automatic appointment booking via chat with smart confirmations and reminders",
+    integrations: "Complete Integrations",
+    integrations_desc: "Google Calendar, ERPs, payment systems, and much more",
+
+    // Benefits
+    benefits_title: "Proven Results",
+    revenue_increase: "+40% Revenue",
+    revenue_increase_desc: "Automatic schedule optimization and reduced idle time",
+    no_shows_reduction: "-80% No-Shows",
+    no_shows_reduction_desc: "Automatic reminders and confirmations via WhatsApp",
+    time_savings: "5h/day Saved",
+    time_savings_desc: "Complete automation of appointments and rescheduling",
+    satisfaction: "98% Satisfaction",
+    satisfaction_desc: "Superior experience for customers and professionals",
+    setup_title: "5-Minute Setup",
+    setup_subtitle: "Start using today, hassle-free",
+    step1: "Register your business",
+    step2: "Configure services and professionals",
+    step3: "Start receiving appointments!",
+
+    // Pricing
+    pricing_title: "Transparent Pricing",
+    pricing_title_highlight: "No Surprises",
+    pricing_subtitle: "Choose the ideal plan for your business. All include a 15-day free trial.",
+    pricing_annual_savings: "💰 Guaranteed Annual Savings",
+    pricing_annual_description: "Pay annually and save 30% on all plans. More time to focus on your business!",
+    pricing_important_note:
+      "Prices may be subject to adjustments. Annual subscribers maintain fixed pricing throughout the contracted period.",
+    monthly: "Monthly",
+    annual: "Annual",
+    save_30: "Save 30%",
+    professionals_question: "How many professionals work at your establishment?",
+    professionals_input: "Exact number:",
+    professionals_unit: "professionals",
+    recommended_plan: "Recommended:",
+    enterprise_plan: "Custom Enterprise Plan",
+    per_month: "/month",
+    billed_annually: "billed annually",
+    start_free_trial: "Start Free Trial",
+    free_trial_note: "✨ 15 days free • No card required",
+    up_to: "Up to",
+
+    // Plans
     plans: {
       start: {
         name: "Start",
-        description: "Perfect to get started",
+        description: "Perfect for solo professionals",
       },
       essential: {
         name: "Essential",
-        description: "Most popular for small teams",
+        description: "Ideal for small teams",
       },
       advanced: {
         name: "Advanced",
-        description: "For growing teams",
+        description: "For growing businesses",
       },
       pro: {
         name: "Pro",
-        description: "Maximum performance",
+        description: "For large establishments",
       },
       enterprise: {
         name: "Enterprise",
         description: "Custom solution for large companies",
       },
     },
-    login: {
-      title: "Welcome back",
-      subtitle: "Access your account to manage your appointments",
-      email: "Email",
-      password: "Password",
-      remember_me: "Remember me",
-      forgot_password: "Forgot password",
-      sign_in: "Sign In",
-      signing_in: "Signing in...",
-      or: "or",
-      create_account: "Create new account",
-      terms_privacy: "By continuing, you agree to our Terms and Privacy Policy",
-      back_to_home: "Back to home",
+
+    // Plan Features - Revised for accuracy and natural English
+    plan_features: {
+      smart_scheduling: "Smart Scheduling",
+      whatsapp_auto: "Automatic WhatsApp",
+      custom_page: "Custom booking page",
+      basic_reports: "Basic reports",
+      email_support: "Email support",
+      everything_start: "Everything in Start",
+      google_sync: "Google Calendar sync",
+      auto_reminders: "Automatic reminders",
+      advanced_reports: "Advanced reports",
+      priority_support: "Priority support",
+      erp_integration: "ERP integrations",
+      everything_essential: "Everything in Essential",
+      multi_location: "Multi-location support",
+      custom_api: "Custom API",
+      custom_reports: "Custom reports",
+      phone_support: "Phone support",
+      training_included: "Training included",
+      auto_backup: "Automatic backup",
+      everything_advanced: "Everything in Advanced",
+      dedicated_manager: "Dedicated account manager",
+      sla_guaranteed: "Guaranteed SLA",
+      unlimited_integrations: "Unlimited integrations",
+      support_24_7: "24/7 Support",
+      monthly_consulting: "Monthly consulting",
+      white_label: "White label solution",
     },
-    common: {
-      loading: "Loading...",
-      save: "Save",
-      cancel: "Cancel",
-      edit: "Edit",
-      delete: "Delete",
-      add: "Add",
-      search: "Search",
-      filter: "Filter",
-      all: "All",
-      active: "Active",
-      inactive: "Inactive",
-      confirmed: "Confirmed",
-      pending: "Pending",
-      cancelled: "Cancelled",
+
+    // Features comparison section
+    features_comparison_title: "All plans include these features",
+    client_management: "Customer Management",
+    client_management_desc: "Complete history",
+    security: "Security",
+    security_desc: "Protected data",
+    custom_page: "Custom Page",
+    custom_page_desc: "Personalized link",
+    ai_optimization: "AI automatically optimizes",
+    auto_booking: "Automatic booking",
+    detailed_analytics: "Detailed analytics",
+    reports: "Reports",
+
+    // FAQ
+    faq_title: "Frequently Asked Questions",
+    faq_trial_question: "How does the free trial work?",
+    faq_trial_answer: "You have 15 days to test all features for free. We don't need your credit card to get started.",
+    faq_cancel_question: "Can I cancel anytime?",
+    faq_cancel_answer:
+      "Yes! You can cancel your subscription at any time. For annual plans, the service remains active until the end of the contracted period.",
+
+    // Final CTA
+    final_title: "Ready to transform your business?",
+    final_subtitle: "Join thousands of businesses that have already increased their revenue with Kalender",
+    have_account_button: "Already have an account",
+
+    // Auth
+    login_title: "Sign In to Kalender",
+    login_subtitle: "Access your account to manage your appointments",
+    email: "Email",
+    password: "Password",
+    forgot_password: "Forgot your password?",
+    no_account: "Don't have an account?",
+    create_account: "Create free account",
+    login_button: "Sign In",
+
+    signup_title: "Start Free Trial",
+    signup_subtitle: "15 days free • No credit card required",
+    name: "Full name",
+    business: "Business name",
+    signup_button: "Start Free Trial",
+    have_account: "Already have an account?",
+    login_link: "Sign in",
+
+    // Contact
+    contact_title: "Talk to Our Specialists",
+    contact_subtitle: "Our team will contact you within 24 hours for a personalized proposal",
+    form_title: "Request Contact",
+    professionals: "How many professionals?",
+    message: "Message (optional)",
+    message_placeholder: "Tell us more about your needs...",
+    submit: "Request Contact",
+
+    // Footer
+    footer_company_description: "The complete smart scheduling platform for businesses that want to grow.",
+    footer_product: "Product",
+    footer_resources: "Resources",
+    footer_company: "Company",
+    footer_copyright: "© 2024 Kalender. All rights reserved.",
+    product: "Product",
+    company: "Company",
+    about: "About",
+    blog: "Blog",
+    contact: "Contact",
+    support: "Support",
+    copyright: "© 2024 Kalender. All rights reserved.",
+
+    // Navigation
+    nav: {
+      dashboard: "Dashboard",
+      schedule: "Schedule",
+      team_management: "Team Management",
+      whatsapp_bot: "WhatsApp Bot",
+      reports: "Reports",
+      integrations: "Integrations",
+      api: "API",
     },
   },
-  "es-ES": {
-    header: {
-      platform: "Plataforma",
-      features: "Características",
-      segments: "Segmentos",
-      pricing: "Precios",
-      login: "Iniciar Sesión",
-      free_trial: "Prueba Gratuita",
-    },
-    nav: {
-      dashboard: "Panel",
-      schedule: "Agenda",
-      team_management: "Equipo",
-      whatsapp_bot: "Bot WhatsApp",
-      integrations: "Integraciones",
-      reports: "Informes",
-      api: "API",
-      beauty_salons: "Salones de Belleza",
-      clinics: "Clínicas",
-      spas: "Spas",
-      gyms: "Gimnasios",
-    },
-    sidebar: {
-      schedule: "Agenda",
-      services: "Servicios",
-      professionals: "Profesionales",
-      reports: "Informes",
-      billing: "Facturación",
-      settings: "Configuración",
-      notifications: "Notificaciones",
-      help: "Ayuda",
-      logout: "Cerrar Sesión",
-      system_status: "Estado del Sistema",
-      all_systems_operational: "Todos los sistemas operativos",
-    },
-    dashboard: {
-      welcome: "Panel Principal 👋",
-      overview: "Resumen de tu establecimiento y rendimiento",
-      appointments_today: "Citas Hoy",
-      clients_this_month: "Clientes Este Mes",
-      revenue_this_month: "Ingresos Este Mes",
-      occupancy_rate: "Tasa de Ocupación",
-      next_appointments: "Próximas Citas",
-      quick_actions: "Acciones Rápidas",
-      new_schedule: "Nueva Agenda",
-      new_service: "Nuevo Servicio",
-      professionals: "Profesionales",
-      reports: "Informes",
-      performance: "Rendimiento del Mes",
-      above_target: "¡Estás 24% por encima del objetivo!",
-    },
-    hero: {
-      badge: "IA Avanzada • Disponible Ahora",
-      title: "Programación Inteligente",
-      title_highlight: "que Aumenta tus Ingresos",
-      description:
-        "Plataforma completa con IA que optimiza automáticamente tu agenda, reduce cancelaciones y aumenta la satisfacción del cliente.",
-      setup_time: "5 min",
-      setup_description: "Para configurar",
-      uptime: "99.9%",
-      uptime_description: "De disponibilidad",
-      start_free_trial: "Comenzar Prueba Gratuita",
-      view_pricing: "Ver Precios",
-      free_trial_note: "15 días gratis • Sin tarjeta de crédito",
-    },
-    features: {
-      title: "Características Poderosas",
-      subtitle: "Todo lo que necesitas para gestionar tu negocio eficientemente",
-      smart_scheduling: "Programación Inteligente",
-      smart_scheduling_desc: "IA optimiza automáticamente horarios y reduce conflictos",
-      whatsapp_telegram: "WhatsApp y Telegram",
-      whatsapp_telegram_desc: "Programación automática vía chat con lenguaje natural",
-      integrations: "Integraciones Avanzadas",
-      integrations_desc: "Conecta con ERPs, Google Calendar y mucho más",
-    },
-    benefits: {
-      title: "Resultados Comprobados",
-      revenue_increase: "40% Aumento en Ingresos",
-      revenue_increase_desc: "Optimización automática de agenda maximiza ocupación",
-      no_shows_reduction: "60% Menos Cancelaciones",
-      no_shows_reduction_desc: "Recordatorios inteligentes y confirmaciones automáticas",
-      time_savings: "3h Ahorradas por Día",
-      time_savings_desc: "Automatización completa libera tiempo para enfocarse en clientes",
-      satisfaction: "98% de Satisfacción",
-      satisfaction_desc: "Los clientes aman la facilidad de programación",
-      setup_title: "Configuración en 5 Minutos",
-      setup_subtitle: "Comienza a usar hoy mismo",
-      step1: "Registra tu empresa",
-      step2: "Configura servicios y horarios",
-      step3: "Comienza a recibir citas",
-    },
-    pricing: {
-      title: "Precios Simples",
-      title_highlight: "Resultados Extraordinarios",
-      subtitle: "Elige el plan ideal para el tamaño de tu equipo. Todos incluyen 15 días de prueba gratuita.",
-      monthly: "Mensual",
-      annual: "Anual",
-      save_30: "Ahorra 30%",
-      annual_savings: "🎉 Máximo Ahorro en Plan Anual",
-      annual_description:
-        "Paga por adelantado y ahorra 30% en cualquier plan. Ideal para establecimientos que quieren el mejor valor.",
-      important_note:
-        "El pago anual se cobra íntegramente después de la prueba gratuita y no es reembolsable. El monto mensual mostrado es solo para comparación.",
-      professionals_question: "¿Cuántos profesionales trabajan en tu establecimiento?",
-      professionals_input: "Número de profesionales:",
-      professionals_unit: "profesionales",
-      recommended_plan: "Plan Recomendado:",
-      enterprise_plan: "Plan Enterprise - Contáctanos",
-      per_month: "/mes",
-      billed_annually: "facturado anualmente",
-      start_free_trial: "Comenzar Prueba Gratuita",
-      free_trial_note: "15 días gratis • Cancela cuando quieras",
-    },
+
+  es: {
+    // Header
+    platform: "Plataforma",
+    features: "Funciones",
+    segments: "Segmentos",
+    pricing: "Precios",
+    login: "Iniciar Sesión",
+    free_trial: "Prueba Gratis",
+    language: "Idioma",
+
+    // Hero
+    hero_badge: "🚀 Clientes. Equipo. Tiempo. Ganancias.",
+    hero_title: "Agendamiento",
+    hero_title_highlight: "Inteligente",
+    hero_description:
+      "Automatiza citas, reduce ausencias y aumenta tus ingresos con nuestra plataforma de IA. Integración completa con WhatsApp, Google Calendar y mucho más.",
+    hero_setup_time: "5 min",
+    hero_setup_description: "para configurar",
+    hero_uptime: "99.9%",
+    hero_uptime_description: "tiempo de actividad garantizado",
+    hero_start_free_trial: "Comenzar Prueba Gratis",
+    hero_view_pricing: "Ver Precios",
+    hero_free_trial_note: "✨ 15 días gratis • Sin tarjeta de crédito",
+
+    // Features
+    features_title: "Funciones Poderosas",
+    features_subtitle: "Todo lo que necesitas para automatizar y optimizar tus citas",
+    smart_scheduling: "Agendamiento Inteligente",
+    smart_scheduling_desc: "La IA optimiza automáticamente los horarios, reduce conflictos y maximiza tu calendario",
+    whatsapp_telegram: "WhatsApp y Telegram",
+    whatsapp_telegram_desc: "Reserva automática de citas vía chat con confirmaciones y recordatorios inteligentes",
+    integrations: "Integraciones Completas",
+    integrations_desc: "Google Calendar, ERPs, sistemas de pago y mucho más",
+
+    // Benefits
+    benefits_title: "Resultados Comprobados",
+    revenue_increase: "+40% de Ingresos",
+    revenue_increase_desc: "Optimización automática de horarios y reducción de tiempo inactivo",
+    no_shows_reduction: "-80% de Ausencias",
+    no_shows_reduction_desc: "Recordatorios automáticos y confirmaciones vía WhatsApp",
+    time_savings: "5h/día Ahorradas",
+    time_savings_desc: "Automatización completa de citas y reprogramaciones",
+    satisfaction: "98% de Satisfacción",
+    satisfaction_desc: "Experiencia superior para clientes y profesionales",
+    setup_title: "Configuración en 5 Minutos",
+    setup_subtitle: "Comienza a usar hoy mismo, sin complicaciones",
+    step1: "Registra tu negocio",
+    step2: "Configura servicios y profesionales",
+    step3: "¡Comienza a recibir citas!",
+
+    // Pricing
+    pricing_title: "Precios Transparentes",
+    pricing_title_highlight: "Sin Sorpresas",
+    pricing_subtitle: "Elige el plan ideal para tu negocio. Todos incluyen prueba gratis de 15 días.",
+    pricing_annual_savings: "💰 Ahorro Anual Garantizado",
+    pricing_annual_description:
+      "Paga anualmente y ahorra 30% en todos los planes. ¡Más tiempo para enfocarte en tu negocio!",
+    pricing_important_note:
+      "Los precios pueden estar sujetos a ajustes. Los suscriptores anuales mantienen precios fijos durante todo el período contratado.",
+    monthly: "Mensual",
+    annual: "Anual",
+    save_30: "Ahorra 30%",
+    professionals_question: "¿Cuántos profesionales trabajan en tu establecimiento?",
+    professionals_input: "Número exacto:",
+    professionals_unit: "profesionales",
+    recommended_plan: "Recomendado:",
+    enterprise_plan: "Plan Enterprise Personalizado",
+    per_month: "/mes",
+    billed_annually: "facturado anualmente",
+    start_free_trial: "Comenzar Prueba Gratis",
+    free_trial_note: "✨ 15 días gratis • Sin tarjeta",
+    up_to: "Hasta",
+
+    // Plans
     plans: {
       start: {
-        name: "Inicio",
-        description: "Perfecto para comenzar",
+        name: "Start",
+        description: "Perfecto para profesionales independientes",
       },
       essential: {
-        name: "Esencial",
-        description: "Más popular para equipos pequeños",
+        name: "Essential",
+        description: "Ideal para equipos pequeños",
       },
       advanced: {
-        name: "Avanzado",
-        description: "Para equipos en crecimiento",
+        name: "Advanced",
+        description: "Para negocios en crecimiento",
       },
       pro: {
         name: "Pro",
-        description: "Máximo rendimiento",
+        description: "Para grandes establecimientos",
       },
       enterprise: {
         name: "Enterprise",
         description: "Solución personalizada para grandes empresas",
       },
     },
-    login: {
-      title: "Bienvenido de vuelta",
-      subtitle: "Accede a tu cuenta para gestionar tus citas",
-      email: "Correo electrónico",
-      password: "Contraseña",
-      remember_me: "Recordarme",
-      forgot_password: "Olvidé mi contraseña",
-      sign_in: "Iniciar Sesión",
-      signing_in: "Iniciando sesión...",
-      or: "o",
-      create_account: "Crear nueva cuenta",
-      terms_privacy: "Al continuar, aceptas nuestros Términos y Política de Privacidad",
-      back_to_home: "Volver al inicio",
+
+    // Plan Features - Revised for natural Spanish
+    plan_features: {
+      smart_scheduling: "Agendamiento Inteligente",
+      whatsapp_auto: "WhatsApp automático",
+      custom_page: "Página de reservas personalizada",
+      basic_reports: "Reportes básicos",
+      email_support: "Soporte por email",
+      everything_start: "Todo lo del plan Start",
+      google_sync: "Sincronización con Google Calendar",
+      auto_reminders: "Recordatorios automáticos",
+      advanced_reports: "Reportes avanzados",
+      priority_support: "Soporte prioritario",
+      erp_integration: "Integraciones con ERPs",
+      everything_essential: "Todo lo del plan Essential",
+      multi_location: "Soporte multi-ubicación",
+      custom_api: "API personalizada",
+      custom_reports: "Reportes personalizados",
+      phone_support: "Soporte telefónico",
+      training_included: "Capacitación incluida",
+      auto_backup: "Respaldo automático",
+      everything_advanced: "Todo lo del plan Advanced",
+      dedicated_manager: "Gerente de cuenta dedicado",
+      sla_guaranteed: "SLA garantizado",
+      unlimited_integrations: "Integraciones ilimitadas",
+      support_24_7: "Soporte 24/7",
+      monthly_consulting: "Consultoría mensual",
+      white_label: "Solución white label",
     },
-    common: {
-      loading: "Cargando...",
-      save: "Guardar",
-      cancel: "Cancelar",
-      edit: "Editar",
-      delete: "Eliminar",
-      add: "Agregar",
-      search: "Buscar",
-      filter: "Filtrar",
-      all: "Todos",
-      active: "Activo",
-      inactive: "Inactivo",
-      confirmed: "Confirmado",
-      pending: "Pendiente",
-      cancelled: "Cancelado",
+
+    // Features comparison section
+    features_comparison_title: "Todos los planes incluyen estas funciones",
+    client_management: "Gestión de Clientes",
+    client_management_desc: "Historial completo",
+    security: "Seguridad",
+    security_desc: "Datos protegidos",
+    custom_page: "Página Personalizada",
+    custom_page_desc: "Enlace personalizado",
+    ai_optimization: "IA optimiza automáticamente",
+    auto_booking: "Reserva automática",
+    detailed_analytics: "Análisis detallados",
+    reports: "Reportes",
+
+    // FAQ
+    faq_title: "Preguntas Frecuentes",
+    faq_trial_question: "¿Cómo funciona la prueba gratis?",
+    faq_trial_answer:
+      "Tienes 15 días para probar todas las funciones gratuitamente. No necesitamos tu tarjeta de crédito para comenzar.",
+    faq_cancel_question: "¿Puedo cancelar en cualquier momento?",
+    faq_cancel_answer:
+      "¡Sí! Puedes cancelar tu suscripción en cualquier momento. Para planes anuales, el servicio permanece activo hasta el final del período contratado.",
+
+    // Final CTA
+    final_title: "¿Listo para transformar tu negocio?",
+    final_subtitle: "Únete a miles de negocios que ya han aumentado sus ingresos con Kalender",
+    have_account_button: "Ya tengo cuenta",
+
+    // Auth
+    login_title: "Iniciar Sesión en Kalender",
+    login_subtitle: "Accede a tu cuenta para gestionar tus citas",
+    email: "Email",
+    password: "Contraseña",
+    forgot_password: "¿Olvidaste tu contraseña?",
+    no_account: "¿No tienes una cuenta?",
+    create_account: "Crear cuenta gratis",
+    login_button: "Iniciar Sesión",
+
+    signup_title: "Comenzar Prueba Gratis",
+    signup_subtitle: "15 días gratis • Sin tarjeta de crédito",
+    name: "Nombre completo",
+    business: "Nombre del negocio",
+    signup_button: "Comenzar Prueba Gratis",
+    have_account: "¿Ya tienes una cuenta?",
+    login_link: "Iniciar sesión",
+
+    // Contact
+    contact_title: "Habla con Nuestros Especialistas",
+    contact_subtitle: "Nuestro equipo se pondrá en contacto contigo en 24 horas para una propuesta personalizada",
+    form_title: "Solicitar Contacto",
+    professionals: "¿Cuántos profesionales?",
+    message: "Mensaje (opcional)",
+    message_placeholder: "Cuéntanos más sobre tus necesidades...",
+    submit: "Solicitar Contacto",
+
+    // Footer
+    footer_company_description: "La plataforma completa de agendamiento inteligente para negocios que quieren crecer.",
+    footer_product: "Producto",
+    footer_resources: "Recursos",
+    footer_company: "Empresa",
+    footer_copyright: "© 2024 Kalender. Todos los derechos reservados.",
+    product: "Producto",
+    company: "Empresa",
+    about: "Acerca de",
+    blog: "Blog",
+    contact: "Contacto",
+    support: "Soporte",
+    copyright: "© 2024 Kalender. Todos los derechos reservados.",
+
+    // Navigation
+    nav: {
+      dashboard: "Panel",
+      schedule: "Agenda",
+      team_management: "Gestión de Equipo",
+      whatsapp_bot: "Bot de WhatsApp",
+      reports: "Reportes",
+      integrations: "Integraciones",
+      api: "API",
     },
   },
+}
+
+export type Locale = keyof typeof translations
+export type TranslationKey = keyof typeof translations.pt
+
+export function getTranslation(locale: Locale, key: TranslationKey): string {
+  return translations[locale]?.[key] || translations.pt[key] || key
 }
