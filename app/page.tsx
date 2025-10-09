@@ -18,6 +18,8 @@ import {
   ChevronDown,
   Crown,
   Building2,
+  Menu,
+  X,
   Users,
   Shield,
 } from "lucide-react"
@@ -146,6 +148,9 @@ function LandingPageContent() {
   const recommendedPlan = getRecommendedPlan()
   const isUnlimited = selectedProfessionals > 20
 
+  // Mobile menu state
+  const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+
   // Navigation handlers
   const handleFeatureNavigation = (feature: string) => {
     alert(`Funcionalidade "${feature}" será implementada em breve!`)
@@ -185,7 +190,7 @@ function LandingPageContent() {
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("platform"))}
+                onClick={() => (window.location.href = "/platform")}
               >
                 {t("platform")}
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -193,7 +198,7 @@ function LandingPageContent() {
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("features"))}
+                onClick={() => (window.location.href = "/features")}
               >
                 {t("features")}
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -201,7 +206,7 @@ function LandingPageContent() {
               <Button
                 variant="ghost"
                 className="text-gray-700 hover:text-gray-900 font-medium"
-                onClick={() => handleFeatureNavigation(t("segments"))}
+                onClick={() => (window.location.href = "/segments")}
               >
                 {t("segments")}
                 <ChevronDown className="ml-1 h-4 w-4" />
@@ -225,210 +230,244 @@ function LandingPageContent() {
               >
                 {t("login")}
               </Button>
-              <Button className="bg-primary hover:bg-primary/90 text-white font-semibold" onClick={handleSignupClick}>
+              <Button className="hidden md:flex bg-primary hover:bg-primary/90 text-white font-semibold" onClick={handleSignupClick}>
                 {t("free_trial")}
                 <ArrowRight className="ml-2 h-4 w-4" />
               </Button>
+
+              {/* Mobile Menu Button */}
+              <Button
+                variant="ghost"
+                size="icon"
+                className="md:hidden"
+                onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+              >
+                {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+              </Button>
             </div>
           </div>
+
+          {/* Mobile Menu */}
+          {mobileMenuOpen && (
+            <div className="md:hidden border-t border-gray-200 py-4">
+              <nav className="flex flex-col space-y-2">
+                <Button
+                  variant="ghost"
+                  className="justify-start text-gray-700 hover:text-gray-900 font-medium"
+                  onClick={() => {
+                    window.location.href = "/platform"
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {t("platform")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="justify-start text-gray-700 hover:text-gray-900 font-medium"
+                  onClick={() => {
+                    window.location.href = "/features"
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {t("features")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="justify-start text-gray-700 hover:text-gray-900 font-medium"
+                  onClick={() => {
+                    window.location.href = "/segments"
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {t("segments")}
+                </Button>
+                <Button
+                  variant="ghost"
+                  className="justify-start text-gray-700 hover:text-gray-900 font-medium"
+                  onClick={() => {
+                    handlePricingClick()
+                    setMobileMenuOpen(false)
+                  }}
+                >
+                  {t("pricing")}
+                </Button>
+                <div className="border-t border-gray-200 pt-2 mt-2 flex flex-col space-y-2">
+                  <Button
+                    variant="outline"
+                    className="justify-start border-gray-300 text-gray-700"
+                    onClick={() => {
+                      handleLoginClick()
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    {t("login")}
+                  </Button>
+                  <Button
+                    className="justify-start bg-primary hover:bg-primary/90 text-white font-semibold"
+                    onClick={() => {
+                      handleSignupClick()
+                      setMobileMenuOpen(false)
+                    }}
+                  >
+                    {t("free_trial")}
+                    <ArrowRight className="ml-2 h-4 w-4" />
+                  </Button>
+                </div>
+              </nav>
+            </div>
+          )}
         </div>
       </header>
 
       {/* Hero Section */}
-      <section className="py-20 bg-gray-900 relative overflow-hidden">
+      <section className="min-h-[600px] py-20 bg-gray-900 relative overflow-hidden flex items-center">
         <div className="container mx-auto px-4 relative z-10">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             {/* Left Content */}
-            <div className="relative z-10">
-              {/* Badge */}
-              <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-700 bg-gray-800/50 backdrop-blur-sm mb-8">
+            <div className="max-w-2xl">
+              <div className="inline-flex items-center px-4 py-2 rounded-full border border-gray-700 bg-gray-800/50 backdrop-blur-sm mb-6">
                 <div className="w-2 h-2 bg-accent rounded-full mr-3 animate-pulse"></div>
                 <span className="text-gray-300 text-sm font-medium">{t("hero_badge")}</span>
               </div>
-
-              {/* Headline */}
-              <h1 className="text-4xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 leading-tight tracking-tight">
                 {t("hero_title")}
                 <span className="bg-brand-gradient bg-clip-text text-transparent block">
                   {t("hero_title_highlight")}
                 </span>
               </h1>
+              <p className="text-lg md:text-xl text-gray-300 leading-relaxed font-light mb-8">{t("hero_description")}</p>
 
-              {/* Description */}
-              <p className="text-xl text-gray-300 mb-8 leading-relaxed font-light">{t("hero_description")}</p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 gap-8 mb-8">
-                <div>
-                  <div className="text-3xl font-bold text-white mb-1">{t("hero_setup_time")}</div>
-                  <div className="text-gray-400 text-sm font-medium">{t("hero_setup_description")}</div>
-                </div>
-                <div>
-                  <div className="text-3xl font-bold text-white mb-1">{t("hero_uptime")}</div>
-                  <div className="text-gray-400 text-sm font-medium">{t("hero_uptime_description")}</div>
-                </div>
-              </div>
-
-              {/* CTA Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-4 relative z-20">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-accent to-primary hover:from-accent/90 hover:to-primary/90 text-white font-bold h-14 px-8 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all"
-                  onClick={handleSignupClick}
-                >
+              <div className="flex flex-col sm:flex-row gap-4">
+                <Button size="lg" className="bg-gradient-to-r from-accent to-primary hover:from-accent/90 hover:to-primary/90 text-white font-bold h-14 px-8 text-lg rounded-xl shadow-lg hover:shadow-xl transition-all" onClick={handleSignupClick}>
                   {t("hero_start_free_trial")}
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
-                <Button
-                  size="lg"
-                  variant="outline"
-                  className="h-14 px-8 text-lg border-primary text-primary hover:bg-primary hover:text-white font-semibold"
-                  onClick={handlePricingClick}
-                >
+                <Button size="lg" variant="outline" className="h-14 px-8 text-lg border-primary text-primary hover:bg-primary hover:text-white font-semibold" onClick={handlePricingClick}>
                   {t("hero_view_pricing")}
                 </Button>
               </div>
-              <p className="text-gray-400 text-sm font-medium">{t("hero_free_trial_note")}</p>
             </div>
 
-            {/* Right Visual Elements */}
-            <div className="relative z-5">
-              {/* Main Dashboard Mockup */}
-              <div className="relative z-10 bg-white rounded-2xl shadow-2xl p-6 transform rotate-3 hover:rotate-0 transition-transform duration-500">
-                <div className="bg-gray-100 rounded-lg p-4 mb-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="text-sm font-bold text-gray-900">Agenda de Hoje</div>
-                    <div className="text-xs text-gray-500 font-medium">18 Jan 2024</div>
+            {/* Right Visual */}
+            <div className="relative lg:block hidden">
+              <div className="relative bg-white/5 backdrop-blur-sm rounded-3xl p-8 border border-white/10">
+                <div className="absolute -top-4 -right-4 w-24 h-24 bg-accent/20 rounded-full blur-2xl"></div>
+                <div className="absolute -bottom-4 -left-4 w-32 h-32 bg-primary/20 rounded-full blur-2xl"></div>
+
+                {/* Mockup Content */}
+                <div className="relative space-y-4">
+                  <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                    <div className="w-10 h-10 bg-accent rounded-lg flex items-center justify-center">
+                      <Zap className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-3 bg-white/30 rounded w-32 mb-2"></div>
+                      <div className="h-2 bg-white/20 rounded w-24"></div>
+                    </div>
                   </div>
-                  <div className="space-y-2">
-                    <div className="bg-accent/10 border-l-4 border-accent p-2 rounded">
-                      <div className="text-xs font-bold text-gray-900">09:00 - Maria Silva</div>
-                      <div className="text-xs text-primary font-medium">Corte + Escova</div>
+                  <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                    <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
+                      <Calendar className="h-5 w-5 text-white" />
                     </div>
-                    <div className="bg-primary/10 border-l-4 border-primary p-2 rounded">
-                      <div className="text-xs font-bold text-gray-900">11:00 - João Santos</div>
-                      <div className="text-xs text-secondary font-medium">Massagem</div>
+                    <div className="flex-1">
+                      <div className="h-3 bg-white/30 rounded w-40 mb-2"></div>
+                      <div className="h-2 bg-white/20 rounded w-28"></div>
                     </div>
-                    <div className="bg-secondary/10 border-l-4 border-secondary p-2 rounded">
-                      <div className="text-xs font-bold text-gray-900">14:00 - Ana Costa</div>
-                      <div className="text-xs text-brand-purple font-medium">Manicure</div>
+                  </div>
+                  <div className="flex items-center gap-3 bg-white/10 rounded-lg p-3">
+                    <div className="w-10 h-10 bg-secondary rounded-lg flex items-center justify-center">
+                      <Users className="h-5 w-5 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <div className="h-3 bg-white/30 rounded w-36 mb-2"></div>
+                      <div className="h-2 bg-white/20 rounded w-20"></div>
                     </div>
                   </div>
                 </div>
               </div>
-
-              {/* Revenue Card */}
-              <div className="absolute -top-4 -right-4 bg-white rounded-xl shadow-lg p-4 z-20 transform -rotate-6 hover:rotate-0 transition-transform duration-500">
-                <div className="flex items-center space-x-2 mb-2">
-                  <div className="w-8 h-8 bg-primary/10 rounded-full flex items-center justify-center">
-                    <TrendingUp className="h-4 w-4 text-primary" />
-                  </div>
-                  <div>
-                    <div className="text-xs text-gray-500 font-medium">Receita</div>
-                    <div className="text-sm font-bold text-primary">{t("revenue_increase")} em 3 meses</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Mobile App Mockup */}
-              <div className="absolute -bottom-8 -left-8 bg-gray-900 rounded-2xl p-3 shadow-xl z-15 transform rotate-12 hover:rotate-6 transition-transform duration-500">
-                <div className="bg-white rounded-xl p-3 w-32">
-                  <div className="text-xs font-bold text-gray-900 mb-2">{t("whatsapp_bot")}</div>
-                  <div className="space-y-1">
-                    <div className="bg-primary text-white text-xs p-1 rounded font-medium">
-                      Oi! Gostaria de agendar?
-                    </div>
-                    <div className="bg-gray-100 text-xs p-1 rounded font-medium">Sim, para amanhã às 14h</div>
-                    <div className="bg-primary text-white text-xs p-1 rounded font-medium">Perfeito! Agendado ✅</div>
-                  </div>
-                </div>
-              </div>
-
-              {/* Calendar Widget */}
-              <div className="absolute top-8 right-8 bg-white rounded-lg shadow-lg p-3 z-15 transform -rotate-12 hover:-rotate-6 transition-transform duration-500">
-                <div className="text-xs font-bold text-gray-900 mb-2">Janeiro 2024</div>
-                <div className="grid grid-cols-7 gap-1 text-xs">
-                  {["D", "S", "T", "Q", "Q", "S", "S"].map((day, i) => (
-                    <div key={i} className="text-center text-gray-500 font-bold">
-                      {day}
-                    </div>
-                  ))}
-                  {Array.from({ length: 31 }, (_, i) => (
-                    <div
-                      key={i}
-                      className={`text-center p-1 font-medium ${i === 17 ? "bg-primary text-white rounded" : "text-gray-700"}`}
-                    >
-                      {i + 1}
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              {/* Background Glow */}
-              <div className="absolute inset-0 bg-brand-gradient opacity-20 rounded-3xl blur-3xl -z-10"></div>
             </div>
           </div>
-
-          {/* Background Pattern */}
-          <div className="absolute inset-0 opacity-5">
-            <div
-              className="absolute inset-0"
-              style={{
-                backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-              }}
-            ></div>
-          </div>
+        </div>
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute inset-0" style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fillRule='evenodd'%3E%3Cg fill='%23ffffff' fillOpacity='0.1'%3E%3Ccircle cx='30' cy='30' r='2'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")` }} />
         </div>
       </section>
 
       {/* Features Section */}
-      <section className="py-20">
+      <section className="py-16 bg-gradient-to-b from-white to-gray-50">
         <div className="container mx-auto px-4">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("features_title")}</h2>
-            <p className="text-xl text-gray-600 max-w-2xl mx-auto font-light">{t("features_subtitle")}</p>
+          <div className="text-center mb-12">
+            <div className="inline-block px-4 py-2 bg-primary/10 rounded-full mb-4">
+              <span className="text-primary font-semibold text-sm">Recursos Principais</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 tracking-tight">{t("features_title")}</h2>
+            <p className="text-lg text-gray-600 max-w-2xl mx-auto">{t("features_subtitle")}</p>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-16">
-            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Calendar className="h-8 w-8 text-primary" />
+          <div className="grid md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12 max-w-6xl mx-auto">
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all rounded-2xl group">
+              <CardHeader className="pb-4">
+                <div className="bg-gradient-to-br from-primary to-primary/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Calendar className="h-7 w-7 text-white" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("smart_scheduling")}</CardTitle>
+                <CardTitle className="text-lg text-gray-900 font-bold">{t("smart_scheduling")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("smart_scheduling_desc")}</p>
+                <p className="text-gray-600 text-sm">{t("smart_scheduling_desc")}</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="bg-accent/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Smartphone className="h-8 w-8 text-accent" />
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all rounded-2xl group">
+              <CardHeader className="pb-4">
+                <div className="bg-gradient-to-br from-brand-purple to-brand-purple/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <TrendingUp className="h-7 w-7 text-white" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("whatsapp_telegram")}</CardTitle>
+                <CardTitle className="text-lg text-gray-900 font-bold">{t("lead_qualification")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("whatsapp_telegram_desc")}</p>
+                <p className="text-gray-600 text-sm">{t("lead_qualification_desc")}</p>
               </CardContent>
             </Card>
 
-            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-shadow">
-              <CardHeader>
-                <div className="bg-secondary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <BarChart3 className="h-8 w-8 text-secondary" />
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all rounded-2xl group">
+              <CardHeader className="pb-4">
+                <div className="bg-gradient-to-br from-secondary to-secondary/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <BarChart3 className="h-7 w-7 text-white" />
                 </div>
-                <CardTitle className="text-xl text-gray-900 font-bold">{t("integrations")}</CardTitle>
+                <CardTitle className="text-lg text-gray-900 font-bold">{t("sales_funnel")}</CardTitle>
               </CardHeader>
               <CardContent>
-                <p className="text-gray-600 font-light">{t("integrations_desc")}</p>
+                <p className="text-gray-600 text-sm">{t("sales_funnel_desc")}</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all rounded-2xl group">
+              <CardHeader className="pb-4">
+                <div className="bg-gradient-to-br from-accent to-accent/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Smartphone className="h-7 w-7 text-white" />
+                </div>
+                <CardTitle className="text-lg text-gray-900 font-bold">{t("whatsapp_telegram")}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm">{t("whatsapp_telegram_desc")}</p>
+              </CardContent>
+            </Card>
+
+            <Card className="text-center border-0 shadow-lg hover:shadow-xl transition-all rounded-2xl group">
+              <CardHeader className="pb-4">
+                <div className="bg-gradient-to-br from-primary to-primary/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4 group-hover:scale-110 transition-transform">
+                  <Zap className="h-7 w-7 text-white" />
+                </div>
+                <CardTitle className="text-lg text-gray-900 font-bold">{t("integrations")}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <p className="text-gray-600 text-sm">{t("integrations_desc")}</p>
               </CardContent>
             </Card>
           </div>
 
           {/* Additional Features Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-5 max-w-6xl mx-auto">
             <div className="flex items-start space-x-3">
               <div className="bg-accent/10 p-2 rounded-lg">
                 <Smartphone className="h-5 w-5 text-accent" />
@@ -473,68 +512,79 @@ function LandingPageContent() {
       </section>
 
       {/* Benefits Section */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-16 bg-white">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-2 gap-12 items-center">
+          <div className="grid lg:grid-cols-2 gap-10 items-center max-w-6xl mx-auto">
             <div>
-              <h2 className="text-4xl font-bold text-gray-900 mb-6 tracking-tight">{t("benefits_title")}</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1" />
+              <div className="inline-block px-4 py-2 bg-accent/10 rounded-full mb-4">
+                <span className="text-accent font-semibold text-sm">Benefícios</span>
+              </div>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-8 tracking-tight">{t("benefits_title")}</h2>
+              <div className="space-y-5">
+                <div className="flex items-start space-x-3">
+                  <div className="bg-primary/10 p-1.5 rounded-lg mt-0.5">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{t("revenue_increase")}</h3>
-                    <p className="text-gray-600 font-light">{t("revenue_increase_desc")}</p>
+                    <p className="text-gray-600 text-sm">{t("revenue_increase_desc")}</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1" />
+                <div className="flex items-start space-x-3">
+                  <div className="bg-primary/10 p-1.5 rounded-lg mt-0.5">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{t("no_shows_reduction")}</h3>
-                    <p className="text-gray-600 font-light">{t("no_shows_reduction_desc")}</p>
+                    <p className="text-gray-600 text-sm">{t("no_shows_reduction_desc")}</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1" />
+                <div className="flex items-start space-x-3">
+                  <div className="bg-primary/10 p-1.5 rounded-lg mt-0.5">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{t("time_savings")}</h3>
-                    <p className="text-gray-600 font-light">{t("time_savings_desc")}</p>
+                    <p className="text-gray-600 text-sm">{t("time_savings_desc")}</p>
                   </div>
                 </div>
-                <div className="flex items-start space-x-4">
-                  <CheckCircle className="h-6 w-6 text-primary mt-1" />
+                <div className="flex items-start space-x-3">
+                  <div className="bg-primary/10 p-1.5 rounded-lg mt-0.5">
+                    <CheckCircle className="h-5 w-5 text-primary" />
+                  </div>
                   <div>
                     <h3 className="font-bold text-gray-900 mb-1">{t("satisfaction")}</h3>
-                    <p className="text-gray-600 font-light">{t("satisfaction_desc")}</p>
+                    <p className="text-gray-600 text-sm">{t("satisfaction_desc")}</p>
                   </div>
                 </div>
               </div>
             </div>
-            <div className="bg-white p-8 rounded-2xl shadow-xl">
+            <div className="bg-gradient-to-br from-gray-50 to-white p-8 rounded-2xl shadow-lg border border-gray-100">
               <div className="text-center mb-6">
-                <div className="bg-primary/10 w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <Clock className="h-8 w-8 text-primary" />
+                <div className="bg-gradient-to-br from-primary to-primary/80 w-14 h-14 rounded-xl flex items-center justify-center mx-auto mb-4">
+                  <Clock className="h-7 w-7 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold text-gray-900 mb-2 tracking-tight">{t("setup_title")}</h3>
-                <p className="text-gray-600 font-light">{t("setup_subtitle")}</p>
+                <h3 className="text-xl font-bold text-gray-900 mb-2 tracking-tight">{t("setup_title")}</h3>
+                <p className="text-gray-600 text-sm">{t("setup_subtitle")}</p>
               </div>
-              <div className="space-y-4">
-                <div className="flex items-center space-x-3">
-                  <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+              <div className="space-y-3">
+                <div className="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                  <div className="bg-gradient-to-br from-primary to-primary/80 text-white rounded-lg w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
                     1
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step1")}</span>
+                  <span className="text-gray-700 font-medium text-sm">{t("step1")}</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                <div className="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                  <div className="bg-gradient-to-br from-primary to-primary/80 text-white rounded-lg w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
                     2
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step2")}</span>
+                  <span className="text-gray-700 font-medium text-sm">{t("step2")}</span>
                 </div>
-                <div className="flex items-center space-x-3">
-                  <div className="bg-primary text-white rounded-full w-6 h-6 flex items-center justify-center text-sm font-bold">
+                <div className="flex items-center space-x-3 bg-white p-3 rounded-lg">
+                  <div className="bg-gradient-to-br from-primary to-primary/80 text-white rounded-lg w-7 h-7 flex items-center justify-center text-sm font-bold flex-shrink-0">
                     3
                   </div>
-                  <span className="text-gray-700 font-medium">{t("step3")}</span>
+                  <span className="text-gray-700 font-medium text-sm">{t("step3")}</span>
                 </div>
               </div>
             </div>
@@ -543,104 +593,93 @@ function LandingPageContent() {
       </section>
 
       {/* Pricing Section */}
-      <section id="pricing" className="py-20 bg-gradient-to-br from-gray-50 via-white to-primary/5">
+      <section id="pricing" className="py-16 md:py-24 bg-gradient-to-br from-gray-50 via-white to-primary/5">
         <div className="container mx-auto px-4">
           {/* Hero Section */}
-          <div className="text-center mb-16">
-            <h2 className="text-5xl font-bold text-gray-900 mb-6 tracking-tight">
+          <div className="text-center mb-12 md:mb-16">
+            <div className="inline-block px-4 py-2 bg-secondary/10 rounded-full mb-4">
+              <span className="text-secondary font-semibold text-xs md:text-sm">Planos e Preços</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 tracking-tight px-4">
               {t("pricing_title")}
-              <span className="bg-brand-gradient bg-clip-text text-transparent block">
+              <span className="bg-brand-gradient bg-clip-text text-transparent block mt-2">
                 {t("pricing_title_highlight")}
               </span>
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed">
+            <p className="text-lg md:text-xl text-gray-600 max-w-3xl mx-auto font-light leading-relaxed px-4">
               {t("pricing_subtitle")}
             </p>
 
             {/* Annual/Monthly Toggle */}
-            <div className="flex items-center justify-center space-x-4 mt-8 mb-4">
-              <span className={`font-semibold ${!isAnnual ? "text-gray-900" : "text-gray-500"}`}>{t("monthly")}</span>
+            <div className="flex items-center justify-center gap-4 mt-8">
+              <span className={`font-semibold ${!isAnnual ? "text-gray-900" : "text-gray-500"}`}>
+                {t("monthly")}
+              </span>
               <Switch checked={isAnnual} onCheckedChange={setIsAnnual} className="data-[state=checked]:bg-primary" />
-              <span className={`font-semibold ${isAnnual ? "text-gray-900" : "text-gray-500"}`}>{t("annual")}</span>
-              <Badge className="bg-accent text-white font-bold animate-pulse">{t("save_30")}</Badge>
+              <span className={`font-semibold ${isAnnual ? "text-gray-900" : "text-gray-500"}`}>
+                {t("annual")}
+              </span>
+              <Badge className="bg-accent text-white font-bold">-30%</Badge>
             </div>
           </div>
 
           {/* Professional Selector */}
-          <div className="max-w-4xl mx-auto mb-16">
-            <h3 className="text-2xl font-bold text-gray-900 mb-8 text-center">{t("professionals_question")}</h3>
+          <div className="max-w-3xl mx-auto mb-12">
+            <div className="text-center mb-6">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">{t("professionals_question")}</h3>
+            </div>
 
-            <Card className="bg-white/80 backdrop-blur-sm shadow-xl border-0">
+            <Card className="bg-white shadow-md border border-gray-200">
               <CardContent className="p-8">
-                <div className="mb-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="text-sm font-semibold text-gray-500">1 {t("professionals_unit")}</span>
-                    <span className="text-sm font-semibold text-gray-500">20+ {t("professionals_unit")}</span>
-                  </div>
-
-                  <div className="relative mb-6">
-                    <div
-                      className="absolute -top-12 transform -translate-x-1/2 bg-primary text-white px-3 py-2 rounded-lg text-sm font-bold z-10 shadow-lg"
-                      style={{
-                        left: `${((selectedProfessionals - 1) / 19) * 100}%`,
-                      }}
-                    >
-                      {selectedProfessionals > 20 ? "20+" : selectedProfessionals}
+                <div className="space-y-6">
+                  {/* Slider */}
+                  <div className="relative">
+                    <div className="flex items-center justify-between mb-3">
+                      <span className="text-sm text-gray-600">1</span>
+                      <span className="text-sm text-gray-600">20+</span>
                     </div>
 
-                    <input
-                      type="range"
-                      min="1"
-                      max="21"
-                      value={selectedProfessionals}
-                      onChange={handleSliderChange}
-                      className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
-                      style={{
-                        background: getSliderBackground(),
-                      }}
-                    />
+                    <div className="relative mb-8">
+                      <div
+                        className="absolute -top-10 transform -translate-x-1/2 bg-primary text-white px-4 py-2 rounded-lg font-bold"
+                        style={{
+                          left: `${((selectedProfessionals - 1) / 19) * 100}%`,
+                        }}
+                      >
+                        {selectedProfessionals > 20 ? "20+" : selectedProfessionals}
+                      </div>
+
+                      <input
+                        type="range"
+                        min="1"
+                        max="21"
+                        value={selectedProfessionals}
+                        onChange={handleSliderChange}
+                        className="w-full h-2 bg-gray-200 rounded-lg appearance-none cursor-pointer"
+                        style={{
+                          background: getSliderBackground(),
+                        }}
+                      />
+                    </div>
                   </div>
 
-                  <div className="flex items-center justify-center space-x-4">
-                    <label htmlFor="professionals-input" className="text-sm font-semibold text-gray-700">
-                      {t("professionals_input")}
-                    </label>
-                    <Input
-                      id="professionals-input"
-                      type="number"
-                      min="1"
-                      max="20"
-                      value={selectedProfessionals > 20 ? 20 : selectedProfessionals}
-                      onChange={handleInputChange}
-                      className="w-24 text-center font-semibold border-primary/20 focus:border-primary"
-                    />
-                    <span className="text-sm text-gray-500 font-medium">{t("professionals_unit")}</span>
-                  </div>
+                  {/* Recommended Plan */}
+                  {recommendedPlan && (
+                    <div className="text-center p-4 bg-primary/5 rounded-lg border border-primary/20">
+                      <p className="text-sm text-gray-600 mb-1">Plano recomendado</p>
+                      <p className="text-xl font-bold text-gray-900">
+                        {recommendedPlan.name} - {isAnnual ? formatPrice(recommendedPlan.monthlyEquivalent) : formatPrice(recommendedPlan.monthlyPrice)}/mês
+                      </p>
+                    </div>
+                  )}
+
+                  {isUnlimited && (
+                    <div className="text-center p-4 bg-brand-purple/5 rounded-lg border border-brand-purple/20">
+                      <p className="text-xl font-bold text-brand-purple">Plano Enterprise</p>
+                      <p className="text-sm text-gray-600">Entre em contato para saber mais</p>
+                    </div>
+                  )}
                 </div>
-
-                {/* Recommended Plan Preview */}
-                {recommendedPlan && (
-                  <div className="text-center">
-                    <div className="inline-flex items-center px-6 py-3 rounded-full bg-primary/10 text-primary border border-primary/20">
-                      <Crown className="h-5 w-5 mr-2" />
-                      <span className="font-bold text-lg">
-                        {t("recommended_plan")} {recommendedPlan.name} -{" "}
-                        {isAnnual
-                          ? `${formatPrice(recommendedPlan.monthlyEquivalent)}/mês (anual)`
-                          : `${formatPrice(recommendedPlan.monthlyPrice)}/mês`}
-                      </span>
-                    </div>
-                  </div>
-                )}
-
-                {isUnlimited && (
-                  <div className="text-center">
-                    <div className="inline-flex items-center px-6 py-3 rounded-full bg-brand-purple/10 text-brand-purple border border-brand-purple/20">
-                      <Building2 className="h-5 w-5 mr-2" />
-                      <span className="font-bold text-lg">Plano Enterprise Personalizado</span>
-                    </div>
-                  </div>
-                )}
               </CardContent>
             </Card>
           </div>
@@ -648,116 +687,93 @@ function LandingPageContent() {
           {/* Pricing Cards */}
           {!isUnlimited ? (
             <div className="max-w-7xl mx-auto mb-16">
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 items-stretch">
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {pricingTiers.map((tier) => {
                   const isRecommended = recommendedPlan?.name === tier.name
                   const showPlan = selectedProfessionals <= tier.maxProfessionals || tier.name === t("plan_pro")
 
                   if (!showPlan) return null
 
-                  // Define color schemes for each plan
-                  const getCardStyle = () => {
-                    if (isRecommended) {
-                      return {
-                        border: "border-2 border-primary",
-                        badge: "bg-primary text-white",
-                        badgeText: "🎯 Recomendado",
-                        button: "bg-primary hover:bg-primary/90 text-white",
-                      }
-                    } else if (tier.popular && isAnnual) {
-                      return {
-                        border: "border-2 border-accent",
-                        badge: "bg-accent text-white",
-                        badgeText: "🔥 Mais Popular",
-                        button: "bg-accent hover:bg-accent/90 text-white",
-                      }
-                    } else {
-                      return {
-                        border: "border border-gray-200",
-                        badge: "",
-                        badgeText: "",
-                        button: "bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white",
-                      }
-                    }
-                  }
-
-                  const cardStyle = getCardStyle()
-
                   return (
-                    <div key={tier.name} className="flex">
-                      <Card
-                        className={`relative bg-white shadow-lg transition-all hover:shadow-xl w-full h-full flex flex-col ${cardStyle.border}`}
-                      >
-                        {/* Badge */}
-                        {cardStyle.badgeText && (
-                          <div className="absolute -top-4 left-1/2 transform -translate-x-1/2 z-20">
-                            <Badge className={`font-bold px-4 py-2 text-sm whitespace-nowrap ${cardStyle.badge}`}>
-                              {cardStyle.badgeText}
-                            </Badge>
-                          </div>
-                        )}
+                    <Card
+                      key={tier.name}
+                      className={`relative bg-white shadow-md hover:shadow-lg transition-shadow ${
+                        isRecommended ? "border-2 border-primary" : "border border-gray-200"
+                      }`}
+                    >
+                      {/* Badge */}
+                      {isRecommended && (
+                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                          <Badge className="bg-primary text-white font-bold px-4 py-1">Recomendado</Badge>
+                        </div>
+                      )}
 
-                        <CardHeader className="text-center pb-4 pt-8 flex-shrink-0">
-                          <CardTitle className="text-2xl font-bold text-gray-900 mb-2">{tier.name}</CardTitle>
-                          <p className="text-gray-600 text-sm font-medium mb-4">{tier.description}</p>
+                      {tier.popular && isAnnual && !isRecommended && (
+                        <div className="absolute -top-3 left-1/2 transform -translate-x-1/2">
+                          <Badge className="bg-accent text-white font-bold px-4 py-1">Mais Popular</Badge>
+                        </div>
+                      )}
 
-                          {/* Pricing Display */}
-                          <div className="space-y-2">
-                            {isAnnual ? (
-                              <>
-                                <div className="text-4xl font-bold text-gray-900">
-                                  {formatPrice(tier.monthlyEquivalent)}
-                                  <span className="text-lg text-gray-600 font-normal">{t("per_month")}</span>
-                                </div>
-                                <div className="text-sm text-gray-500">
-                                  <span className="line-through">{formatPrice(tier.monthlyPrice)}/mês</span>
-                                  <span className="ml-2 text-accent font-bold">{t("save_30")}</span>
-                                </div>
-                                <div className="text-sm font-semibold text-primary">
-                                  {formatPrice(tier.annualPrice)} anual
-                                </div>
-                              </>
-                            ) : (
-                              <>
-                                <div className="text-4xl font-bold text-gray-900">
-                                  {formatPrice(tier.monthlyPrice)}
-                                  <span className="text-lg text-gray-600 font-normal">{t("per_month")}</span>
-                                </div>
-                                <div className="text-sm text-accent font-semibold">
-                                  Economize {formatPrice(tier.monthlyPrice * 12 - tier.annualPrice)} por ano no plano
-                                  anual
-                                </div>
-                              </>
-                            )}
-                          </div>
+                      <CardHeader className="text-center pb-4 pt-8">
+                        <CardTitle className="text-xl font-bold text-gray-900 mb-2">{tier.name}</CardTitle>
+                        <p className="text-gray-600 text-sm mb-4">{tier.description}</p>
 
-                          <div className="text-xs text-gray-500 font-medium mt-2">{t("free_trial_note")}</div>
-                        </CardHeader>
-
-                        <CardContent className="flex flex-col flex-1 px-6 pb-6">
-                          {/* Features List */}
-                          <div className="space-y-3 flex-1">
-                            {tier.features.map((feature, index) => (
-                              <div key={index} className="flex items-start space-x-3">
-                                <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
-                                <span className="text-sm text-gray-700 font-medium">{feature}</span>
+                        {/* Pricing */}
+                        <div className="mb-4">
+                          {isAnnual ? (
+                            <>
+                              <div className="text-4xl font-bold text-gray-900">
+                                {formatPrice(tier.monthlyEquivalent)}
+                                <span className="text-lg text-gray-600 font-normal">/mês</span>
                               </div>
-                            ))}
-                          </div>
+                              <div className="text-sm text-gray-500 mt-1">
+                                <span className="line-through">{formatPrice(tier.monthlyPrice)}</span>
+                                <span className="ml-1 text-accent font-semibold">-30%</span>
+                              </div>
+                              <div className="text-xs text-gray-500 mt-1">
+                                {formatPrice(tier.annualPrice)} cobrado anualmente
+                              </div>
+                            </>
+                          ) : (
+                            <>
+                              <div className="text-4xl font-bold text-gray-900">
+                                {formatPrice(tier.monthlyPrice)}
+                                <span className="text-lg text-gray-600 font-normal">/mês</span>
+                              </div>
+                              <div className="text-sm text-accent font-semibold mt-1">
+                                Economize {formatPrice(tier.monthlyPrice * 12 - tier.annualPrice)} no plano anual
+                              </div>
+                            </>
+                          )}
+                        </div>
+                      </CardHeader>
 
-                          {/* CTA Button */}
-                          <div className="mt-6 pt-4 border-t border-gray-100">
-                            <Button
-                              className={`w-full h-12 font-bold text-base transition-all ${cardStyle.button}`}
-                              onClick={handleSignupClick}
-                            >
-                              {t("start_free_trial")}
-                              <span className="ml-2">→</span>
-                            </Button>
-                          </div>
-                        </CardContent>
-                      </Card>
-                    </div>
+                      <CardContent className="px-6 pb-6">
+                        {/* Features */}
+                        <div className="space-y-2 mb-6">
+                          {tier.features.map((feature, index) => (
+                            <div key={index} className="flex items-start gap-2">
+                              <CheckCircle className="h-4 w-4 text-primary mt-0.5 flex-shrink-0" />
+                              <span className="text-sm text-gray-700">{feature}</span>
+                            </div>
+                          ))}
+                        </div>
+
+                        {/* CTA */}
+                        <Button
+                          className={`w-full ${
+                            isRecommended
+                              ? "bg-primary hover:bg-primary/90 text-white"
+                              : "bg-white border-2 border-primary text-primary hover:bg-primary hover:text-white"
+                          }`}
+                          onClick={handleSignupClick}
+                        >
+                          {t("start_free_trial")}
+                        </Button>
+
+                        <p className="text-xs text-gray-500 text-center mt-3">{t("free_trial_note")}</p>
+                      </CardContent>
+                    </Card>
                   )
                 })}
               </div>
@@ -953,83 +969,12 @@ function LandingPageContent() {
       {/* Footer */}
       <footer className="bg-gray-900 text-white py-12">
         <div className="container mx-auto px-4">
-          <div className="grid md:grid-cols-4 gap-8">
-            <div>
+          <div className="flex flex-col md:flex-row justify-between items-start gap-8">
+            <div className="max-w-md">
               <div className="flex items-center space-x-3 mb-4">
                 <KalenderLogo width={32} height={32} className="object-contain" />
               </div>
               <p className="text-gray-400 font-light">{t("footer_company_description")}</p>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">{t("footer_product")}</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.dashboard"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.dashboard")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.schedule"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.schedule")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.team_management"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.team_management")}
-                  </button>
-                </li>
-                <li>
-                  <button onClick={handlePricingClick} className="hover:text-white transition-colors text-left">
-                    {t("pricing")}
-                  </button>
-                </li>
-              </ul>
-            </div>
-            <div>
-              <h4 className="font-bold mb-4">{t("nav.integrations")}</h4>
-              <ul className="space-y-2 text-gray-400">
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.whatsapp_bot"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.whatsapp_bot")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.integrations"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.integrations")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.reports"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.reports")}
-                  </button>
-                </li>
-                <li>
-                  <button
-                    onClick={() => handleFeatureNavigation(t("nav.api"))}
-                    className="hover:text-white transition-colors text-left"
-                  >
-                    {t("nav.api")}
-                  </button>
-                </li>
-              </ul>
             </div>
             <div>
               <h4 className="font-bold mb-4">{t("company")}</h4>

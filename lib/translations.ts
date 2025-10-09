@@ -28,6 +28,10 @@ export const translations = {
     features_subtitle: "Tudo que você precisa para automatizar e otimizar seus agendamentos",
     smart_scheduling: "Agendamento Inteligente",
     smart_scheduling_desc: "IA otimiza automaticamente horários, reduz conflitos e maximiza sua agenda",
+    lead_qualification: "Qualificação de Leads",
+    lead_qualification_desc: "IA qualifica leads com perguntas inteligentes, identifica interesse e gera agendamentos mais certeiros no funil de vendas",
+    sales_funnel: "Funil de Vendas",
+    sales_funnel_desc: "Acompanhe toda jornada do lead desde o primeiro contato até o fechamento, com métricas de conversão em cada etapa do funil",
     whatsapp_telegram: "WhatsApp & Telegram",
     whatsapp_telegram_desc: "Agendamento automático via chat com confirmações e lembretes inteligentes",
     integrations: "Integrações Completas",
@@ -191,16 +195,145 @@ export const translations = {
     contact: "Contato",
     support: "Suporte",
     copyright: "© 2024 Kalender. Todos os direitos reservados.",
+    whatsapp_bot: "Agente IA WhatsApp",
 
     // Navigation
     nav: {
       dashboard: "Dashboard",
       schedule: "Agenda",
       team_management: "Gestão de Equipe",
-      whatsapp_bot: "Bot WhatsApp",
+      whatsapp_bot: "Agente IA WhatsApp",
       reports: "Relatórios",
       integrations: "Integrações",
       api: "API",
+    },
+
+    // Platform Page
+    platform_page: {
+      hero_title: "Gestão completa de",
+      hero_title_highlight: "agendamentos com IA",
+      hero_subtitle:
+        "Organize horários, clientes e equipes com agente de IA que atende via WhatsApp. Links personalizados, pagamentos integrados e relatórios em tempo real.",
+      what_is_title: "Plataforma completa para seu negócio",
+      what_is_desc:
+        "Cadastre profissionais, unidades e serviços. Envie links de agendamento ou use nosso agente de IA no WhatsApp/Telegram. Acompanhe tudo em tempo real com dashboards e relatórios claros.",
+      highlights: "Destaques",
+      highlights_list: [
+        "Agente de IA omnicanal",
+        "Agenda inteligente",
+        "Links de agendamento",
+        "Catálogo de serviços",
+        "Gestão de clientes",
+      ],
+      features_title: "Principais funcionalidades",
+      ai_agent_title: "Agente de IA (WhatsApp e Telegram)",
+      ai_agent_points: [
+        "Agenda, remarca e cancela em linguagem natural",
+        "Qualifica leads com perguntas inteligentes",
+        "Reconhece clientes e sugere horários",
+      ],
+      smart_calendar_title: "Agenda inteligente",
+      smart_calendar_points: [
+        "Visualização dia, semana e mês",
+        "Bloqueios e folgas por profissional",
+        "Buffers e intervalos automáticos",
+      ],
+      booking_links_title: "Links de agendamento",
+      booking_links_points: [
+        "Links customizados por serviço/profissional",
+        "Páginas otimizadas para mobile",
+        "Tracking UTM e expiração",
+      ],
+      client_mgmt_title: "Gestão de clientes",
+      client_mgmt_points: [
+        "Perfil completo e histórico",
+        "Busca rápida e segmentação",
+      ],
+      teams_units_title: "Equipes e unidades",
+      teams_units_points: [
+        "Múltiplas unidades e endereços",
+        "Permissões por profissional",
+      ],
+      notifications_title: "Notificações e lembretes",
+      notifications_points: [
+        "Confirmações e lembretes automáticos",
+        "Templates personalizáveis",
+      ],
+      billing_title: "Pagamentos",
+      billing_desc:
+        "Integração com Stripe, emissão de cobranças e visão de planos.",
+      reports_title: "Relatórios",
+      reports_desc: "Ocupação, receita, cancelamentos e performance.",
+      integrations_title: "Integrações",
+      integrations_desc: "Webhooks de eventos e API para cenários avançados.",
+      security_title: "Segurança",
+      security_desc:
+        "SSO corporativo, controle de sessão e proteção de dados.",
+      cta_title: "Comece hoje mesmo",
+      cta_desc:
+        "Configure em minutos e faça seu primeiro agendamento com IA ou links personalizados.",
+      cta_start: "Começar Teste Grátis",
+      cta_contact: "Falar com Especialista",
+    },
+
+    // Segments Page
+    segments_page: {
+      hero_title: "Segmentos atendidos",
+      hero_subtitle: "Para quem é a Kalender e como ajudamos na prática.",
+      pros_title: "Profissionais e prestadores",
+      pros_desc:
+        "Ideal para reduzir faltas e organizar agendas: consultórios, estética, personal trainers, terapeutas e mais.",
+      clinics_title: "Clínicas, estúdios, academias",
+      clinics_desc:
+        "Negócios com múltiplas unidades e equipes que precisam de disponibilidade avançada e métricas de ocupação.",
+      sales_title: "Vendas e e-commerce",
+      sales_desc:
+        "Automatize sua pré-venda com inteligência artificial que conversa, entende e qualifica seus leads diretamente no WhatsApp antes de agendar com seu time comercial. Aumente sua taxa de conversão, reduza o tempo dos closers e transforme cada interação em uma oportunidade real de negócio.",
+      ops_title: "Operações e marketing",
+      ops_desc:
+        "Links rastreáveis com UTM, páginas de booking enxutas e atendimento instantâneo por WhatsApp/Telegram.",
+      corp_title: "Segurança e Compliance",
+      corp_desc: "A Kalender foi projetada com foco em segurança e isolamento. Cada cliente opera em um ambiente dedicado (multi-tenant isolado), com autenticação via SSO e Keycloak, garantindo controle centralizado de acesso. Todas as credenciais de integração e autenticação são armazenadas de forma criptografada, protegendo dados sensíveis contra acessos indevidos. As comunicações entre sistemas ocorrem exclusivamente por APIs seguras e webhooks autenticados, garantindo integridade e rastreabilidade total das informações.",
+      how_title: "Como funciona na prática",
+      how_steps: [
+        "Configure sua organização: unidades, profissionais, serviços e horários",
+        "Gere links de agendamento e/ou ative o agente de IA no WhatsApp/Telegram",
+        "Clientes escolhem horário por página ou conversam com o agente em linguagem natural",
+        "Recebem confirmação e lembretes automáticos; pagamentos integrados quando aplicável",
+        "Acompanhe no dashboard, analise resultados e otimize sua capacidade",
+        "O agente identifica clientes recorrentes e sugere remarcações no momento certo",
+      ],
+    },
+
+    // Features Page
+    features_page: {
+      hero_title: "Recursos da plataforma",
+      hero_subtitle: "Tudo o que você precisa para operar, medir e crescer.",
+      ai_selling_title: "Agente de IA que vende e agenda",
+      ai_selling_desc:
+        "Qualifica leads, elimina atritos e aumenta conversão por WhatsApp/Telegram.",
+      smart_calendar_title: "Agenda inteligente",
+      smart_calendar_desc:
+        "Buffers, bloqueios, exceções e feriados por serviço/profissional.",
+      custom_links_title: "Links customizados",
+      custom_links_desc:
+        "UTM, expiração, páginas otimizadas para conversão e mobile-first.",
+      catalog_title: "Catálogo de serviços",
+      catalog_desc: "Preço, duração, recursos, pré-requisitos, categorias e pacotes.",
+      client_mgmt_title: "Gestão de clientes",
+      client_mgmt_desc: "Perfil, histórico, notas, busca rápida e segmentação básica.",
+      teams_units_title: "Equipes e unidades",
+      teams_units_desc: "Multiunidade, multiequipe, permissões e serviços por profissional.",
+      notifications_title: "Notificações e lembretes",
+      notifications_desc: "Templates por evento, e-mail e mensagens com confirmação.",
+      billing_title: "Pagamentos e faturamento",
+      billing_desc: "Gateways como Stripe, emissão e reconciliação de cobranças.",
+      reports_title: "Relatórios e métricas",
+      reports_desc: "Ocupação, receita, no-shows, rankings e tendências.",
+      integrations_title: "Integrações e webhooks",
+      integrations_desc: "Eventos (agendado, cancelado, confirmado, pago), BFF/API.",
+      security_title: "Segurança e autenticação",
+      security_desc: "Arquitetura multi-tenant isolada, autenticação SSO/Keycloak, credenciais criptografadas e comunicação via APIs seguras com webhooks autenticados.",
     },
   },
 
@@ -233,6 +366,10 @@ export const translations = {
     features_subtitle: "Everything you need to automate and optimize your appointments",
     smart_scheduling: "Smart Scheduling",
     smart_scheduling_desc: "AI automatically optimizes schedules, reduces conflicts, and maximizes your calendar",
+    lead_qualification: "Lead Qualification",
+    lead_qualification_desc: "AI qualifies leads with smart questions, identifies interest and generates more accurate appointments in the sales funnel",
+    sales_funnel: "Sales Funnel",
+    sales_funnel_desc: "Track the entire lead journey from first contact to closing, with conversion metrics at each stage of the funnel",
     whatsapp_telegram: "WhatsApp & Telegram",
     whatsapp_telegram_desc: "Automatic appointment booking via chat with smart confirmations and reminders",
     integrations: "Complete Integrations",
@@ -395,16 +532,144 @@ export const translations = {
     contact: "Contact",
     support: "Support",
     copyright: "© 2024 Kalender. All rights reserved.",
+    whatsapp_bot: "AI Agent WhatsApp",
 
     // Navigation
     nav: {
       dashboard: "Dashboard",
       schedule: "Schedule",
       team_management: "Team Management",
-      whatsapp_bot: "WhatsApp Bot",
+      whatsapp_bot: "AI Agent WhatsApp",
       reports: "Reports",
       integrations: "Integrations",
       api: "API",
+    },
+
+    platform_page: {
+      hero_title: "Complete",
+      hero_title_highlight: "scheduling management with AI",
+      hero_subtitle:
+        "Turn your calendar into revenue. Organize schedules, customers, teams, payments and communication in a modern, secure and easy-to-use platform. From booking link to financial reports — with an AI agent that schedules via WhatsApp/Telegram, qualifies leads and boosts your business.",
+      what_is_title: "What is Kalender",
+      what_is_desc:
+        "Kalender is a complete platform for managing appointments and services. Create your organization, register professionals and locations, publish services with availability rules and send booking links to your customers — or let our AI agent handle it via WhatsApp and Telegram, in natural language. Track operations in real time, receive payments, integrate tools and make decisions with clear reports.",
+      highlights: "Highlights",
+      highlights_list: [
+        "Omnichannel AI agent",
+        "Smart calendar",
+        "Booking links",
+        "Service catalog",
+        "Customer management",
+      ],
+      features_title: "Key features",
+      ai_agent_title: "Omnichannel AI agent (WhatsApp & Telegram)",
+      ai_agent_points: [
+        "Natural language to book, reschedule and cancel",
+        "Lead qualification with dynamic questions and configurable scripts",
+        "Recognizes registered customers and suggests recurrences and preferred times",
+        "Captures UTM/source, records context and sends automatic confirmations",
+        "Smooth handoff to human team when needed",
+      ],
+      smart_calendar_title: "Smart calendar",
+      smart_calendar_points: [
+        "Day, week and month views",
+        "Blocks, breaks and service windows per professional",
+        "Automatic duration rules, intervals and buffers",
+      ],
+      booking_links_title: "Booking links",
+      booking_links_points: [
+        "Public and custom links per service, professional, campaign or customer",
+        "Conversion-optimized, mobile-first booking pages",
+        "Redirects, UTM parameters and link expiration",
+      ],
+      client_mgmt_title: "Customer management",
+      client_mgmt_points: [
+        "Customer profile, appointment history and notes",
+        "Fast search and basic segmentation",
+      ],
+      teams_units_title: "Teams and locations",
+      teams_units_points: [
+        "Multiple locations/addresses under one account",
+        "Per-professional settings (calendar, permissions, services)",
+      ],
+      notifications_title: "Notifications and reminders",
+      notifications_points: [
+        "Confirmations, changes and reminders via email and messages",
+        "Event-based customizable messages",
+      ],
+      billing_title: "Payments and billing",
+      billing_desc:
+        "Integrations with gateways (e.g., Stripe), issuing and reconciling charges, plans and upgrades view.",
+      reports_title: "Reports and metrics",
+      reports_desc: "Utilization, revenue, cancellations, no-shows and performance ranking.",
+      integrations_title: "Integrations and webhooks",
+      integrations_desc: "Native integrations, event webhooks and BFF/API for advanced scenarios.",
+      security_title: "Security and authentication",
+      security_desc:
+        "Enterprise login (e.g., Keycloak/SSO), session control and security best practices.",
+      cta_title: "Get started",
+      cta_desc:
+        "Enable the AI agent on WhatsApp/Telegram or publish your links and share your first booking in minutes.",
+      cta_start: "Start Free Trial",
+      cta_contact: "Talk to a Specialist",
+    },
+
+    segments_page: {
+      hero_title: "Segments we serve",
+      hero_subtitle: "Who Kalender is for and how we help in practice.",
+      pros_title: "Professionals and providers",
+      pros_desc:
+        "Ideal to reduce no-shows and organize schedules: clinics, beauty, personal trainers, therapists and more.",
+      clinics_title: "Clinics, studios, gyms",
+      clinics_desc:
+        "Businesses with multiple locations and teams needing advanced availability and utilization metrics.",
+      sales_title: "Sales and e-commerce",
+      sales_desc:
+        "Automate your pre-sales with artificial intelligence that converses, understands and qualifies your leads directly on WhatsApp before scheduling with your sales team. Increase your conversion rate, reduce closers' time and turn every interaction into a real business opportunity.",
+      ops_title: "Operations and marketing",
+      ops_desc:
+        "Trackable links with UTM, lean booking pages and instant WhatsApp/Telegram servicing.",
+      corp_title: "Security and Compliance",
+      corp_desc: "Kalender was designed with a focus on security and isolation. Each client operates in a dedicated environment (isolated multi-tenant), with SSO and Keycloak authentication, ensuring centralized access control. All integration and authentication credentials are stored encrypted, protecting sensitive data against unauthorized access. Communications between systems occur exclusively through secure APIs and authenticated webhooks, ensuring complete integrity and traceability of information.",
+      how_title: "How it works in practice",
+      how_steps: [
+        "Configure your organization: locations, professionals, services and hours",
+        "Generate booking links and/or enable the AI agent on WhatsApp/Telegram",
+        "Customers pick a time on the page or chat with the agent in natural language",
+        "They receive confirmations and automatic reminders; integrated payments when applicable",
+        "Track in the dashboard, analyze results and optimize your capacity",
+        "The agent identifies recurring customers and suggests rescheduling at the right time",
+      ],
+    },
+
+    features_page: {
+      hero_title: "Platform features",
+      hero_subtitle: "Everything you need to operate, measure and grow.",
+      ai_selling_title: "AI agent that sells and books",
+      ai_selling_desc:
+        "Qualifies leads, removes friction and increases conversion via WhatsApp/Telegram.",
+      smart_calendar_title: "Smart calendar",
+      smart_calendar_desc:
+        "Buffers, blocks, exceptions and holidays per service/professional.",
+      custom_links_title: "Custom links",
+      custom_links_desc:
+        "UTM, expiration, conversion-optimized and mobile-first pages.",
+      catalog_title: "Service catalog",
+      catalog_desc: "Price, duration, resources, prerequisites, categories and bundles.",
+      client_mgmt_title: "Customer management",
+      client_mgmt_desc: "Profile, history, notes, fast search and basic segmentation.",
+      teams_units_title: "Teams and locations",
+      teams_units_desc: "Multi-location, multi-team, permissions and services per professional.",
+      notifications_title: "Notifications and reminders",
+      notifications_desc: "Event templates, email and messages with confirmation.",
+      billing_title: "Payments and billing",
+      billing_desc: "Gateways like Stripe, issuing and reconciling charges.",
+      reports_title: "Reports and metrics",
+      reports_desc: "Utilization, revenue, no-shows, rankings and trends.",
+      integrations_title: "Integrations and webhooks",
+      integrations_desc: "Events (booked, canceled, confirmed, paid), BFF/API.",
+      security_title: "Security and authentication",
+      security_desc: "Isolated multi-tenant architecture, SSO/Keycloak authentication, encrypted credentials and communication via secure APIs with authenticated webhooks.",
     },
   },
 
@@ -437,6 +702,10 @@ export const translations = {
     features_subtitle: "Todo lo que necesitas para automatizar y optimizar tus citas",
     smart_scheduling: "Agendamiento Inteligente",
     smart_scheduling_desc: "La IA optimiza automáticamente los horarios, reduce conflictos y maximiza tu calendario",
+    lead_qualification: "Calificación de Leads",
+    lead_qualification_desc: "La IA califica leads con preguntas inteligentes, identifica interés y genera citas más certeras en el embudo de ventas",
+    sales_funnel: "Embudo de Ventas",
+    sales_funnel_desc: "Acompaña todo el recorrido del lead desde el primer contacto hasta el cierre, con métricas de conversión en cada etapa del embudo",
     whatsapp_telegram: "WhatsApp y Telegram",
     whatsapp_telegram_desc: "Reserva automática de citas vía chat con confirmaciones y recordatorios inteligentes",
     integrations: "Integraciones Completas",
@@ -601,16 +870,144 @@ export const translations = {
     contact: "Contacto",
     support: "Soporte",
     copyright: "© 2024 Kalender. Todos los derechos reservados.",
+    whatsapp_bot: "Agente IA WhatsApp",
 
     // Navigation
     nav: {
       dashboard: "Panel",
       schedule: "Agenda",
       team_management: "Gestión de Equipo",
-      whatsapp_bot: "Bot de WhatsApp",
+      whatsapp_bot: "Agente IA WhatsApp",
       reports: "Reportes",
       integrations: "Integraciones",
       api: "API",
+    },
+
+    platform_page: {
+      hero_title: "Gestión completa de",
+      hero_title_highlight: "agendamiento con IA",
+      hero_subtitle:
+        "Convierte tu agenda en ingresos. Organiza horarios, clientes, equipos, pagos y comunicación en una plataforma moderna, segura y fácil de usar. Del enlace de reservas al informe financiero — con un agente de IA que agenda por WhatsApp/Telegram, califica leads e impulsa tu negocio.",
+      what_is_title: "Qué es Kalender",
+      what_is_desc:
+        "Kalender es una plataforma completa para gestionar citas y servicios. Crea tu organización, registra profesionales y ubicaciones, publica servicios con reglas de disponibilidad y envía enlaces de reserva a tus clientes — o deja que nuestro agente de IA lo gestione por WhatsApp y Telegram, en lenguaje natural. Supervisa la operación en tiempo real, recibe pagos, integra herramientas y toma decisiones con reportes claros.",
+      highlights: "Destacados",
+      highlights_list: [
+        "Agente de IA omnicanal",
+        "Agenda inteligente",
+        "Enlaces de reserva",
+        "Catálogo de servicios",
+        "Gestión de clientes",
+      ],
+      features_title: "Funciones principales",
+      ai_agent_title: "Agente de IA omnicanal (WhatsApp y Telegram)",
+      ai_agent_points: [
+        "Lenguaje natural para agendar, reprogramar y cancelar",
+        "Calificación de leads con preguntas dinámicas y guiones configurables",
+        "Reconoce clientes registrados y sugiere recurrencias y horarios preferidos",
+        "Captura UTM/origen, registra contexto y envía confirmaciones automáticas",
+        "Handoff fluido al equipo humano cuando sea necesario",
+      ],
+      smart_calendar_title: "Agenda inteligente",
+      smart_calendar_points: [
+        "Vistas por día, semana y mes",
+        "Bloqueos, descansos y ventanas de atención por profesional",
+        "Reglas de duración, intervalos y buffers automáticos",
+      ],
+      booking_links_title: "Enlaces de reserva",
+      booking_links_points: [
+        "Enlaces públicos y personalizados por servicio, profesional, campaña o cliente",
+        "Páginas optimizadas para conversión y mobile-first",
+        "Redirecciones, parámetros UTM y expiración de enlaces",
+      ],
+      client_mgmt_title: "Gestión de clientes",
+      client_mgmt_points: [
+        "Perfil del cliente, historial de citas y notas",
+        "Búsqueda rápida y segmentación básica",
+      ],
+      teams_units_title: "Equipos y unidades",
+      teams_units_points: [
+        "Múltiples ubicaciones/direcciones en una sola cuenta",
+        "Configuraciones por profesional (agenda, permisos, servicios)",
+      ],
+      notifications_title: "Notificaciones y recordatorios",
+      notifications_points: [
+        "Confirmaciones, cambios y recordatorios por email y mensajes",
+        "Mensajes personalizables por evento",
+      ],
+      billing_title: "Pagos y facturación",
+      billing_desc:
+        "Integración con pasarelas (ej.: Stripe), emisión y conciliación de cobros, vista de planes y upgrades.",
+      reports_title: "Reportes y métricas",
+      reports_desc: "Ocupación, ingresos, cancelaciones, ausencias y ranking de desempeño.",
+      integrations_title: "Integraciones y webhooks",
+      integrations_desc: "Integraciones nativas, webhooks de eventos y BFF/API para escenarios avanzados.",
+      security_title: "Seguridad y autenticación",
+      security_desc:
+        "Inicio de sesión corporativo (ej.: Keycloak/SSO), control de sesión y buenas prácticas de seguridad.",
+      cta_title: "Comenzar ahora",
+      cta_desc:
+        "Activa el agente de IA en WhatsApp/Telegram o publica tus enlaces y comparte tu primera reserva en minutos.",
+      cta_start: "Comenzar Prueba Gratis",
+      cta_contact: "Hablar con Especialista",
+    },
+
+    segments_page: {
+      hero_title: "Segmentos atendidos",
+      hero_subtitle: "Para quién es Kalender y cómo ayudamos en la práctica.",
+      pros_title: "Profesionales y prestadores",
+      pros_desc:
+        "Ideal para reducir ausencias y organizar agendas: consultorios, estética, entrenadores personales, terapeutas y más.",
+      clinics_title: "Clínicas, estudios, gimnasios",
+      clinics_desc:
+        "Negocios con múltiples unidades y equipos que necesitan disponibilidad avanzada y métricas de ocupación.",
+      sales_title: "Ventas y e-commerce",
+      sales_desc:
+        "Automatiza tu preventa con inteligencia artificial que conversa, entiende y califica tus leads directamente en WhatsApp antes de agendar con tu equipo comercial. Aumenta tu tasa de conversión, reduce el tiempo de los closers y transforma cada interacción en una oportunidad real de negocio.",
+      ops_title: "Operaciones y marketing",
+      ops_desc:
+        "Enlaces rastreables con UTM, páginas de reserva ligeras y atención instantánea por WhatsApp/Telegram.",
+      corp_title: "Seguridad y Compliance",
+      corp_desc: "Kalender fue diseñado con enfoque en seguridad y aislamiento. Cada cliente opera en un ambiente dedicado (multi-tenant aislado), con autenticación vía SSO y Keycloak, garantizando control centralizado de acceso. Todas las credenciales de integración y autenticación se almacenan de forma encriptada, protegiendo datos sensibles contra accesos indebidos. Las comunicaciones entre sistemas ocurren exclusivamente por APIs seguras y webhooks autenticados, garantizando integridad y trazabilidad total de la información.",
+      how_title: "Cómo funciona en la práctica",
+      how_steps: [
+        "Configura tu organización: unidades, profesionales, servicios y horarios",
+        "Genera enlaces de reserva y/o activa el agente de IA en WhatsApp/Telegram",
+        "Los clientes eligen horario por página o conversan con el agente en lenguaje natural",
+        "Reciben confirmación y recordatorios automáticos; pagos integrados cuando aplica",
+        "Sigue todo en el panel, analiza resultados y optimiza tu capacidad",
+        "El agente identifica clientes recurrentes y sugiere reprogramaciones en el momento adecuado",
+      ],
+    },
+
+    features_page: {
+      hero_title: "Funciones de la plataforma",
+      hero_subtitle: "Todo lo que necesitas para operar, medir y crecer.",
+      ai_selling_title: "Agente de IA que vende y agenda",
+      ai_selling_desc:
+        "Califica leads, elimina fricciones y aumenta la conversión por WhatsApp/Telegram.",
+      smart_calendar_title: "Agenda inteligente",
+      smart_calendar_desc:
+        "Buffers, bloqueos, excepciones y feriados por servicio/profesional.",
+      custom_links_title: "Enlaces personalizados",
+      custom_links_desc:
+        "UTM, expiración, páginas optimizadas para conversión y mobile-first.",
+      catalog_title: "Catálogo de servicios",
+      catalog_desc: "Precio, duración, recursos, requisitos previos, categorías y paquetes.",
+      client_mgmt_title: "Gestión de clientes",
+      client_mgmt_desc: "Perfil, historial, notas, búsqueda rápida y segmentación básica.",
+      teams_units_title: "Equipos y unidades",
+      teams_units_desc: "Multiunidad, multi-equipo, permisos y servicios por profesional.",
+      notifications_title: "Notificaciones y recordatorios",
+      notifications_desc: "Plantillas por evento, email y mensajes con confirmación.",
+      billing_title: "Pagos y facturación",
+      billing_desc: "Pasarelas como Stripe, emisión y conciliación de cobros.",
+      reports_title: "Reportes y métricas",
+      reports_desc: "Ocupación, ingresos, ausencias, rankings y tendencias.",
+      integrations_title: "Integraciones y webhooks",
+      integrations_desc: "Eventos (agendado, cancelado, confirmado, pagado), BFF/API.",
+      security_title: "Seguridad y autenticación",
+      security_desc: "Arquitectura multi-tenant aislada, autenticación SSO/Keycloak, credenciales encriptadas y comunicación vía APIs seguras con webhooks autenticados.",
     },
   },
 }
