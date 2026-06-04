@@ -18,7 +18,7 @@ const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: "es", label: "Español", flag: "🇪🇸" },
 ]
 
-const NAV_SECTIONS = ["pillars", "features", "pricing", "faq"] as const
+const NAV_SECTIONS = ["solution", "ai-whatsapp", "pricing", "faq"] as const
 
 interface NavbarProps {
   /** Force the "scrolled" (solid bg) appearance — use on pages with white backgrounds */
@@ -81,8 +81,8 @@ export function Navbar({ solid = false }: NavbarProps) {
   }
 
   const navItems = [
-    { label: t("landing.nav_pillars"), id: "pillars" },
-    { label: t("landing.nav_features"), id: "features" },
+    { label: t("landing.nav_solution"), id: "solution" },
+    { label: t("landing.nav_ai"), id: "ai-whatsapp" },
     { label: t("landing.nav_pricing"), id: "pricing" },
     { label: t("landing.nav_faq"), id: "faq" },
   ]

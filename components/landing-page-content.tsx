@@ -5,19 +5,19 @@ import { ChevronDown } from "lucide-react"
 import { useTranslation } from "@/contexts/translation-context"
 import { Navbar } from "@/components/layout/navbar"
 import { HeroSection } from "@/components/sections/hero"
-import { SocialProofSection } from "@/components/sections/social-proof"
-import { PainPointsSection } from "@/components/sections/pain-points"
-import { PillarsSection } from "@/components/sections/pillars"
-import { FeaturesSection } from "@/components/sections/features"
-import { AISection } from "@/components/sections/ai-section"
-import { DifferentiationSection } from "@/components/sections/differentiation"
-import { PricingSection } from "@/components/sections/pricing"
+import { CredibilityStripSection } from "@/components/sections/credibility-strip"
+import { ProblemSection } from "@/components/sections/problem"
+import { SolutionSection } from "@/components/sections/solution"
+import { AIWhatsAppSection } from "@/components/sections/ai-whatsapp"
+import { HowItWorksSection } from "@/components/sections/how-it-works"
+import { TrustSection } from "@/components/sections/trust"
+import { EarlyAdopterPricingSection } from "@/components/sections/early-adopter-pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { CTASection } from "@/components/sections/cta"
 import { FooterSection } from "@/components/sections/footer"
 
 // Re-export PlanDetails so app/page.tsx import still works
-export type { PlanDetails } from "@/components/sections/pricing"
+export type { PlanDetails } from "@/components/sections/early-adopter-pricing"
 
 // ─── Scroll Animation Hook ───────────────────────────────────────────────────
 
@@ -69,7 +69,7 @@ function useBackToTop() {
 // ─── Landing Page Content ────────────────────────────────────────────────────
 
 interface LandingPageContentProps {
-  initialPlans: import("@/components/sections/pricing").PlanDetails[]
+  initialPlans: import("@/components/sections/early-adopter-pricing").PlanDetails[]
 }
 
 export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
@@ -87,13 +87,13 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
     <div className="min-h-screen bg-white dark:bg-zinc-950 font-sans antialiased">
       <Navbar />
       <HeroSection />
-      <SocialProofSection />
-      <PainPointsSection />
-      <PillarsSection />
-      <FeaturesSection />
-      <AISection />
-      <DifferentiationSection />
-      <PricingSection plans={initialPlans} />
+      <CredibilityStripSection />
+      <ProblemSection />
+      <SolutionSection />
+      <AIWhatsAppSection />
+      <HowItWorksSection />
+      <TrustSection />
+      <EarlyAdopterPricingSection plans={initialPlans} />
       <FAQSection />
       <CTASection />
       <FooterSection />

@@ -9,14 +9,14 @@ export function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  const faqCount = 10
+  const faqCount = 8
   const faqs = Array.from({ length: faqCount }, (_, i) => ({
     q: t(`landing.faq_q${i + 1}`),
     a: t(`landing.faq_a${i + 1}`),
   }))
 
   return (
-    <section id="faq" className="py-20 bg-white dark:bg-zinc-950 scroll-mt-20">
+    <section id="faq" className="py-20 bg-zinc-100 dark:bg-zinc-950 scroll-mt-20">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto">
           <div className="text-center mb-12 animate-on-scroll">
