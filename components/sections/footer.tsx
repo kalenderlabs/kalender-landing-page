@@ -4,7 +4,7 @@ import { useTranslation } from "@/contexts/translation-context"
 import { KalenderLogo } from "@/components/kalender-logo"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import type { Locale } from "@/lib/translations"
-import { Globe, ChevronDown, Hexagon } from "lucide-react"
+import { Globe, ChevronDown } from "lucide-react"
 
 const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: "pt", label: "Português", flag: "🇧🇷" },
@@ -124,7 +124,7 @@ export function FooterSection() {
             rel="noopener noreferrer"
             className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 text-xs text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-all"
           >
-            <Hexagon className="h-3 w-3" />
+            <img src="https://www.cerneo.com.br/images/logo-cerneo.png" alt="Cerneo" className="h-4 w-4 rounded-sm" />
             Powered by <span className="font-semibold">Cerneo</span>
           </a>
           <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-between">
