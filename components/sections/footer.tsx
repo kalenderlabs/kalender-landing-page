@@ -4,7 +4,7 @@ import { useTranslation } from "@/contexts/translation-context"
 import { KalenderLogo } from "@/components/kalender-logo"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import type { Locale } from "@/lib/translations"
-import { Globe, ChevronDown, ExternalLink } from "lucide-react"
+import { Globe, ChevronDown, Hexagon } from "lucide-react"
 
 const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: "pt", label: "Português", flag: "🇧🇷" },
@@ -117,43 +117,43 @@ export function FooterSection() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-zinc-200 dark:border-zinc-500/25 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+        <div className="border-t border-zinc-200 dark:border-zinc-500/25 pt-6 flex flex-col items-center gap-4">
+          <a
+            href="https://www.cerneo.com.br/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 text-xs text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-all"
+          >
+            <Hexagon className="h-3 w-3" />
+            Powered by <span className="font-semibold">Cerneo</span>
+          </a>
+          <div className="flex flex-col sm:flex-row items-center gap-4 w-full justify-between">
             <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
-            <a
-              href="https://www.cerneo.com.br/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 text-xs text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-all"
-            >
-              Powered by <span className="font-semibold">Cerneo</span>
-              <ExternalLink className="h-3 w-3" />
-            </a>
+            <DropdownMenu>
+              <DropdownMenuTrigger asChild>
+                <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-500/25 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
+                  <Globe className="h-3.5 w-3.5" />
+                  <span>{currentLang.flag}</span>
+                  <span className="text-xs">{currentLang.code.toUpperCase()}</span>
+                  <ChevronDown className="h-3 w-3 opacity-50" />
+                </button>
+              </DropdownMenuTrigger>
+              <DropdownMenuContent align="end" className="w-44">
+                {LANGUAGES.map((lang) => (
+                  <DropdownMenuItem
+                    key={lang.code}
+                    onClick={() => setLanguage(lang.code)}
+                    className={`flex items-center gap-2.5 cursor-pointer ${
+                      language === lang.code ? "bg-primary/10 text-primary font-medium" : ""
+                    }`}
+                  >
+                    <span className="text-base">{lang.flag}</span>
+                    <span>{lang.label}</span>
+                  </DropdownMenuItem>
+                ))}
+              </DropdownMenuContent>
+            </DropdownMenu>
           </div>
-          <DropdownMenu>
-            <DropdownMenuTrigger asChild>
-              <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-500/25 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
-                <Globe className="h-3.5 w-3.5" />
-                <span>{currentLang.flag}</span>
-                <span className="text-xs">{currentLang.code.toUpperCase()}</span>
-                <ChevronDown className="h-3 w-3 opacity-50" />
-              </button>
-            </DropdownMenuTrigger>
-            <DropdownMenuContent align="end" className="w-44">
-              {LANGUAGES.map((lang) => (
-                <DropdownMenuItem
-                  key={lang.code}
-                  onClick={() => setLanguage(lang.code)}
-                  className={`flex items-center gap-2.5 cursor-pointer ${
-                    language === lang.code ? "bg-primary/10 text-primary font-medium" : ""
-                  }`}
-                >
-                  <span className="text-base">{lang.flag}</span>
-                  <span>{lang.label}</span>
-                </DropdownMenuItem>
-              ))}
-            </DropdownMenuContent>
-          </DropdownMenu>
         </div>
       </div>
     </footer>
