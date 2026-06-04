@@ -4,7 +4,7 @@ import { useTranslation } from "@/contexts/translation-context"
 import { KalenderLogo } from "@/components/kalender-logo"
 import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuTrigger } from "@/components/ui/dropdown-menu"
 import type { Locale } from "@/lib/translations"
-import { Globe, ChevronDown } from "lucide-react"
+import { Globe, ChevronDown, ExternalLink } from "lucide-react"
 
 const LANGUAGES: { code: Locale; label: string; flag: string }[] = [
   { code: "pt", label: "Português", flag: "🇧🇷" },
@@ -120,14 +120,14 @@ export function FooterSection() {
         <div className="border-t border-zinc-200 dark:border-zinc-500/25 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
           <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
             <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
-            <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">·</span>
             <a
               href="https://www.cerneo.com.br/"
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+              className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full border border-zinc-200 dark:border-zinc-700 text-xs text-zinc-500 dark:text-zinc-400 hover:border-zinc-400 dark:hover:border-zinc-500 hover:text-zinc-700 dark:hover:text-zinc-300 transition-all"
             >
-              Powered by <span className="font-medium">Cerneo</span>
+              Powered by <span className="font-semibold">Cerneo</span>
+              <ExternalLink className="h-3 w-3" />
             </a>
           </div>
           <DropdownMenu>
