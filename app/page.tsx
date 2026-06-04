@@ -1,6 +1,9 @@
 import { TranslationProvider } from "@/contexts/translation-context"
 import { LandingPageContent, type PlanDetails } from "@/components/landing-page-content"
 
+// Re-export PlanDetails for external consumers
+export type { PlanDetails }
+
 const API_PUBLIC_PLANS_URL = "https://api.kalender.com.br/billing/plans/public"
 
 // Fallback to legacy endpoint if public endpoint is not yet deployed
@@ -129,7 +132,11 @@ async function getPlans(): Promise<PlanDetails[]> {
 }
 
 export default async function LandingPage() {
-  const plans = await getPlans()
+  const allPlans = await getPlans()
+
+  // Filter for Early Adopter plan (first recommended, or first active, or just the first one)
+  const earlyAdopter = allPlans.find((p) => p.isRecommended) || allPlans[0]
+  const plans = earlyAdopter ? [earlyAdopter] : []
 
   return (
     <TranslationProvider>

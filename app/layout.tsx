@@ -10,9 +10,9 @@ import "./globals.css"
 const inter = Inter({ subsets: ["latin"] })
 
 export const metadata: Metadata = {
-  title: "Kalender - Revenue OS para Negócios com Atendimento",
-  description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação, automatize cobranças e fidelize clientes com IA. Para clínicas, salões, barbearias, estética e consultórios. Teste grátis 7 dias.",
-  keywords: "revenue os, sistema gestão receita, reduzir no-show, aumentar ocupação agenda, CRM clientes serviços, WhatsApp IA agendamento, plataforma atendimento, sistema clínica, sistema salão, sistema barbearia, automação agendamento, pacotes créditos recorrência",
+  title: "Kalender - Agenda, Comanda e Comissão para Salões e Barbearias",
+  description: "Sistema de agenda, comanda e comissão para barbearias, salões e estéticas no Brasil. Confirmação automática no WhatsApp, IA que agenda sozinha e controle de comissão por profissional. Teste grátis.",
+  keywords: "sistema salão de beleza, agenda barbearia, sistema barbearia, agenda salão, comissão profissional, comanda digital salão, agendamento WhatsApp, IA WhatsApp salão, sistema estética, agenda online salão",
   authors: [{ name: "Kalender" }],
   creator: "Kalender",
   publisher: "Kalender",
@@ -34,8 +34,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "pt_BR",
     url: "https://kalender.com.br",
-    title: "Kalender - Revenue OS para Negócios com Atendimento",
-    description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação e fidelize clientes com IA. Teste grátis 7 dias.",
+    title: "Kalender - Agenda, Comanda e Comissão para Salões e Barbearias",
+    description: "Sistema de agenda, comanda e comissão para barbearias, salões e estéticas no Brasil. Confirmação automática no WhatsApp incluída. Teste grátis.",
     siteName: "Kalender",
     images: [
       {
@@ -48,8 +48,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Kalender - Revenue OS para Negócios com Atendimento",
-    description: "Transforme atendimento em receita recorrente. Reduza no-show, aumente ocupação e fidelize clientes com IA.",
+    title: "Kalender - Agenda, Comanda e Comissão para Salões e Barbearias",
+    description: "Sistema de agenda, comanda e comissão para barbearias, salões e estéticas no Brasil. Confirmação automática no WhatsApp incluída.",
     images: ["/og-image.png"],
   },
   robots: {
@@ -108,15 +108,15 @@ export default function RootLayout({ children }: RootLayoutProps) {
       priceValidUntil: "2026-12-31",
       description: "Teste grátis por 7 dias"
     },
-    description: "Revenue OS para negócios com atendimento. Reduza no-show, aumente ocupação, automatize cobranças e fidelize clientes com IA.",
+    description: "Sistema de agenda, comanda e comissão para barbearias, salões e estéticas no Brasil. Confirmação automática no WhatsApp e IA que agenda sozinha.",
     featureList: [
-      "Redução de no-show com confirmação automática",
-      "Pagamentos e cobranças antecipadas",
-      "CRM e retenção de clientes",
-      "Atendimento por IA no WhatsApp",
-      "Inteligência operacional e relatórios",
-      "Pacotes, créditos e recorrência",
-      "Agenda inteligente multi-profissional"
+      "Agenda por profissional com confirmação automática",
+      "IA no WhatsApp que agenda sozinha",
+      "Comanda digital e comissão automática",
+      "Controle de caixa e relatórios",
+      "Link de agendamento para clientes",
+      "Suporte offline",
+      "Conformidade LGPD"
     ],
     screenshot: "https://kalender.com.br/og-image.png",
     url: "https://kalender.com.br",

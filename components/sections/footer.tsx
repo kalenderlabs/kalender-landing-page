@@ -70,7 +70,7 @@ export function FooterSection() {
             <h4 className="text-zinc-900 dark:text-white font-semibold mb-4 text-xs uppercase tracking-wider">{t("landing.footer_product")}</h4>
             <ul className="space-y-2.5">
               {[
-                { label: t("landing.footer_features"), action: () => scrollTo("features") },
+                { label: t("landing.footer_solution"), action: () => scrollTo("solution") },
                 { label: t("landing.footer_pricing"), action: () => scrollTo("pricing") },
                 { label: t("landing.footer_faq"), action: () => scrollTo("faq") },
               ].map((item, i) => (
