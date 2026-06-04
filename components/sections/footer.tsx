@@ -118,7 +118,18 @@ export function FooterSection() {
 
         {/* Bottom Bar */}
         <div className="border-t border-zinc-200 dark:border-zinc-500/25 pt-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
+          <div className="flex flex-col sm:flex-row items-center gap-2 sm:gap-4">
+            <p className="text-sm text-zinc-400 dark:text-zinc-500">{t("landing.footer_copyright")}</p>
+            <span className="hidden sm:inline text-zinc-300 dark:text-zinc-700">·</span>
+            <a
+              href="https://www.cerneo.com.br/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-xs text-zinc-400 dark:text-zinc-500 hover:text-zinc-600 dark:hover:text-zinc-300 transition-colors"
+            >
+              Powered by <span className="font-medium">Cerneo</span>
+            </a>
+          </div>
           <DropdownMenu>
             <DropdownMenuTrigger asChild>
               <button className="flex items-center gap-1.5 px-2.5 py-1.5 rounded-lg text-sm font-medium border border-zinc-200 dark:border-zinc-500/25 text-zinc-500 dark:text-zinc-400 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800 transition-colors">
