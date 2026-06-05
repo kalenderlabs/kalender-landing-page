@@ -75,10 +75,9 @@ const FEATURE_LABELS: Record<number, string> = {
   6: "Controle financeiro",
   7: "Pacotes e promoções",
   8: "Programa de fidelidade",
-  9: "Pesquisas de satisfação",
-  10: "Suporte prioritário",
-  11: "Agendamento online",
-  12: "Gestão de profissionais",
+  9: "Suporte prioritário",
+  10: "Agendamento online",
+  11: "Gestão de profissionais",
 }
 
 function transformLegacyPlan(api: LegacyPlan): PlanDetails {
