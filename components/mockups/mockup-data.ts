@@ -21,13 +21,19 @@ export const WEEK_DAYS = [
   { abbr: "Sex", num: 13 },
 ]
 
-export const BUSINESS_START = 8
-export const BUSINESS_END = 18
+export const BUSINESS_START = 9
+export const BUSINESS_END = 17
 
 export const STATUS_COLORS: Record<AppointmentStatus, string> = {
   confirmed: "#22c55e",
   pending: "#f59e0b",
   in_progress: "#0EA5E9",
+}
+
+export const STATUS_LABELS: Record<AppointmentStatus, string> = {
+  confirmed: "Confirmado",
+  pending: "Pendente",
+  in_progress: "Em atend.",
 }
 
 export const APPOINTMENTS: MockAppointment[] = [
@@ -65,7 +71,7 @@ export const APPOINTMENTS: MockAppointment[] = [
     status: "confirmed",
     day: 1,
     startHour: 15,
-    duration: 2.5,
+    duration: 2,
   },
   {
     client: "Eduarda Lima",
@@ -91,8 +97,8 @@ export const APPOINTMENTS: MockAppointment[] = [
     professional: "Juliana",
     status: "pending",
     day: 3,
-    startHour: 8,
-    duration: 3,
+    startHour: 9,
+    duration: 2.5,
   },
   {
     client: "Helena Barbosa",
@@ -118,7 +124,7 @@ export const APPOINTMENTS: MockAppointment[] = [
 export const WHATSAPP_MESSAGES = [
   {
     from: "bot" as const,
-    text: "Olá Ana! 👋 Seu agendamento está confirmado.",
+    text: "Ola Ana! Seu agendamento foi registrado.",
   },
   {
     from: "bot" as const,
@@ -129,12 +135,16 @@ export const WHATSAPP_MESSAGES = [
     professional: "Juliana",
   },
   {
+    from: "bot" as const,
+    text: "Deseja confirmar sua presenca?",
+  },
+  {
     from: "client" as const,
-    text: "Confirmado! ✅",
+    text: "Sim, confirmado!",
   },
   {
     from: "bot" as const,
-    text: "Perfeito! Até lá! 😊",
+    text: "Perfeito! Ate la! Qualquer alteracao, e so avisar.",
   },
 ]
 
