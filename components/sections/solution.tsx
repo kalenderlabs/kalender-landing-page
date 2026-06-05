@@ -2,6 +2,9 @@
 
 import { useTranslation } from "@/contexts/translation-context"
 import { Calendar, MessageCircle, DollarSign } from "lucide-react"
+import { MockupScheduleGrid } from "@/components/mockups/mockup-schedule-grid"
+import { MockupWhatsAppConfirmation } from "@/components/mockups/mockup-whatsapp-confirmation"
+import { MockupComandaCommission } from "@/components/mockups/mockup-comanda-commission"
 
 export function SolutionSection() {
   const { t } = useTranslation()
@@ -16,7 +19,8 @@ export function SolutionSection() {
         t("landing.solution_pillar1_point2"),
         t("landing.solution_pillar1_point3"),
       ],
-      screenshotLabel: t("landing.solution_pillar1_screenshot"),
+      ariaLabel: t("landing.solution_pillar1_screenshot"),
+      mockup: <MockupScheduleGrid variant="compact" />,
     },
     {
       icon: MessageCircle,
@@ -27,7 +31,8 @@ export function SolutionSection() {
         t("landing.solution_pillar2_point2"),
         t("landing.solution_pillar2_point3"),
       ],
-      screenshotLabel: t("landing.solution_pillar2_screenshot"),
+      ariaLabel: t("landing.solution_pillar2_screenshot"),
+      mockup: <MockupWhatsAppConfirmation />,
     },
     {
       icon: DollarSign,
@@ -38,7 +43,8 @@ export function SolutionSection() {
         t("landing.solution_pillar3_point2"),
         t("landing.solution_pillar3_point3"),
       ],
-      screenshotLabel: t("landing.solution_pillar3_screenshot"),
+      ariaLabel: t("landing.solution_pillar3_screenshot"),
+      mockup: <MockupComandaCommission />,
     },
   ]
 
@@ -86,13 +92,13 @@ export function SolutionSection() {
                   </ul>
                 </div>
 
-                {/* Screenshot Placeholder */}
+                {/* Mockup */}
                 <div className={isReversed ? "lg:[direction:ltr]" : ""}>
-                  <div className="bg-zinc-100 dark:bg-white/[0.04] rounded-2xl border border-zinc-200 dark:border-zinc-500/25 aspect-[4/3] flex items-center justify-center">
-                    {/* TODO: Replace with real screenshot */}
-                    <p className="text-sm text-zinc-400 dark:text-zinc-500 font-medium px-4 text-center">
-                      {pillar.screenshotLabel}
-                    </p>
+                  <div
+                    className="bg-zinc-100 dark:bg-white/[0.04] rounded-2xl border border-zinc-200 dark:border-zinc-500/25 overflow-hidden aspect-[4/3]"
+                    aria-label={pillar.ariaLabel}
+                  >
+                    {pillar.mockup}
                   </div>
                 </div>
               </div>
