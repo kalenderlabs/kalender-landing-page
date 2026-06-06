@@ -115,7 +115,6 @@ export default function RootLayout({ children }: RootLayoutProps) {
       "Comanda digital e comissão automática",
       "Controle de caixa e relatórios",
       "Link de agendamento para clientes",
-      "Suporte offline",
       "Conformidade LGPD"
     ],
     screenshot: "https://kalender.com.br/og-image.png",
