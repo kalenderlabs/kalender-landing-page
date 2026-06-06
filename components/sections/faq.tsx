@@ -9,7 +9,7 @@ export function FAQSection() {
   const [openFaq, setOpenFaq] = useState<number | null>(null)
   const faqRefs = useRef<(HTMLDivElement | null)[]>([])
 
-  const faqCount = 8
+  const faqCount = 7
   const faqs = Array.from({ length: faqCount }, (_, i) => ({
     q: t(`landing.faq_q${i + 1}`),
     a: t(`landing.faq_a${i + 1}`),

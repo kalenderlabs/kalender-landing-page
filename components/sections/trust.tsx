@@ -1,16 +1,15 @@
 "use client"
 
 import { useTranslation } from "@/contexts/translation-context"
-import { ShieldCheck, WifiOff, Headphones, DoorOpen } from "lucide-react"
+import { ShieldCheck, Headphones, DoorOpen } from "lucide-react"
 
 export function TrustSection() {
   const { t } = useTranslation()
 
   const seals = [
     { icon: ShieldCheck, title: t("landing.trust_seal1_title"), desc: t("landing.trust_seal1_desc") },
-    { icon: WifiOff, title: t("landing.trust_seal2_title"), desc: t("landing.trust_seal2_desc") },
-    { icon: Headphones, title: t("landing.trust_seal3_title"), desc: t("landing.trust_seal3_desc") },
-    { icon: DoorOpen, title: t("landing.trust_seal4_title"), desc: t("landing.trust_seal4_desc") },
+    { icon: Headphones, title: t("landing.trust_seal2_title"), desc: t("landing.trust_seal2_desc") },
+    { icon: DoorOpen, title: t("landing.trust_seal3_title"), desc: t("landing.trust_seal3_desc") },
   ]
 
   return (
@@ -22,7 +21,7 @@ export function TrustSection() {
           </h2>
         </div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto stagger-children">
+        <div className="grid sm:grid-cols-3 gap-6 max-w-4xl mx-auto stagger-children">
           {seals.map((seal, i) => {
             const Icon = seal.icon
             return (
