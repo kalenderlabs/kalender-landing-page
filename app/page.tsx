@@ -22,11 +22,21 @@ interface PublicPlan {
   features: { code: string; name: string; enabled: boolean }[]
 }
 
+function isRawLabel(label: string): boolean {
+  return /^[A-Z_]+:?\s*\d*$/.test(label.trim()) || /[A-Z]{2,}_[A-Z]/.test(label)
+}
+
 function transformPublicPlan(api: PublicPlan): PlanDetails {
   const featureDescriptions: string[] = []
 
   for (const q of api.quotas || []) {
-    featureDescriptions.push(q.formattedLabel)
+    if (q.resourceCode === "API_CALLS_MONTH") continue
+    if (q.formattedLabel && !isRawLabel(q.formattedLabel)) {
+      featureDescriptions.push(q.formattedLabel)
+    } else {
+      const fn = QUOTA_LABELS[q.resourceCode]
+      if (fn) featureDescriptions.push(fn(q.limit))
+    }
   }
   for (const f of api.features || []) {
     if (f.enabled) featureDescriptions.push(f.name)
@@ -41,6 +51,7 @@ function transformPublicPlan(api: PublicPlan): PlanDetails {
     isActive: true,
     isRecommended: api.isRecommended,
     featureDescriptions,
+    displayOrder: api.displayOrder,
   }
 }
 
@@ -132,10 +143,7 @@ async function getPlans(): Promise<PlanDetails[]> {
 
 export default async function LandingPage() {
   const allPlans = await getPlans()
-
-  // Filter for Early Adopter plan (first recommended, or first active, or just the first one)
-  const earlyAdopter = allPlans.find((p) => p.isRecommended) || allPlans[0]
-  const plans = earlyAdopter ? [earlyAdopter] : []
+  const plans = allPlans.sort((a, b) => (a.displayOrder ?? 0) - (b.displayOrder ?? 0))
 
   return (
     <TranslationProvider>

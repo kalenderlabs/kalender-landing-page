@@ -11,13 +11,13 @@ import { SolutionSection } from "@/components/sections/solution"
 import { AIWhatsAppSection } from "@/components/sections/ai-whatsapp"
 import { HowItWorksSection } from "@/components/sections/how-it-works"
 import { TrustSection } from "@/components/sections/trust"
-import { EarlyAdopterPricingSection } from "@/components/sections/early-adopter-pricing"
+import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
 import { CTASection } from "@/components/sections/cta"
 import { FooterSection } from "@/components/sections/footer"
 
 // Re-export PlanDetails so app/page.tsx import still works
-export type { PlanDetails } from "@/components/sections/early-adopter-pricing"
+export type { PlanDetails } from "@/components/sections/pricing"
 
 // ─── Scroll Animation Hook ───────────────────────────────────────────────────
 
@@ -69,7 +69,7 @@ function useBackToTop() {
 // ─── Landing Page Content ────────────────────────────────────────────────────
 
 interface LandingPageContentProps {
-  initialPlans: import("@/components/sections/early-adopter-pricing").PlanDetails[]
+  initialPlans: import("@/components/sections/pricing").PlanDetails[]
 }
 
 export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
@@ -93,7 +93,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       <AIWhatsAppSection />
       <HowItWorksSection />
       <TrustSection />
-      <EarlyAdopterPricingSection plans={initialPlans} />
+      <PricingSection plans={initialPlans} />
       <FAQSection />
       <CTASection />
       <FooterSection />
