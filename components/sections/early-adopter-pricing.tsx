@@ -16,14 +16,15 @@ export interface PlanDetails {
   isActive: boolean
   isRecommended: boolean
   featureDescriptions: string[]
+  displayOrder?: number
 }
 
 function formatPrice(price: number) {
   return new Intl.NumberFormat("pt-BR", {
     style: "currency",
     currency: "BRL",
-    minimumFractionDigits: 0,
-    maximumFractionDigits: 0,
+    minimumFractionDigits: 2,
+    maximumFractionDigits: 2,
   }).format(price)
 }
 
