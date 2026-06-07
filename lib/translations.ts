@@ -21,7 +21,7 @@ export const translations = {
     hero_uptime_description: "Uptime garantido",
     hero_start_free_trial: "Começar Teste Grátis",
     hero_view_pricing: "Ver Preços",
-    hero_free_trial_note: "✨ 7 dias grátis • Sem cartão de crédito",
+    hero_free_trial_note: "✨ {trial_days} dias grátis • Sem cartão de crédito",
 
     // Features
     features_title: "Recursos Poderosos",
@@ -56,7 +56,7 @@ export const translations = {
     // Pricing
     pricing_title: "Preços Transparentes",
     pricing_title_highlight: "Sem Surpresas",
-    pricing_subtitle: "Escolha o plano ideal para o seu negócio. Todos incluem teste grátis de 7 dias.",
+    pricing_subtitle: "Escolha o plano ideal para o seu negócio. Todos incluem teste grátis de {trial_days} dias.",
     pricing_annual_savings: "💰 Economia Anual Garantida",
     pricing_annual_description:
       "Pague anualmente e economize 30% em todos os planos. Mais tempo para focar no seu negócio!",
@@ -73,7 +73,7 @@ export const translations = {
     per_month: "/mês",
     billed_annually: "cobrado anualmente",
     start_free_trial: "Começar Teste Grátis",
-    free_trial_note: "✨ 7 dias grátis • Sem cartão",
+    free_trial_note: "✨ {trial_days} dias grátis • Sem cartão",
     up_to: "Até",
 
     // Plans
@@ -145,7 +145,7 @@ export const translations = {
     faq_title: "Perguntas Frequentes",
     faq_trial_question: "Como funciona o teste grátis?",
     faq_trial_answer:
-      "Você tem 7 dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de crédito para começar.",
+      "Você tem {trial_days} dias para testar todas as funcionalidades gratuitamente. Não precisamos do seu cartão de crédito para começar.",
     faq_cancel_question: "Posso cancelar a qualquer momento?",
     faq_cancel_answer:
       "Sim! Você pode cancelar sua assinatura a qualquer momento. Para planos anuais, o serviço permanece ativo até o fim do período contratado.",
@@ -166,7 +166,7 @@ export const translations = {
     login_button: "Entrar",
 
     signup_title: "Começar Teste Grátis",
-    signup_subtitle: "7 dias grátis • Sem cartão de crédito",
+    signup_subtitle: "{trial_days} dias grátis • Sem cartão de crédito",
     name: "Nome completo",
     business: "Nome do estabelecimento",
     signup_button: "Começar Teste Grátis",
@@ -429,7 +429,7 @@ export const translations = {
 
       // Pricing
       pricing_title: "Planos para cada fase do seu negócio",
-      pricing_subtitle: "Comece grátis por 7 dias. Escolha o plano que combina com você.",
+      pricing_subtitle: "Comece grátis por {trial_days} dias. Escolha o plano que combina com você.",
       pricing_badge: "Plano Fundador — Acesso Antecipado",
       pricing_per_month: "/mês",
       pricing_monthly: "Mensal",
@@ -443,7 +443,7 @@ export const translations = {
       pricing_cta: "Começar agora",
       pricing_cta_enterprise: "Fale conosco",
       pricing_note: "Sem cartão para testar. Cartão de crédito para assinar.",
-      pricing_footnote: "Todos os planos incluem 7 dias grátis. Cancele quando quiser.",
+      pricing_footnote: "Todos os planos incluem {trial_days} dias grátis. Cancele quando quiser.",
       pricing_benefit1: "Preço congelado por 12 meses",
       pricing_benefit2: "Acesso direto ao time fundador",
       pricing_benefit3: "Prioridade de novas funcionalidades",
@@ -507,7 +507,7 @@ export const translations = {
       terms_s3_items: "Ter no mínimo 18 anos de idade ou capacidade legal|Fornecer informações verdadeiras, completas e atualizadas no cadastro|Manter a confidencialidade de suas credenciais de acesso|Notificar-nos imediatamente sobre qualquer uso não autorizado de sua conta",
       terms_s3_footer: "Você é responsável por todas as atividades realizadas em sua conta.",
       terms_s4_title: "4. Planos e Pagamento",
-      terms_s4_items: "Teste grátis: Oferecemos um período de teste gratuito de 7 dias. Um cartão de crédito é solicitado no cadastro, mas a cobrança só ocorre após o término do período de teste.|Assinatura: Após o período de teste, o acesso requer assinatura de um plano pago. Os preços estão disponíveis na página de preços e podem ser alterados com aviso prévio de 30 dias.|Cobrança: As cobranças são recorrentes (mensal ou anual, conforme o plano escolhido) e processadas automaticamente.|Cancelamento: Você pode cancelar sua assinatura a qualquer momento. O acesso permanece ativo até o fim do período já pago. Não há multa por cancelamento.|Reembolso: Planos mensais não são reembolsáveis. Planos anuais podem ser reembolsados proporcionalmente nos primeiros 30 dias.",
+      terms_s4_items: "Teste grátis: Oferecemos um período de teste gratuito de {trial_days} dias. Um cartão de crédito é solicitado no cadastro, mas a cobrança só ocorre após o término do período de teste.|Assinatura: Após o período de teste, o acesso requer assinatura de um plano pago. Os preços estão disponíveis na página de preços e podem ser alterados com aviso prévio de 30 dias.|Cobrança: As cobranças são recorrentes (mensal ou anual, conforme o plano escolhido) e processadas automaticamente.|Cancelamento: Você pode cancelar sua assinatura a qualquer momento. O acesso permanece ativo até o fim do período já pago. Não há multa por cancelamento.|Reembolso: Planos mensais não são reembolsáveis. Planos anuais podem ser reembolsados proporcionalmente nos primeiros 30 dias.",
       terms_s5_title: "5. Uso Aceitável",
       terms_s5_text: "Você concorda em não utilizar a Plataforma para:",
       terms_s5_items: "Violar leis ou regulamentos aplicáveis|Transmitir conteúdo ilícito, difamatório ou que viole direitos de terceiros|Tentar acessar áreas restritas ou comprometer a segurança da Plataforma|Utilizar meios automatizados para extrair dados (scraping)|Revender ou sublicenciar o acesso à Plataforma sem autorização",
@@ -594,7 +594,7 @@ export const translations = {
     hero_uptime_description: "guaranteed uptime",
     hero_start_free_trial: "Start Free Trial",
     hero_view_pricing: "View Pricing",
-    hero_free_trial_note: "✨ 7 days free • No credit card required",
+    hero_free_trial_note: "✨ {trial_days} days free • No credit card required",
 
     // Features
     features_title: "Powerful Features",
@@ -629,7 +629,7 @@ export const translations = {
     // Pricing
     pricing_title: "Transparent Pricing",
     pricing_title_highlight: "No Surprises",
-    pricing_subtitle: "Choose the ideal plan for your business. All include a 7-day free trial.",
+    pricing_subtitle: "Choose the ideal plan for your business. All include a {trial_days}-day free trial.",
     pricing_annual_savings: "💰 Guaranteed Annual Savings",
     pricing_annual_description: "Pay annually and save 30% on all plans. More time to focus on your business!",
     pricing_important_note:
@@ -645,7 +645,7 @@ export const translations = {
     per_month: "/month",
     billed_annually: "billed annually",
     start_free_trial: "Start Free Trial",
-    free_trial_note: "✨ 7 days free • No card required",
+    free_trial_note: "✨ {trial_days} days free • No card required",
     up_to: "Up to",
 
     // Plans
@@ -717,7 +717,7 @@ export const translations = {
     // FAQ
     faq_title: "Frequently Asked Questions",
     faq_trial_question: "How does the free trial work?",
-    faq_trial_answer: "You have 7 days to test all features for free. We don't need your credit card to get started.",
+    faq_trial_answer: "You have {trial_days} days to test all features for free. We don't need your credit card to get started.",
     faq_cancel_question: "Can I cancel anytime?",
     faq_cancel_answer:
       "Yes! You can cancel your subscription at any time. For annual plans, the service remains active until the end of the contracted period.",
@@ -738,7 +738,7 @@ export const translations = {
     login_button: "Sign In",
 
     signup_title: "Start Free Trial",
-    signup_subtitle: "7 days free • No credit card required",
+    signup_subtitle: "{trial_days} days free • No credit card required",
     name: "Full name",
     business: "Business name",
     signup_button: "Start Free Trial",
@@ -1000,7 +1000,7 @@ export const translations = {
 
       // Pricing
       pricing_title: "Plans for every stage of your business",
-      pricing_subtitle: "Start free for 7 days. Choose the plan that fits you.",
+      pricing_subtitle: "Start free for {trial_days} days. Choose the plan that fits you.",
       pricing_badge: "Founder Plan — Early Access",
       pricing_per_month: "/month",
       pricing_monthly: "Monthly",
@@ -1014,7 +1014,7 @@ export const translations = {
       pricing_cta: "Start now",
       pricing_cta_enterprise: "Contact us",
       pricing_note: "No card to try. Credit card to subscribe.",
-      pricing_footnote: "All plans include a 7-day free trial. Cancel anytime.",
+      pricing_footnote: "All plans include a {trial_days}-day free trial. Cancel anytime.",
       pricing_benefit1: "Price frozen for 12 months",
       pricing_benefit2: "Direct access to the founding team",
       pricing_benefit3: "Priority for new features",
@@ -1078,7 +1078,7 @@ export const translations = {
       terms_s3_items: "Be at least 18 years of age or have legal capacity|Provide true, complete, and up-to-date information during registration|Maintain the confidentiality of your access credentials|Notify us immediately of any unauthorized use of your account",
       terms_s3_footer: "You are responsible for all activities carried out on your account.",
       terms_s4_title: "4. Plans and Payment",
-      terms_s4_items: "Free trial: We offer a 7-day free trial period. A credit card is required at registration, but charges only begin after the trial period ends.|Subscription: After the trial period, access requires a paid plan subscription. Prices are available on the pricing page and may be changed with 30 days prior notice.|Billing: Charges are recurring (monthly or annual, depending on the chosen plan) and processed automatically.|Cancellation: You can cancel your subscription at any time. Access remains active until the end of the already paid period. There is no cancellation fee.|Refund: Monthly plans are non-refundable. Annual plans may be proportionally refunded within the first 30 days.",
+      terms_s4_items: "Free trial: We offer a {trial_days}-day free trial period. A credit card is required at registration, but charges only begin after the trial period ends.|Subscription: After the trial period, access requires a paid plan subscription. Prices are available on the pricing page and may be changed with 30 days prior notice.|Billing: Charges are recurring (monthly or annual, depending on the chosen plan) and processed automatically.|Cancellation: You can cancel your subscription at any time. Access remains active until the end of the already paid period. There is no cancellation fee.|Refund: Monthly plans are non-refundable. Annual plans may be proportionally refunded within the first 30 days.",
       terms_s5_title: "5. Acceptable Use",
       terms_s5_text: "You agree not to use the Platform to:",
       terms_s5_items: "Violate applicable laws or regulations|Transmit illegal, defamatory content or content that violates third-party rights|Attempt to access restricted areas or compromise the security of the Platform|Use automated means to extract data (scraping)|Resell or sublicense access to the Platform without authorization",
@@ -1165,7 +1165,7 @@ export const translations = {
     hero_uptime_description: "tiempo de actividad garantizado",
     hero_start_free_trial: "Comenzar Prueba Gratis",
     hero_view_pricing: "Ver Precios",
-    hero_free_trial_note: "✨ 7 días gratis • Sin tarjeta de crédito",
+    hero_free_trial_note: "✨ {trial_days} días gratis • Sin tarjeta de crédito",
 
     // Features
     features_title: "Funciones Poderosas",
@@ -1200,7 +1200,7 @@ export const translations = {
     // Pricing
     pricing_title: "Precios Transparentes",
     pricing_title_highlight: "Sin Sorpresas",
-    pricing_subtitle: "Elige el plan ideal para tu negocio. Todos incluyen prueba gratis de 7 días.",
+    pricing_subtitle: "Elige el plan ideal para tu negocio. Todos incluyen prueba gratis de {trial_days} días.",
     pricing_annual_savings: "💰 Ahorro Anual Garantizado",
     pricing_annual_description:
       "Paga anualmente y ahorra 30% en todos los planes. ¡Más tiempo para enfocarte en tu negocio!",
@@ -1217,7 +1217,7 @@ export const translations = {
     per_month: "/mes",
     billed_annually: "facturado anualmente",
     start_free_trial: "Comenzar Prueba Gratis",
-    free_trial_note: "✨ 7 días gratis • Sin tarjeta",
+    free_trial_note: "✨ {trial_days} días gratis • Sin tarjeta",
     up_to: "Hasta",
 
     // Plans
@@ -1290,7 +1290,7 @@ export const translations = {
     faq_title: "Preguntas Frecuentes",
     faq_trial_question: "¿Cómo funciona la prueba gratis?",
     faq_trial_answer:
-      "Tienes 7 días para probar todas las funciones gratuitamente. No necesitamos tu tarjeta de crédito para comenzar.",
+      "Tienes {trial_days} días para probar todas las funciones gratuitamente. No necesitamos tu tarjeta de crédito para comenzar.",
     faq_cancel_question: "¿Puedo cancelar en cualquier momento?",
     faq_cancel_answer:
       "¡Sí! Puedes cancelar tu suscripción en cualquier momento. Para planes anuales, el servicio permanece activo hasta el final del período contratado.",
@@ -1311,7 +1311,7 @@ export const translations = {
     login_button: "Iniciar Sesión",
 
     signup_title: "Comenzar Prueba Gratis",
-    signup_subtitle: "7 días gratis • Sin tarjeta de crédito",
+    signup_subtitle: "{trial_days} días gratis • Sin tarjeta de crédito",
     name: "Nombre completo",
     business: "Nombre del negocio",
     signup_button: "Comenzar Prueba Gratis",
@@ -1573,7 +1573,7 @@ export const translations = {
 
       // Pricing
       pricing_title: "Planes para cada fase de tu negocio",
-      pricing_subtitle: "Empieza gratis por 7 días. Elige el plan que mejor se adapte a ti.",
+      pricing_subtitle: "Empieza gratis por {trial_days} días. Elige el plan que mejor se adapte a ti.",
       pricing_badge: "Plan Fundador — Acceso Anticipado",
       pricing_per_month: "/mes",
       pricing_monthly: "Mensual",
@@ -1587,7 +1587,7 @@ export const translations = {
       pricing_cta: "Comenzar ahora",
       pricing_cta_enterprise: "Contáctenos",
       pricing_note: "Sin tarjeta para probar. Tarjeta de crédito para suscribirse.",
-      pricing_footnote: "Todos los planes incluyen 7 días gratis. Cancela cuando quieras.",
+      pricing_footnote: "Todos los planes incluyen {trial_days} días gratis. Cancela cuando quieras.",
       pricing_benefit1: "Precio congelado por 12 meses",
       pricing_benefit2: "Acceso directo al equipo fundador",
       pricing_benefit3: "Prioridad de nuevas funcionalidades",
@@ -1651,7 +1651,7 @@ export const translations = {
       terms_s3_items: "Tener al menos 18 años de edad o capacidad legal|Proporcionar información verdadera, completa y actualizada en el registro|Mantener la confidencialidad de sus credenciales de acceso|Notificarnos inmediatamente sobre cualquier uso no autorizado de su cuenta",
       terms_s3_footer: "Usted es responsable de todas las actividades realizadas en su cuenta.",
       terms_s4_title: "4. Planes y Pago",
-      terms_s4_items: "Prueba gratis: Ofrecemos un período de prueba gratuito de 7 días. Se solicita una tarjeta de crédito en el registro, pero el cobro solo ocurre después del término del período de prueba.|Suscripción: Después del período de prueba, el acceso requiere suscripción a un plan pago. Los precios están disponibles en la página de precios y pueden cambiar con 30 días de aviso previo.|Cobro: Los cobros son recurrentes (mensual o anual, según el plan elegido) y procesados automáticamente.|Cancelación: Puede cancelar su suscripción en cualquier momento. El acceso permanece activo hasta el fin del período ya pagado. No hay multa por cancelación.|Reembolso: Los planes mensuales no son reembolsables. Los planes anuales pueden ser reembolsados proporcionalmente en los primeros 30 días.",
+      terms_s4_items: "Prueba gratis: Ofrecemos un período de prueba gratuito de {trial_days} días. Se solicita una tarjeta de crédito en el registro, pero el cobro solo ocurre después del término del período de prueba.|Suscripción: Después del período de prueba, el acceso requiere suscripción a un plan pago. Los precios están disponibles en la página de precios y pueden cambiar con 30 días de aviso previo.|Cobro: Los cobros son recurrentes (mensual o anual, según el plan elegido) y procesados automáticamente.|Cancelación: Puede cancelar su suscripción en cualquier momento. El acceso permanece activo hasta el fin del período ya pagado. No hay multa por cancelación.|Reembolso: Los planes mensuales no son reembolsables. Los planes anuales pueden ser reembolsados proporcionalmente en los primeros 30 días.",
       terms_s5_title: "5. Uso Aceptable",
       terms_s5_text: "Usted acepta no utilizar la Plataforma para:",
       terms_s5_items: "Violar leyes o regulaciones aplicables|Transmitir contenido ilícito, difamatorio o que viole derechos de terceros|Intentar acceder a áreas restringidas o comprometer la seguridad de la Plataforma|Utilizar medios automatizados para extraer datos (scraping)|Revender o sublicenciar el acceso a la Plataforma sin autorización",

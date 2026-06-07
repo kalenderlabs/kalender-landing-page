@@ -5,6 +5,7 @@ import { LandingPageContent, type PlanDetails } from "@/components/landing-page-
 export type { PlanDetails }
 
 const API_PUBLIC_PLANS_URL = "https://api.kalender.com.br/billing/plans/public"
+const API_PUBLIC_SETTINGS_URL = "https://api.kalender.com.br/billing/settings/public"
 
 // Fallback to legacy endpoint if public endpoint is not yet deployed
 const API_LEGACY_PLANS_URL = "https://api.kalender.com.br/billing/plans/details"
@@ -141,12 +142,27 @@ async function getPlans(): Promise<PlanDetails[]> {
   }
 }
 
+async function getTrialDays(): Promise<number> {
+  try {
+    const res = await fetch(API_PUBLIC_SETTINGS_URL, { cache: "no-store" })
+    if (res.ok) {
+      const data = await res.json()
+      if (data?.trialDays && typeof data.trialDays === "number" && data.trialDays >= 1 && data.trialDays <= 90) {
+        return data.trialDays
+      }
+    }
+  } catch {
+    // fallback
+  }
+  return 14
+}
+
 export default async function LandingPage() {
-  const allPlans = await getPlans()
+  const [allPlans, trialDays] = await Promise.all([getPlans(), getTrialDays()])
   const plans = allPlans.sort((a, b) => (a.displayOrder ?? 0) - (b.displayOrder ?? 0))
 
   return (
-    <TranslationProvider>
+    <TranslationProvider trialDays={trialDays}>
       <LandingPageContent initialPlans={plans} />
     </TranslationProvider>
   )
