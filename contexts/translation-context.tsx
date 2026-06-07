@@ -12,7 +12,7 @@ interface TranslationContextType {
 
 const TranslationContext = createContext<TranslationContextType | undefined>(undefined)
 
-export function TranslationProvider({ children }: { children: React.ReactNode }) {
+export function TranslationProvider({ children, trialDays }: { children: React.ReactNode; trialDays?: number }) {
   const [language, setLanguage] = useState<Locale>("pt")
 
   // Carregar idioma do localStorage
@@ -47,7 +47,11 @@ export function TranslationProvider({ children }: { children: React.ReactNode })
       }
     }
 
-    return value || key
+    let result = value || key
+    if (typeof result === "string" && trialDays !== undefined) {
+      result = result.replace(/\{trial_days\}/g, String(trialDays))
+    }
+    return result
   }
 
   return <TranslationContext.Provider value={{ language, setLanguage, t }}>{children}</TranslationContext.Provider>
