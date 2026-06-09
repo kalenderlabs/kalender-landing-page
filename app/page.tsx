@@ -4,6 +4,8 @@ import { LandingPageContent, type PlanDetails } from "@/components/landing-page-
 // Re-export PlanDetails for external consumers
 export type { PlanDetails }
 
+export const dynamic = 'force-dynamic'
+
 const API_PUBLIC_PLANS_URL = "https://api.kalender.com.br/billing/plans/public"
 const API_PUBLIC_SETTINGS_URL = "https://api.kalender.com.br/billing/settings/public"
 
