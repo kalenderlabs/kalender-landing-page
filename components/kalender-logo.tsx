@@ -34,7 +34,7 @@ export function KalenderLogo({ width = 32, height = 32, className = "", alt = "K
       alt={alt}
       width={width}
       height={height}
-      className={`${className} object-contain`}
+      className={`${className} object-contain dark:brightness-0 dark:invert`}
       priority
       onError={() => setImageError(true)}
     />
