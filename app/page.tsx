@@ -38,7 +38,10 @@ function transformPublicPlan(api: PublicPlan): PlanDetails {
       featureDescriptions.push(q.formattedLabel)
     } else {
       const fn = QUOTA_LABELS[q.resourceCode]
-      if (fn) featureDescriptions.push(fn(q.limit))
+      if (fn) {
+        const label = fn(q.limit)
+        if (label) featureDescriptions.push(label)
+      }
     }
   }
   for (const f of api.features || []) {
@@ -78,6 +81,8 @@ const QUOTA_LABELS: Record<string, (limit: number) => string> = {
     n >= 100000 ? "API ilimitada" : `${n.toLocaleString("pt-BR")} chamadas API/mês`,
   STORAGE_MB: (n) =>
     n >= 10240 ? `${Math.round(n / 1024)} GB de armazenamento` : `${n} MB de armazenamento`,
+  SALVY_PHONE_NUMBERS: (n) =>
+    n <= 0 ? "" : `${n} ${n === 1 ? "número virtual WhatsApp incluso" : "números virtuais WhatsApp inclusos"}`,
 }
 
 const FEATURE_LABELS: Record<number, string> = {
@@ -98,7 +103,10 @@ function transformLegacyPlan(api: LegacyPlan): PlanDetails {
   const featureDescriptions: string[] = []
   for (const q of api.quotas) {
     const fn = QUOTA_LABELS[q.resourceCode]
-    if (fn) featureDescriptions.push(fn(q.limit))
+    if (fn) {
+      const label = fn(q.limit)
+      if (label) featureDescriptions.push(label)
+    }
   }
   for (const f of api.features) {
     if (f.enabled && FEATURE_LABELS[f.featureId]) {
