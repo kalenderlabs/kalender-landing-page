@@ -13,6 +13,7 @@ import { HowItWorksSection } from "@/components/sections/how-it-works"
 import { TrustSection } from "@/components/sections/trust"
 import { PricingSection } from "@/components/sections/pricing"
 import { FAQSection } from "@/components/sections/faq"
+import { MessageCalculatorSection } from "@/components/sections/message-calculator"
 import { CTASection } from "@/components/sections/cta"
 import { FooterSection } from "@/components/sections/footer"
 
@@ -95,6 +96,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       <TrustSection />
       <PricingSection plans={initialPlans} />
       <FAQSection />
+      <MessageCalculatorSection />
       <CTASection />
       <FooterSection />
 
