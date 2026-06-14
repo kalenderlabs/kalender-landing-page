@@ -136,7 +136,7 @@ export function MockupScheduleGrid({ variant = "hero" }: { variant?: "hero" | "c
               <div className="flex items-center justify-center mt-0.5">
                 {day.isToday ? (
                   <span
-                    className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-white font-bold"
+                    className="inline-flex items-center justify-center w-7 h-7 rounded-full bg-primary text-primary-foreground font-bold"
                     style={{ fontSize: "12px" }}
                   >
                     {day.num}

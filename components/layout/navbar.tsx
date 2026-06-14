@@ -187,7 +187,7 @@ export function Navbar({ solid = false }: NavbarProps) {
               {t("landing.nav_login")}
             </Button>
             <Button
-              className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-white font-semibold text-sm rounded-xl px-5"
+              className="hidden md:inline-flex bg-primary hover:bg-primary/90 text-primary-foreground font-semibold text-sm rounded-xl px-5"
               onClick={() => (window.location.href = ONBOARDING_URL)}
             >
               {t("landing.nav_cta")}
@@ -239,7 +239,7 @@ export function Navbar({ solid = false }: NavbarProps) {
                   {t("landing.nav_login")}
                 </Button>
                 <Button
-                  className="justify-start bg-primary text-white"
+                  className="justify-start bg-primary text-primary-foreground"
                   onClick={() => {
                     setMobileMenuOpen(false)
                     window.location.href = ONBOARDING_URL

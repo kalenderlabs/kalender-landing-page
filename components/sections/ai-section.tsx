@@ -38,7 +38,7 @@ export function AISection() {
               <div className="p-4 space-y-3 min-h-[280px]">
                 {/* Client message */}
                 <div className="flex justify-end">
-                  <div className="bg-primary text-white text-sm rounded-2xl rounded-br-md px-4 py-2.5 max-w-[80%]">
+                  <div className="bg-primary text-primary-foreground text-sm rounded-2xl rounded-br-md px-4 py-2.5 max-w-[80%]">
                     {t("landing.ai_chat_msg1")}
                   </div>
                 </div>
@@ -50,7 +50,7 @@ export function AISection() {
                 </div>
                 {/* Client message */}
                 <div className="flex justify-end">
-                  <div className="bg-primary text-white text-sm rounded-2xl rounded-br-md px-4 py-2.5 max-w-[80%]">
+                  <div className="bg-primary text-primary-foreground text-sm rounded-2xl rounded-br-md px-4 py-2.5 max-w-[80%]">
                     {t("landing.ai_chat_msg3")}
                   </div>
                 </div>
@@ -90,7 +90,7 @@ export function AISection() {
 
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-7 text-base rounded-xl transition-colors"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 px-7 text-base rounded-xl transition-colors"
               onClick={() => (window.location.href = ONBOARDING_URL)}
             >
               {t("landing.ai_cta")}

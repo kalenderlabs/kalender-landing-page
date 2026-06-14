@@ -103,7 +103,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
       {/* Back to Top */}
       <button
         onClick={() => window.scrollTo({ top: 0, behavior: "smooth" })}
-        className={`fixed bottom-6 right-6 z-40 bg-primary text-white p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-primary/90 ${
+        className={`fixed bottom-6 right-6 z-40 bg-primary text-primary-foreground p-3 rounded-full shadow-lg transition-all duration-300 hover:bg-primary/90 ${
           showBackToTop ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4 pointer-events-none"
         }`}
         aria-label={t("landing.back_to_top")}

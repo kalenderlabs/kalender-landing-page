@@ -267,7 +267,7 @@ function PlanCostCard({ plan, volumes, channels, isCheapest }: PlanCostCardProps
 
       {plan.isRecommended && !isCheapest && (
         <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-          <Badge className="bg-primary text-white font-semibold px-3 py-0.5 shadow-sm border-0">
+          <Badge className="bg-primary text-primary-foreground font-semibold px-3 py-0.5 shadow-sm border-0">
             Recomendado
           </Badge>
         </div>

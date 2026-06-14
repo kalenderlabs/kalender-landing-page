@@ -32,7 +32,7 @@ export function HowItWorksSection() {
               <div key={i} className="animate-on-scroll text-center">
                 <div className="relative inline-flex items-center justify-center w-14 h-14 rounded-2xl bg-primary/10 dark:bg-primary/15 mb-4">
                   <Icon className="h-6 w-6 text-primary" />
-                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-white text-xs font-bold flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 w-6 h-6 rounded-full bg-primary text-primary-foreground text-xs font-bold flex items-center justify-center">
                     {i + 1}
                   </span>
                 </div>

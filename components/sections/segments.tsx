@@ -80,7 +80,7 @@ export function SegmentsSection() {
             {t("landing.segment_price_example")}
           </p>
           <Button
-            className="bg-primary hover:bg-primary/90 text-white font-semibold rounded-xl px-6 transition-colors"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold rounded-xl px-6 transition-colors"
             onClick={() => (window.location.href = ONBOARDING_URL)}
           >
             {t("landing.hero_cta_primary")}

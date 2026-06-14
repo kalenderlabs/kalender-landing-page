@@ -90,7 +90,7 @@ export function EarlyAdopterPricingSection({ plans }: EarlyAdopterPricingSection
 
                 <Button
                   size="lg"
-                  className="w-full bg-primary hover:bg-primary/90 text-white font-semibold h-12 text-base rounded-xl transition-colors mb-3"
+                  className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 text-base rounded-xl transition-colors mb-3"
                   onClick={() => (window.location.href = ONBOARDING_URL)}
                 >
                   {t("landing.pricing_cta")}
@@ -122,7 +122,7 @@ export function EarlyAdopterPricingSection({ plans }: EarlyAdopterPricingSection
             <div className="max-w-md mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-8">
               <p className="text-zinc-600 dark:text-zinc-400 mb-4">{t("landing.pricing_empty")}</p>
               <Button
-                className="bg-primary hover:bg-primary/90 text-white rounded-xl px-6"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-6"
                 onClick={() => window.open(WHATSAPP_URL, "_blank")}
               >
                 <MessageCircle className="mr-2 h-4 w-4" />

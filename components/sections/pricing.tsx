@@ -72,7 +72,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
             <div className="max-w-md mx-auto rounded-2xl border border-zinc-200 dark:border-zinc-500/25 bg-white dark:bg-zinc-950 p-8">
               <p className="text-zinc-500 dark:text-zinc-400 mb-4">{t("landing.pricing_subtitle")}</p>
               <Button
-                className="bg-primary hover:bg-primary/90 text-white rounded-xl px-6"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-xl px-6"
                 onClick={() => (window.location.href = "/contact")}
               >
                 {t("landing.pricing_cta_enterprise")}
@@ -106,7 +106,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
                 >
                   {isRecommended && (
                     <div className="absolute -top-3.5 left-1/2 -translate-x-1/2">
-                      <Badge className="bg-primary text-white font-semibold px-4 py-1 shadow-sm">
+                      <Badge className="bg-primary text-primary-foreground font-semibold px-4 py-1 shadow-sm">
                         {t("landing.pricing_popular")}
                       </Badge>
                     </div>
@@ -159,7 +159,7 @@ export function PricingSection({ plans }: PricingSectionProps) {
                     <Button
                       className={`w-full rounded-xl font-semibold transition-colors ${
                         isRecommended
-                          ? "bg-primary hover:bg-primary/90 text-white"
+                          ? "bg-primary hover:bg-primary/90 text-primary-foreground"
                           : isEnterprise
                           ? "bg-zinc-900 dark:bg-white hover:bg-zinc-800 dark:hover:bg-zinc-100 text-white dark:text-zinc-900"
                           : "bg-white dark:bg-zinc-800 border border-zinc-200 dark:border-zinc-500/25 text-zinc-900 dark:text-white hover:border-primary hover:text-primary"

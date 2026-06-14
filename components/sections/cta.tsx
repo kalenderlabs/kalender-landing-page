@@ -23,7 +23,7 @@ export function CTASection() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-3">
             <Button
               size="lg"
-              className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-8 text-base rounded-xl transition-colors"
+              className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 px-8 text-base rounded-xl transition-colors"
               onClick={() => (window.location.href = ONBOARDING_URL)}
             >
               {t("landing.cta_primary")}

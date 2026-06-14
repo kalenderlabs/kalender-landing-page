@@ -28,7 +28,7 @@ export function HeroSection() {
             <div className="flex flex-col sm:flex-row gap-3 mb-6">
               <Button
                 size="lg"
-                className="bg-primary hover:bg-primary/90 text-white font-semibold h-12 px-7 text-base rounded-xl transition-colors"
+                className="bg-primary hover:bg-primary/90 text-primary-foreground font-semibold h-12 px-7 text-base rounded-xl transition-colors"
                 onClick={() => (window.location.href = ONBOARDING_URL)}
               >
                 {t("landing.hero_cta_primary")}
