@@ -178,9 +178,7 @@ export function Navbar({ solid = false }: NavbarProps) {
           {/* Right Actions */}
           <div className="flex items-center gap-2">
             <ThemeToggle />
-            <div className="hidden md:flex items-center gap-1.5">
-              <LanguageSelector />
-            </div>
+            <LanguageSelector />
             <Button
               variant="ghost"
               className="hidden md:inline-flex text-sm font-medium text-zinc-600 dark:text-zinc-300 hover:text-zinc-900 dark:hover:text-white hover:bg-zinc-100 dark:hover:bg-zinc-800"
@@ -230,9 +228,6 @@ export function Navbar({ solid = false }: NavbarProps) {
                 </button>
               ))}
               <div className="border-t border-zinc-100 dark:border-zinc-500/25 mt-2 pt-2 flex flex-col gap-2">
-                <div className="px-3 py-2 flex items-center gap-3">
-                  <LanguageSelector />
-                </div>
                 <Button
                   variant="outline"
                   className="justify-start"
