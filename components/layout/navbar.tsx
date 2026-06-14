@@ -177,8 +177,8 @@ export function Navbar({ solid = false }: NavbarProps) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-2">
+            <ThemeToggle />
             <div className="hidden md:flex items-center gap-1.5">
-              <ThemeToggle />
               <LanguageSelector />
             </div>
             <Button
@@ -231,7 +231,6 @@ export function Navbar({ solid = false }: NavbarProps) {
               ))}
               <div className="border-t border-zinc-100 dark:border-zinc-500/25 mt-2 pt-2 flex flex-col gap-2">
                 <div className="px-3 py-2 flex items-center gap-3">
-                  <ThemeToggle />
                   <LanguageSelector />
                 </div>
                 <Button
