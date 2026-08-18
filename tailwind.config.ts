@@ -1,6 +1,7 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
+  presets: [require("@cerneo/kalender-tokens/tailwind")],
   darkMode: ["class"],
   content: [
     "./pages/**/*.{ts,tsx}",
@@ -19,49 +20,53 @@ const config: Config = {
       },
     },
     extend: {
+      fontFamily: {
+        sans: ["var(--font-inter)", "Inter", "ui-sans-serif", "system-ui"],
+        display: ["var(--font-manrope)", "Manrope", "Inter", "ui-sans-serif", "system-ui"],
+      },
       colors: {
-        border: "hsl(var(--border))",
-        input: "hsl(var(--input))",
-        ring: "hsl(var(--ring))",
-        background: "hsl(var(--background))",
-        foreground: "hsl(var(--foreground))",
+        border: "rgb(var(--k-color-border-rgb) / <alpha-value>)",
+        input: "rgb(var(--k-color-border-rgb) / <alpha-value>)",
+        ring: "rgb(var(--k-color-focus-rgb) / <alpha-value>)",
+        background: "rgb(var(--k-color-canvas-rgb) / <alpha-value>)",
+        foreground: "rgb(var(--k-color-text-rgb) / <alpha-value>)",
         primary: {
-          DEFAULT: "hsl(var(--primary))",
-          foreground: "hsl(var(--primary-foreground))",
+          DEFAULT: "rgb(var(--k-color-action-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-inverse-rgb) / <alpha-value>)",
         },
         secondary: {
-          DEFAULT: "hsl(var(--secondary))",
-          foreground: "hsl(var(--secondary-foreground))",
+          DEFAULT: "rgb(var(--k-reference-color-brand-blue-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-reference-color-neutral-white-rgb) / <alpha-value>)",
         },
         accent: {
-          DEFAULT: "hsl(var(--accent))",
-          foreground: "hsl(var(--accent-foreground))",
+          DEFAULT: "rgb(var(--k-color-accent-subtle-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-rgb) / <alpha-value>)",
         },
         destructive: {
-          DEFAULT: "hsl(var(--destructive))",
-          foreground: "hsl(var(--destructive-foreground))",
+          DEFAULT: "rgb(var(--k-color-danger-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-inverse-rgb) / <alpha-value>)",
         },
         muted: {
-          DEFAULT: "hsl(var(--muted))",
-          foreground: "hsl(var(--muted-foreground))",
+          DEFAULT: "rgb(var(--k-color-surface-muted-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-muted-rgb) / <alpha-value>)",
         },
         popover: {
-          DEFAULT: "hsl(var(--popover))",
-          foreground: "hsl(var(--popover-foreground))",
+          DEFAULT: "rgb(var(--k-color-surface-raised-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-rgb) / <alpha-value>)",
         },
         card: {
-          DEFAULT: "hsl(var(--card))",
-          foreground: "hsl(var(--card-foreground))",
+          DEFAULT: "rgb(var(--k-color-surface-rgb) / <alpha-value>)",
+          foreground: "rgb(var(--k-color-text-rgb) / <alpha-value>)",
         },
-        "brand-purple": "#312E81",
+        "brand-purple": "rgb(var(--k-reference-color-brand-indigo-rgb) / <alpha-value>)",
       },
       backgroundImage: {
         "brand-gradient": "linear-gradient(135deg, #22D3EE 0%, #0EA5E9 50%, #312E81 100%)",
       },
       borderRadius: {
-        lg: "var(--radius)",
-        md: "calc(var(--radius) - 2px)",
-        sm: "calc(var(--radius) - 4px)",
+        lg: "var(--k-reference-radius-lg)",
+        md: "var(--k-reference-radius-md)",
+        sm: "var(--k-reference-radius-sm)",
       },
       keyframes: {
         "accordion-down": {
