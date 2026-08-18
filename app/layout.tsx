@@ -1,13 +1,18 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Inter } from "next/font/google"
+import { Inter, Manrope } from "next/font/google"
 import { ThemeProvider } from "@/components/theme-provider"
 import { Toaster } from "@/components/ui/toaster"
 import { Analytics } from "@vercel/analytics/next"
 import { SpeedInsights } from "@vercel/speed-insights/next"
+import { DesignSystemProvider } from "@/components/providers/design-system-provider"
+import "@cerneo/kalender-tokens/css"
+import "@cerneo/kalender-ui/styles.css"
+import "@cerneo/kalender-patterns/styles.css"
 import "./globals.css"
 
-const inter = Inter({ subsets: ["latin"] })
+const inter = Inter({ subsets: ["latin"], variable: "--font-inter" })
+const manrope = Manrope({ subsets: ["latin"], variable: "--font-manrope", weight: ["500", "600", "700", "800"] })
 
 export const metadata: Metadata = {
   title: "Kalender - Agenda, Comanda e Comissão para Salões e Barbearias",
@@ -141,10 +146,12 @@ export default function RootLayout({ children }: RootLayoutProps) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
         />
       </head>
-      <body className={inter.className}>
+      <body className={`${inter.variable} ${manrope.variable} ${inter.className}`}>
         <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
-          {children}
-          <Toaster />
+          <DesignSystemProvider>
+            {children}
+            <Toaster />
+          </DesignSystemProvider>
         </ThemeProvider>
         <Analytics />
         <SpeedInsights />
