@@ -24,10 +24,33 @@ export type { PlanDetails } from "@/components/sections/pricing"
 
 function useScrollAnimations() {
   useEffect(() => {
+    const root = document.documentElement
+    const elements = Array.from(
+      document.querySelectorAll<HTMLElement>(
+        ".animate-on-scroll, .animate-on-scroll-scale"
+      )
+    )
+
+    const showAll = () => {
+      elements.forEach((element) => {
+        element.classList.remove("animate-pending")
+        element.classList.add("animate-visible")
+      })
+    }
+
+    if (
+      !("IntersectionObserver" in window) ||
+      window.matchMedia("(prefers-reduced-motion: reduce)").matches
+    ) {
+      showAll()
+      return
+    }
+
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
+            entry.target.classList.remove("animate-pending")
             entry.target.classList.add("animate-visible")
             observer.unobserve(entry.target)
           }
@@ -36,12 +59,51 @@ function useScrollAnimations() {
       { threshold: 0.08 }
     )
 
-    const elements = document.querySelectorAll(
-      ".animate-on-scroll, .animate-on-scroll-scale"
-    )
-    elements.forEach((el) => observer.observe(el))
+    const revealReachedElements = () => {
+      const revealLine = window.innerHeight * 1.1
+      elements.forEach((element) => {
+        if (
+          element.classList.contains("animate-pending") &&
+          element.getBoundingClientRect().top <= revealLine
+        ) {
+          element.classList.remove("animate-pending")
+          element.classList.add("animate-visible")
+          observer.unobserve(element)
+        }
+      })
+    }
 
-    return () => observer.disconnect()
+    const revealLine = window.innerHeight * 1.1
+    elements.forEach((element) => {
+      if (element.getBoundingClientRect().top <= revealLine) {
+        element.classList.add("animate-visible")
+        return
+      }
+
+      element.classList.add("animate-pending")
+      observer.observe(element)
+    })
+
+    root.classList.add("scroll-animations-ready")
+
+    let animationFrame: number | null = null
+    const handleScroll = () => {
+      if (animationFrame !== null) return
+      animationFrame = window.requestAnimationFrame(() => {
+        revealReachedElements()
+        animationFrame = null
+      })
+    }
+
+    window.addEventListener("scroll", handleScroll, { passive: true })
+
+    return () => {
+      if (animationFrame !== null) window.cancelAnimationFrame(animationFrame)
+      window.removeEventListener("scroll", handleScroll)
+      root.classList.remove("scroll-animations-ready")
+      elements.forEach((element) => element.classList.remove("animate-pending"))
+      observer.disconnect()
+    }
   }, [])
 }
 
@@ -85,7 +147,7 @@ export function LandingPageContent({ initialPlans }: LandingPageContentProps) {
   }, [language])
 
   return (
-    <div className="min-h-screen bg-white dark:bg-zinc-950 font-sans antialiased">
+    <div className="min-h-screen bg-background text-foreground font-sans antialiased">
       <Navbar />
       <HeroSection />
       <CredibilityStripSection />
